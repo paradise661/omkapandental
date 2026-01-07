@@ -11,7 +11,7 @@
 @endsection
 @extends('layouts.frontend.master')
 @section('content')
-{{-- @if ($service_page)
+    {{-- @if ($service_page)
 <div class="hero-banner2 position-relative ">
     <div class="row g-0 text-bannner-section">
         <div class="col-md-6 d-flex justify-content-center align-items-center py-5">
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div> --}}
-{{-- </div>
+    {{-- </div>
 @endif
     <section class="service-section py-5">
         <div class="container">
@@ -72,10 +72,10 @@
     <!-- Hero Section -->
     <section id="services-hero" class="bg-gradient-to-br from-dental-light to-white h-[400px] flex items-center">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold text-gray-900 mb-6">Our Comprehensive Services</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                From routine cleanings to advanced procedures, we offer complete dental care for patients of all ages in a comfortable, modern environment.
-            </p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $settings['services_title'] }}</h2>
+            <div class="text-xl text-gray-600 max-w-3xl mx-auto">
+                {{ $settings['services_description'] }}
+            </div>
         </div>
     </section>
 
@@ -84,12 +84,13 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 gap-16 items-center mb-20">
                 <div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-6">Complete Dental Care Under One Roof</h3>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ $service_page->title }}</h3>
                     <p class="text-lg text-gray-600 mb-6">
-                        At SmileCare, we believe in providing comprehensive dental services that address all your oral health needs. Our team of specialists works together to ensure you receive the best possible care.
+                        {{ $service_page->short_description }}
                     </p>
                     <div class="space-y-4">
-                        <div class="flex items-center space-x-3">
+                        {!! $service_page->description !!}
+                        {{-- <div class="flex items-center space-x-3">
                             <i class="fa-solid fa-check text-dental-blue"></i>
                             <span class="text-gray-700">State-of-the-art equipment and technology</span>
                         </div>
@@ -100,11 +101,12 @@
                         <div class="flex items-center space-x-3">
                             <i class="fa-solid fa-check text-dental-blue"></i>
                             <span class="text-gray-700">Flexible scheduling and payment options</span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="h-80 overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/0db0500d42-1162b49ebad5affde86d.png" alt="modern dental clinic interior with multiple treatment rooms, advanced equipment, clean white design, professional lighting" />
+                    <img class="w-full h-full object-cover" src="{{ asset($service_page->image) }}"
+                        alt="modern dental clinic interior with multiple treatment rooms, advanced equipment, clean white design, professional lighting" />
                 </div>
             </div>
         </div>
@@ -112,100 +114,117 @@
 
     <!-- Detailed Services -->
     <section id="detailed-services" class="py-20 bg-gray-50">
+        @php
+            $service1 = $services->get(0);
+            $service2 = $services->get(1);
+            $service3 = $services->get(2);
+            // $service4 = $services->get(3);
+        @endphp
         <div class="max-w-7xl mx-auto px-6">
-            <h3 class="text-4xl font-bold text-gray-900 text-center mb-16">Explore Our Services</h3>
-
-            <!-- General Dentistry -->
-            <div id="general-dentistry" class="mb-20">
-                <div class="grid grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div class="bg-dental-blue rounded-lg w-16 h-16 flex items-center justify-center">
-                                <i class="fa-solid fa-tooth text-white text-2xl"></i>
-                            </div>
-                            <h4 class="text-3xl font-bold text-gray-900">General Dentistry</h4>
+            <h3 class="text-4xl font-bold text-gray-900 text-center mb-16">Explore {{ $settings['services_title'] }}</h3>
+            @if ($service1)
+                <!-- General Dentistry -->
+                <div id="general-dentistry" class="mb-20">
+                    <div class="grid grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                 <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
+                            <img src="{{ $service1->image }}">
                         </div>
-                        <p class="text-lg text-gray-600 mb-6">
-                            Our general dentistry services form the foundation of good oral health. We focus on prevention, early detection, and treatment of dental problems.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Regular Cleanings</h5>
-                                <p class="text-sm text-gray-600">Professional cleanings every 6 months</p>
+                                <h4 class="text-3xl font-bold text-gray-900">{{ $service1->title }}</h4>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Dental Exams</h5>
-                                <p class="text-sm text-gray-600">Comprehensive oral health assessments</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Fillings</h5>
-                                <p class="text-sm text-gray-600">Tooth-colored composite restorations</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Root Canal Therapy</h5>
-                                <p class="text-sm text-gray-600">Save infected or damaged teeth</p>
+                            <p class="text-lg text-gray-600 mb-6">
+                                {{ $service1->short_description }}
+                            </p>
+                            <div class="grid grid-cols-2 gap-4">
+                                {!! $service1->description !!}
+                                {{-- <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Regular Cleanings</h5>
+                                    <p class="text-sm text-gray-600">Professional cleanings every 6 months</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Dental Exams</h5>
+                                    <p class="text-sm text-gray-600">Comprehensive oral health assessments</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Fillings</h5>
+                                    <p class="text-sm text-gray-600">Tooth-colored composite restorations</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Root Canal Therapy</h5>
+                                    <p class="text-sm text-gray-600">Save infected or damaged teeth</p>
+                                </div> --}}
                             </div>
                         </div>
-                    </div>
-                    <div class="h-96 overflow-hidden rounded-2xl">
-                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a28e31fee4-4caf2d5890048994cb33.png" alt="dentist performing dental cleaning on patient, professional dental hygiene procedure, modern dental office" />
+                        <div class="h-96 overflow-hidden rounded-2xl">
+                            <img class="w-full h-full object-cover" src="{{ asset($service1->image_1) }}"
+                                alt="dentist performing dental cleaning on patient, professional dental hygiene procedure, modern dental office" />
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            @endif
             <!-- Cosmetic Dentistry -->
-            <div id="cosmetic-dentistry" class="mb-20">
-                <div class="grid grid-cols-2 gap-12 items-center">
-                    <div class="h-96 overflow-hidden rounded-2xl">
-                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/bede12965c-8544969261cc2b5491a0.png" alt="before and after teeth whitening results, bright white smile, cosmetic dentistry transformation" />
-                    </div>
-                    <div>
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div class="bg-dental-blue rounded-lg w-16 h-16 flex items-center justify-center">
-                                <i class="fa-solid fa-smile text-white text-2xl"></i>
-                            </div>
-                            <h4 class="text-3xl font-bold text-gray-900">Cosmetic Dentistry</h4>
+            @if ($service2)
+                <div id="cosmetic-dentistry" class="mb-20">
+                    <div class="grid grid-cols-2 gap-12 items-center">
+                        <div class="h-96 overflow-hidden rounded-2xl">
+                            <img class="w-full h-full object-cover" src="{{ asset($service2->image_1) }}"
+                                alt="before and after teeth whitening results, bright white smile, cosmetic dentistry transformation" />
                         </div>
-                        <p class="text-lg text-gray-600 mb-6">
-                            Transform your smile with our advanced cosmetic procedures. We combine artistry with dental science to create beautiful, natural-looking results.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Teeth Whitening</h5>
-                                <p class="text-sm text-gray-600">Professional whitening treatments</p>
+                        <div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
+                            <img src="{{ $service2->image }}">
+                        </div>
+                                <h4 class="text-3xl font-bold text-gray-900">{{ $service2->title }}</h4>
                             </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Porcelain Veneers</h5>
-                                <p class="text-sm text-gray-600">Custom-made thin shells</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Smile Makeovers</h5>
-                                <p class="text-sm text-gray-600">Complete smile transformations</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                <h5 class="font-semibold text-gray-900 mb-2">Bonding</h5>
-                                <p class="text-sm text-gray-600">Repair chips and gaps</p>
+                            <p class="text-lg text-gray-600 mb-6">
+                                {{ $service2->short_description }}
+                            </p>
+                            <div class="grid grid-cols-2 gap-4">
+                                {!! $service2->description !!}
+
+                                {{-- <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Teeth Whitening</h5>
+                                    <p class="text-sm text-gray-600">Professional whitening treatments</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Porcelain Veneers</h5>
+                                    <p class="text-sm text-gray-600">Custom-made thin shells</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Smile Makeovers</h5>
+                                    <p class="text-sm text-gray-600">Complete smile transformations</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Bonding</h5>
+                                    <p class="text-sm text-gray-600">Repair chips and gaps</p>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
 
             <!-- Oral Surgery -->
-            <div id="oral-surgery" class="mb-20">
-                <div class="grid grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div class="bg-dental-blue rounded-lg w-16 h-16 flex items-center justify-center">
-                                <i class="fa-solid fa-user-doctor text-white text-2xl"></i>
-                            </div>
-                            <h4 class="text-3xl font-bold text-gray-900">Oral Surgery</h4>
+            @if ($service3)
+                <div id="oral-surgery" class="mb-20">
+                    <div class="grid grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-6">
+                               <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
+                            <img src="{{ $service3->image }}">
                         </div>
-                        <p class="text-lg text-gray-600 mb-6">
-                            Our experienced oral surgeons perform a wide range of surgical procedures with precision, comfort, and minimal downtime for our patients.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="text-3xl font-bold text-gray-900">{{ $service3->title }}</h4>
+                            </div>
+                            <p class="text-lg text-gray-600 mb-6">
+                                {{ $service3->short_description }}
+
+                            </p>
+                            <div class="grid grid-cols-2 gap-4">
+                                {!! $service3->description !!}
+
+                                {{-- <div class="bg-white p-4 rounded-lg shadow-sm">
                                 <h5 class="font-semibold text-gray-900 mb-2">Dental Implants</h5>
                                 <p class="text-sm text-gray-600">Permanent tooth replacement</p>
                             </div>
@@ -220,14 +239,18 @@
                             <div class="bg-white p-4 rounded-lg shadow-sm">
                                 <h5 class="font-semibold text-gray-900 mb-2">Bone Grafting</h5>
                                 <p class="text-sm text-gray-600">Restore bone structure</p>
+                            </div> --}}
                             </div>
                         </div>
-                    </div>
-                    <div class="h-96 overflow-hidden rounded-2xl">
-                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/536180e5fc-1e3ac5b4caeec2b64ec7.png" alt="dental implant procedure, oral surgery equipment, sterile surgical environment, professional dental care" />
+                        <div class="h-96 overflow-hidden rounded-2xl">
+                            <img class="w-full h-full object-cover"
+                                src="{{ asset($service3->image_1) }}"
+                                alt="dental implant procedure, oral surgery equipment, sterile surgical environment, professional dental care" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
+
         </div>
     </section>
 
@@ -347,17 +370,19 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h3 class="text-4xl font-bold text-white mb-6">Ready to Schedule Your Appointment?</h3>
             <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                Take the first step towards better oral health. Our team is ready to provide you with exceptional dental care.
+                Take the first step towards better oral health. Our team is ready to provide you with exceptional dental
+                care.
             </p>
             <div class="flex justify-center space-x-6">
-                <button class="bg-white text-dental-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
+                <button
+                    class="bg-white text-dental-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
                     Book Appointment
                 </button>
-                <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-dental-blue transition">
+                <button
+                    class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-dental-blue transition">
                     Call (555) 123-4567
                 </button>
             </div>
         </div>
     </section>
-
 @endsection
