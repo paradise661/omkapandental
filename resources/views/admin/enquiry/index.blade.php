@@ -1,18 +1,18 @@
 @extends('layouts.admin.master')
 @php
-    $title = 'Enquiries';
+    $title = 'Appointment';
     $name = 'enquiry';
 @endphp
 @section('content')
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0 text-capitalize">{{ $name }} ({{ ${$name . 's'}->count() }})</h5>
-            <small class="text-muted float-end">
+            {{-- <small class="text-muted float-end">
                 <a href="{{ route($name . '.create') }}"
                     class="btn btn-sm btn-primary d-flex justify-content-between align-items-center gap-2"><i
                         class="ri-add-line ri-lg"></i>
                     Create</a>
-            </small>
+            </small> --}}
         </div>
     </div>
     <div class="card">
@@ -26,10 +26,9 @@
                                 <th>Name</th>
                                 <th>Contact</th>
                                 <th>Email</th>
-                                <th>Country</th>
-                                <th>Language Test</th>
-                                <th>Priority</th>
-                                <th>Status</th>
+                                <th>Doctor</th>
+                                <th>Service Type</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -38,24 +37,17 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
 
-                                    <td>{{ ${$name}->full_name }}</td>
-                                    <td>{{ ${$name}->mobile }}</td>
+                                    <td>{{ ${$name}->first_name }} {{ ${$name}->last_name }}</td>
+                                    <td>{{ ${$name}->phone }}</td>
 
                                     <td>{{ ${$name}->email }}</td>
 
 
-                                    <td class="text-capitalize">{{ ${$name}->preferred_country }}</td>
+                                    <td class="text-capitalize">{{ ${$name}->doctor }}</td>
 
-                                    <td class="text-capitalize">{{ ${$name}->language_test }}</td>
+                                    <td class="text-capitalize">{{ ${$name}->service_type }}</td>
 
-                                    <td class="text-capitalize">{{ ${$name}->priority }}</td>
-                                    <td>
-                                        @if (${$name}->status)
-                                            <span class="badge bg-label-success me-1">Checked</span>
-                                        @else
-                                            <span class="badge bg-label-danger me-1">Unchecked</span>
-                                        @endif
-                                    </td>
+                                    
                                     <td class="">
                                         {{-- <a href="{{ route($name . '.edit', ${$name}->id) }}" type="button"
                                             class="btn btn-sm btn-icon btn-primary">
@@ -66,7 +58,7 @@
                                             <i class="tf-icons bx bx-show-alt text-white"></i>
                                         </a>
 
-                                        <form action="{{ route('application.store') }}" method="post" class="d-inline">
+                                        {{-- <form action="{{ route('application.store') }}" method="post" class="d-inline">
                                             @csrf
                                             <input type="hidden" name="student_id" value="{{ ${$name}->id }}">
                                             <button type="submit" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -74,7 +66,7 @@
                                                 class="btn btn-sm btn-icon btn-danger applicant_{{ $name }}">
                                                 <i class="tf-icons bx bx-file text-white"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
 
                                         <form action="{{ route($name . '.destroy', ${$name}->id) }}" method="post"
                                             class="d-inline">

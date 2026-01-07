@@ -11,7 +11,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Show Student Enquiry</h5>
             <small class="text-muted float-end">
-                <a href="{{ route($app . '.index') }}"
+                <a href="{{ route($name . '.index') }}"
                     class="btn btn-sm btn-primary d-flex justify-content-between align-items-center gap-2">
                     <i class='ri-arrow-left-line ri-lg'></i>
                     Back
@@ -21,151 +21,153 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <h5 class="card-header">General Information</h5>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
                         <table class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Information</th>
-                                </tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Information</th>
+                            </tr>
                             </thead>
+                            
                             <tbody class="table-border-bottom-0">
+                            
+                            {{-- Step 1: Personal Information --}}
+                            <tr>
+                                <td>First Name</td>
+                                <td>{{ $appointment->first_name ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Last Name</td>
+                                <td>{{ $appointment->last_name ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    @if($appointment->email)
+                                        <a href="mailto:{{ $appointment->email }}">{{ $appointment->email }}</a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Phone</td>
+                                <td>
+                                    @if($appointment->phone)
+                                        <a href="tel:{{ $appointment->phone }}">{{ $appointment->phone }}</a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Date of Birth</td>
+                                <td>{{ optional($appointment->dob)->format('d M Y') ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Patient Type</td>
+                                <td>{{ $appointment->patient_type ?? '-' }}</td>
+                            </tr>
+                            
+                            {{-- Step 2: Appointment Details --}}
+                            <tr>
+                                <td>Service Type</td>
+                                <td>{{ $appointment->service_type ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Preferred Doctor</td>
+                                <td>{{ $appointment->doctor ?? 'No Preference' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Appointment Date</td>
+                                <td>{{ optional($appointment->appointment_date)->format('d M Y') ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Appointment Time</td>
+                                <td>{{ $appointment->appointment_time ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Reason for Visit</td>
+                                <td>{{ $appointment->reason_visit ?? '-' }}</td>
+                            </tr>
+                            
+                            {{-- Step 3: Insurance --}}
+                            <tr>
+                                <td>Dental Insurance</td>
+                                <td>{{ $appointment->insurance ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Insurance Provider</td>
+                                <td>{{ $appointment->insurance_provider ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Policy Number</td>
+                                <td>{{ $appointment->policy_number ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Group Number</td>
+                                <td>{{ $appointment->group_number ?? '-' }}</td>
+                            </tr>
+                            
+                            {{-- Step 4: Medical History --}}
+                            <tr>
+                                <td>Medical Conditions</td>
+                                <td>
+                                    @if(!empty($appointment->medical_conditions))
+                                        <ul class="mb-0">
+                                            @foreach($appointment->medical_conditions as $condition)
+                                                <li>{{ ucwords(str_replace('_', ' ', $condition)) }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Current Medications</td>
+                                <td>{{ $appointment->medication ?? '-' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Known Allergies</td>
+                                <td>{{ $appointment->allergies ?? '-' }}</td>
+                            </tr>
+                            
+                            {{-- Step 5: Communication Preferences --}}
+                            <tr>
+                                <td>Appointment Reminders</td>
+                                <td>
+                                    @if(!empty($appointment->appointment_reminders))
+                                        {{ collect($appointment->appointment_reminders)
+                                            ->map(fn($i) => ucwords(str_replace('_', ' ', $i)))
+                                            ->implode(', ') }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            </tr>
+                            
+                            </tbody>
 
-                                <!-- Basic Info -->
-                                <tr>
-                                    <td>Full Name</td>
-                                    <td>{{ ${$name}->full_name ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Branch</td>
-                                    <td>{{ ${$name}->branch ?? '-' }}</td>
-                                </tr>
-
-                                <!-- Additional Info -->
-                                <tr>
-                                    <td>Marital Status</td>
-                                    <td>{{ ${$name}->marital_status ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Address</td>
-                                    <td>{{ ${$name}->address ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Mobile</td>
-                                    <td>
-                                        @if (${$name}->mobile)
-                                            <a href="tel:{{ ${$name}->mobile }}">{{ ${$name}->mobile }}</a>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Email</td>
-                                    <td>
-                                        @if (${$name}->email)
-                                            <a href="mailto:{{ ${$name}->email }}">{{ ${$name}->email }}</a>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Phone 2</td>
-                                    <td>
-                                        @if (${$name}->phone2)
-                                            <a href="tel:{{ ${$name}->phone2 }}">{{ ${$name}->phone2 }}</a>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                </tr>
-
-
-                                {{--
-                                <tr>
-                                    <td>Note</td>
-                                    <td>{{ ${$name}->note ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Consultant</td>
-                                    <td>{{ ${$name}->consultant ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Priority</td>
-                                    <td>{{ ${$name}->priority ?? '-' }}</td>
-                                </tr> --}}
-
-
-                                <!-- Academic Qualification -->
-                                <tr>
-                                    <td>Qualification</td>
-                                    <td>{{ ${$name}->qualification ?? '-' }}</td>
-                                </tr>
-
-
-
-                                <!-- Other Details -->
-                                <tr>
-                                    <td>Preferred Country</td>
-                                    <td>{{ ${$name}->preferred_country ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Language Test</td>
-                                    <td>{{ ${$name}->language_test ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Test Type</td>
-                                    <td>{{ ${$name}->test_type ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Test Score</td>
-                                    <td>{{ ${$name}->test_score ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Preferred Education</td>
-                                    <td>{{ ${$name}->preferred_education ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Preferred Institution Name</td>
-                                    <td>{{ ${$name}->preferred_institution_name ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Source</td>
-                                    <td>
-                                        @if (!empty(${$name}->source) || ${$name}->source == '{}' || ${$name}->source == '')
-                                            <ul>
-                                                @foreach (${$name}->source as $src)
-                                                    <li class="text-capitalize">{{ $src }}</li>
-                                                @endforeach
-                                            </ul>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Message</td>
-                                    <td>{{ ${$name}->message ?? '-' }}</td>
-                                </tr>
 
 
                                 <!-- Status -->
@@ -175,23 +177,22 @@
                                 </tr> --}}
 
 
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <label for="name" class="form-label">Choose Status</label>
+        {{-- <div class="col-md-4"> --}}
+            {{-- <div class="card"> --}}
+                {{-- <div class="card-body"> --}}
+                    {{-- <label for="name" class="form-label">Choose Status</label> --}}
                     {{-- Main Status Form --}}
                     {{-- CSRF token for AJAX --}}
-                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
                     {{-- STATUS DROPDOWN FORM --}}
-                    <form action="{{ route('application.update', ${$app}->id) }}" method="POST" id="statusForm">
+                    {{-- <form action="{{ route('application.update', ${$app}->id) }}" method="POST" id="statusForm">
                         @csrf
                         @method('PUT')
 
@@ -206,10 +207,10 @@
                         </select>
 
                         <button type="submit" class="btn btn-primary mt-2" id="statusSubmitBtn">Submit Status</button>
-                    </form>
+                    </form> --}}
 
                     {{-- CLASS ENROLLMENT FORM --}}
-                    <div id="classEnrollForm" style="display: none;" class="mt-3">
+                    {{-- <div id="classEnrollForm" style="display: none;" class="mt-3">
                         <form id="classEnrollRealForm" action="{{ route('application.classupdate', ${$app}->id) }}"
                             method="POST">
                             @csrf
@@ -269,15 +270,15 @@
                                 <a href="#visadetail" class="btn btn-primary">Visa Details</a><br>
 
                             @endif
-                            {{-- <button type="button" class="btn">Visa Details</button> --}}
+                            {{-- <button type="button" class="btn">Visa Details</button> 
                         </form>
-                    </div>
+                    </div> --}}
 
 
-                </div>
-            </div>
+                {{-- </div> --}}
+            {{-- </div> --}}
 
-            <div class="card mt-4">
+            {{-- <div class="card mt-4">
                 <h5 class="card-header">Guardian Information</h5>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -325,9 +326,9 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="card mt-4">
+            </div> --}}
+        {{-- </div> --}}
+        {{-- <div class="card mt-4">
             <h5 class="card-header">Academic Qualification</h5>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
@@ -341,11 +342,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            <!-- Academic Qualification -->
-                            {{-- <tr>
-                                <td>Qualification</td>
-                                <td>{{ ${$name}->qualification ?? '-' }}</td>
-                            </tr> --}}
+                            
 
                             @if (!empty(${$name}->see_school_name) || !empty(${$name}->see_gpa) || !empty(${$name}->see_passed_year))
                                 <tr>
@@ -388,8 +385,8 @@
                     </table>
                 </div>
             </div>
-        </div>
-        @if (!empty(${$app}->documentLink->link))
+        </div> --}}
+        {{-- @if (!empty(${$app}->documentLink->link))
                 <div class="card mt-4">
                     <h5 class="card-header" id="visadetail">Visa Details</h5>
                     <div class="card-body">
@@ -424,7 +421,7 @@
 
                 </div>
             </div>
-        @endif
+        @endif --}}
 
 
     </div>
@@ -453,208 +450,6 @@
 
         });
 
-        function toggleRemarks(select, id) {
-            var remarksDiv = document.getElementById('remarks-' + id);
-            if (select.value === 'refused') {
-                remarksDiv.style.display = '';
-            } else {
-                remarksDiv.style.display = 'none';
-            }
-        }
-
-        function removeExistingImage(imagePath, button) {
-            // Remove preview
-            button.closest('div').remove();
-
-            // Append the removed image path to a hidden input
-            const removedImagesInput = document.getElementById('removed-images');
-            let removed = JSON.parse(removedImagesInput.value || "[]");
-            removed.push(imagePath);
-            removedImagesInput.value = JSON.stringify(removed);
-        }
-
-        function displayImages() {
-            const input = document.getElementById('property-images');
-            const container = document.getElementById('image-preview-container');
-
-            if (input.files) {
-                // Clear previous previews if needed
-                // container.innerHTML = '';
-
-                // Process each selected file
-                for (let i = 0; i < input.files.length; i++) {
-                    const file = input.files[i];
-
-                    // Only process image files
-                    if (!file.type.match('image.*')) {
-                        continue;
-                    }
-
-                    // Create a new preview element
-                    const preview = document.createElement('div');
-                    preview.className = 'relative border rounded-md p-1';
-
-                    // Create image element
-                    const img = document.createElement('img');
-                    img.className = 'w-full h-24 object-cover rounded';
-                    preview.appendChild(img);
-
-                    // Create file name element
-                    const name = document.createElement('p');
-                    name.className = 'text-xs text-gray-500 truncate mt-1';
-                    name.textContent = file.name;
-                    preview.appendChild(name);
-
-                    // Create remove button
-                    const removeBtn = document.createElement('button');
-                    removeBtn.type = 'button';
-                    removeBtn.className =
-                        'absolute top-1 right-1 bg-red-500 rounded-full w-5 h-5 flex items-center justify-center btn btn-sm btn-danger mt-4';
-                    removeBtn.style.zIndex = 10;
-                    removeBtn.innerHTML = '×';
-                    removeBtn.onclick = function () {
-                        preview.remove();
-                    };
-                    preview.appendChild(removeBtn);
-
-                    // Add to container
-                    container.appendChild(preview);
-
-                    // Read and display the image
-                    const reader = new FileReader();
-                    reader.onload = (function (aImg) {
-                        return function (e) {
-                            aImg.src = e.target.result;
-                        };
-                    })(img);
-                    reader.readAsDataURL(file);
-                }
-            }
-        }
-
-        const statusSelect = document.getElementById('statusSelect');
-        const classForm = document.getElementById('classEnrollForm');
-        const prepForm = document.getElementById('preparationForm');
-        const documentImage = document.getElementById('documentImage');
-
-        const submitBtn = document.getElementById('statusSubmitBtn');
-
-
-        function toggleForms() {
-            const value = statusSelect.value;
-            if (classForm) classForm.style.display = value === 'forward' ? 'block' : 'none';
-            if (prepForm) prepForm.style.display = value === 'forward' ? 'block' : 'none';
-            if (documentImage) documentImage.style.display = value === 'forward' ? 'block' : 'none';
-            if (submitBtn) submitBtn.style.display = (value !== 'forward') ?
-                'inline-block' : 'none';
-        }
-
-        document.addEventListener('DOMContentLoaded', toggleForms);
-        statusSelect.addEventListener('change', toggleForms);
-
-        function submitWithStatus(type) {
-            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            const id = "{{ ${$app}->id }}";
-
-            fetch(`{{ route('application.update', '__id__') }}`.replace('__id__', id), {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': token,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    _method: 'PUT',
-                    status: 'forward'
-                })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        alert("Failed to update status.");
-                        return;
-                    }
-                    // After successful status update, submit the class/preparation form
-                    if (type === 'classenroll') {
-                        document.getElementById('classEnrollRealForm').submit();
-                    } else if (type === 'preparation') {
-                        document.getElementById('prepRealForm').submit();
-                    } else if (type === 'documentation') {
-                        document.getElementById('documentImageForm').submit();
-                    }
-                })
-                .catch(error => {
-                    console.error("Error updating status:", error);
-                });
-        }
-
-
-
-        function removeExistingImage(imagePath, button) {
-            // Remove preview
-            button.closest('div').remove();
-
-            // Append the removed image path to a hidden input
-            const removedImagesInput = document.getElementById('removed-images');
-            let removed = JSON.parse(removedImagesInput.value || "[]");
-            removed.push(imagePath);
-            removedImagesInput.value = JSON.stringify(removed);
-        }
-
-        function displayImages() {
-            const input = document.getElementById('property-images');
-            const container = document.getElementById('image-preview-container');
-
-            if (input.files) {
-                // Clear previous previews if needed
-                // container.innerHTML = '';
-
-                // Process each selected file
-                for (let i = 0; i < input.files.length; i++) {
-                    const file = input.files[i];
-
-                    // Only process image files
-                    if (!file.type.match('image.*')) {
-                        continue;
-                    }
-
-                    // Create a new preview element
-                    const preview = document.createElement('div');
-                    preview.className = 'relative border rounded-md p-1';
-
-                    // Create image element
-                    const img = document.createElement('img');
-                    img.className = 'w-full h-24 object-cover rounded';
-                    preview.appendChild(img);
-
-                    // Create file name element
-                    const name = document.createElement('p');
-                    name.className = 'text-xs text-gray-500 truncate mt-1';
-                    name.textContent = file.name;
-                    preview.appendChild(name);
-
-                    // Create remove button
-                    const removeBtn = document.createElement('button');
-                    removeBtn.className =
-                        'absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center';
-                    removeBtn.innerHTML = '×';
-                    removeBtn.onclick = function () {
-                        preview.remove();
-                    };
-                    preview.appendChild(removeBtn);
-
-                    // Add to container
-                    container.appendChild(preview);
-
-                    // Read and display the image
-                    const reader = new FileReader();
-                    reader.onload = (function (aImg) {
-                        return function (e) {
-                            aImg.src = e.target.result;
-                        };
-                    })(img);
-                    reader.readAsDataURL(file);
-                }
-            }
-        }
     </script>
+
 @endsection

@@ -23,8 +23,8 @@
     <section id="appointment-form-section" class="py-20 bg-gray-50">
         <div class="max-w-6xl mx-auto px-6">
             <div class="bg-white rounded-2xl shadow-xl p-10">
-                <form id="appointment-form" class="space-y-8">
-                    
+                <form action="{{ route('frontend.register.submit') }}" method="POST" id="appointment-form" class="space-y-8">
+                    @csrf
                     <div id="step-1">
                         <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                             <span class="bg-dental-blue text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">1</span>
@@ -96,11 +96,11 @@
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Preferred Date *</label>
-                                <input name="date" type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" required>
+                                <input name="appointment_date" type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" required>
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Preferred Time *</label>
-                                <select name="time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" required>
+                                <select name="appointment_time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" required>
                                     <option value="">Select Time...</option>
                                     <option value="8:00 AM - 9:00 AM">8:00 AM - 9:00 AM</option>
                                     <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
@@ -291,4 +291,18 @@
             </div> --}}
         </div>
     </section>
+    @if ($errors->any())
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    Toastify({
+        text: "{{ $errors->first() }}",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#ff4d4d", // red for error
+        stopOnFocus: true,
+    }).showToast();
+});
+</script>
+@endif
 @endsection

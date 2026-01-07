@@ -32,11 +32,11 @@
                         <div>Contact Inquiries</div>
                     </a>
                 </li>
-                {{-- <li class="menu-item {{ Request::segment(2) == 'enquiry' ? 'active' : '' }}">
+                <li class="menu-item {{ Request::segment(2) == 'enquiry' ? 'active' : '' }}">
                     <a href="{{ route('enquiry.index') }}" class="menu-link">
-                        <div>Students Enquiry</div>
+                        <div>Appointment</div>
                     </a>
-                </li> --}}
+                </li>
             </ul>
 
         </li>

@@ -128,7 +128,7 @@ Route::group(
         Route::resource('dailyvisit', DailyVisitController::class);
         Route::put('dailyvisit/{id}/change-status', [DailyVisitController::class, 'changeStatus'])->name('dailyvisit.changeStatus');
 
-        Route::resource(name: 'enquiry', controller: SEnquiriesController::class);
+        Route::resource( 'enquiry', SEnquiriesController::class);
         Route::get('/enquiry/{id}/pdf', [SEnquiriesController::class, 'generatePdf'])->name('enquiry.pdf');
         Route::put('enquiry/{id}/image', [SEnquiriesController::class, 'updateImage'])->name('enquiry.imageupdate');
 

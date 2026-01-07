@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use App\Models\AlbumGallery;
+use App\Models\Appointment;
 use App\Models\Faq;
 use App\Models\Blog;
 use App\Models\Page;
@@ -271,75 +272,57 @@ class FrontendController extends Controller
         // dd($input);
 
         $rules = [
-            // Basic Info
-            'full_name' => 'required|string|max:255',
-            'dob' => 'nullable',
 
-            // Academic Qualification
-            'qualification' => 'nullable|string|max:255',
-            'see_school_name' => 'nullable|string|max:255',
-            'see_gpa' => 'nullable|string|max:255',
-            'see_passed_year' => 'nullable|string|max:255',
-            'plus_two_college_name' => 'nullable|string|max:255',
-            'plus_two_gpa' => 'nullable|string|max:255',
-            'plus_two_passed_year' => 'nullable|string|max:255',
-            'bachelor_college_name' => 'nullable|string|max:255',
-            'bachelor_gpa' => 'nullable|string|max:255',
-            'bachelor_passed_year' => 'nullable|string|max:255',
-            'master_college_name' => 'nullable|string|max:255',
-            'master_gpa' => 'nullable|string|max:255',
-            'master_passed_year' => 'nullable|string|max:255',
+            // Step 1: Personal Information
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'dob' => 'required|date',
+            'patient_type' => 'required|in:New Patient,Existing Patient',
 
-            // Additional Info
-            'marital_status' => 'nullable|string|max:255',
-            'address' => 'required|string|max:255',
-            'mobile' => 'required',
-            'email' => 'nullable|email|max:255',
-            'phone2' => 'nullable|string|max:255',
+            // Step 2: Appointment Details
+            'service_type' => 'required|string|max:255',
+            'doctor' => 'nullable|string|max:255',
+            'appointment_date' => 'required|date',
+            'appointment_time' => 'required|string|max:255',
+            'reason_visit' => 'nullable|string',
 
-            // Guardian Info
-            'parents_name' => 'nullable|string|max:255',
-            'g_address' => 'nullable|string|max:255',
-            'g_mobile' => 'nullable|string|max:255',
-            'g_email' => 'nullable|email|max:255',
+            // Step 3: Insurance Information
+            'insurance' => 'nullable|in:Yes,No,Not Sure',
+            'insurance_provider' => 'nullable|string|max:255',
+            'policy_number' => 'nullable|string|max:255',
+            'group_number' => 'nullable|string|max:255',
 
-            // Other Details
-            'preferred_country' => 'nullable|string|max:255',
-            'language_test' => 'nullable|string|max:255',
-            'test_type' => 'nullable|string|max:255',
-            'test_score' => 'nullable|string|max:255',
-            'preferred_education' => 'nullable|string|max:255',
-            'preferred_institution_name' => 'nullable|string|max:255',
-            'source' => 'required|array',
-            'message' => 'required|string',
-            'purpose_of_visit' => 'required',
+            // Step 4: Medical History
+            'medical_conditions' => 'nullable|array',
+            'medical_conditions.*' => 'string|max:255',
 
-            // File Uploads
-            'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'medication' => 'nullable|string',
+            'allergies' => 'nullable|string',
+
+            // Step 5: Communication Preferences
+            'appointment_reminders' => 'nullable|array',
+            'appointment_reminders.*' => 'in:email,sms,phone_call',
         ];
+
 
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return redirect()->route("frontend.register")->withInput()->withErrors($validator);
+            return redirect()->route("frontend.appointment")->withInput()->withErrors($validator);
         } else {
             // Convert the 'dob' field from dd-mm-yyyy to yyyy-mm-dd format
             // $input['dob'] = Carbon::createFromFormat('d-m-Y', $input['dob'])->format('Y-m-d');
 
             // Convert the source array to a JSON string
-            $input['source'] = json_encode($input['source']);
+            $input['medical_conditions'] = $request->medical_conditions ?? [];
+            $input['appointment_reminders'] = $request->appointment_reminders ?? [];
 
-            $enquiry = Enquiries::create($input);
-            $application = Application::Create([
-                'student_id' => $enquiry->id,
-                'status' => 'wait'
-            ]);
-            Result::Create([
-                'application_id' => $application->id,
-                'status' => 'null'
-            ]);
 
-            return redirect()->back()->with('success', 'Registration successful!');
+            $enquiry = Appointment::create($input);
+            
+
+            return redirect()->back()->with('success', 'Appointment Request Submitted successful!');
         }
     }
 }

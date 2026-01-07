@@ -26,7 +26,7 @@ Route::name('frontend.')->group(
         Route::post('/', [FrontendController::class, 'contact_submite_home'])->name('contact.submit.home');
         Route::get('/pages/{slug}', [FrontendController::class, 'page'])->name('pages');
         Route::get('/student-registration', [FrontendController::class, 'register'])->name('register');
-        Route::post('/student-registration', [FrontendController::class, 'registerstudent'])->name('register.submit');
+        Route::post('/appointment', [FrontendController::class, 'registerstudent'])->name('register.submit');
         Route::get('/gallery/{album:slug}', [FrontendController::class, 'galleryshow'])->name('albums.show');
         Route::get('/appointment',[FrontendController::class, 'appointment'])->name('appointment');
     }

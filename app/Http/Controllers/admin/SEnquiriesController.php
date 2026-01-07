@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Appointment;
 use Carbon\Carbon;
 use App\Models\Result;
 use App\Models\Enquiries;
@@ -21,7 +22,7 @@ class SEnquiriesController extends Controller
     public function index()
     {
         //
-        $enquirys = Enquiries::paginate(10);
+        $enquirys = Appointment::paginate(10);
 
         return view('admin.enquiry.index', compact('enquirys'));
     }
@@ -135,18 +136,12 @@ class SEnquiriesController extends Controller
     {
         //
         // $enquiry = $enquiries;
-        $application = Application::with('classEnrolls', 'documentLink', 'result')->findOrFail($id);
-        $student = $student = $application->student()->with('images')->first();
-        $enquiry = Enquiries::with('images')->findOrFail($student->id);
-        if ($enquiry['source'] != null || $enquiry['source'] != '{}' || $enquiry['source'] != '') {
-            $enquiry['source'] = json_decode($enquiry['source']);
-        } else {
-            $enquiry['source'] = null;
-        }
-        // even simpler
-        $enquiry['source'] = $enquiry['source'] ?? null;
-
-        return view('admin.enquiry.show', compact('enquiry', 'student', 'application'));
+        // $application = Application::with('classEnrolls', 'documentLink', 'result')->findOrFail($id);
+        // $student = $student = $application->student()->with('images')->first();
+        // $enquiry = Enquiries::with('images')->findOrFail($student->id);
+        $appointment = Appointment::findOrFail($id);
+        
+        return view('admin.enquiry.show', compact('appointment'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -170,7 +165,7 @@ class SEnquiriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Enquiries $enquiry)
+    public function destroy(Appointment $enquiry)
     {
         //
         $enquiry->delete();
