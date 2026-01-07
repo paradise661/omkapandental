@@ -5,15 +5,15 @@
             <div class="bg-dental-blue rounded-full p-2">
                 <i class="fa-solid fa-tooth text-white text-xl"></i>
             </div>
-            <h1 class="text-2xl font-bold text-gray-900">SmileCare</h1>
+            <h1 class="text-2xl font-bold text-gray-900">     {{ $settings['site_title'] }}</h1>
         </div>
 
         <nav class="hidden md:flex space-x-8">
             <a href="/" class="text-gray-700 hover:text-dental-blue font-medium">Home</a>
             <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
-            <a href="#services" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
-            <a href="#doctors" class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
-            <a href="#contact" class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
+            <a href="{{ route('frontend.service') }}" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
+            <a href="{{ route('frontend.service') }}" class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
+            <a href="{{ route('frontend.contact') }}" class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
         </nav>
 
         <div class="flex items-center space-x-4">

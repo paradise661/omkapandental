@@ -101,9 +101,9 @@
                         </div>
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
                         <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
-                        <ul class="text-sm text-gray-600 space-y-2">
-                            {!! $service->description !!}
-                        </ul>
+                        <ul class="list-disc pl-5">
+    <li>{!! $service->description !!}</li>
+</ul>
                     </div>
                 @endforeach
 
@@ -192,7 +192,7 @@
                         </div>
                         <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $item->title }}</h4>
                         <p class="text-dental-blue font-medium mb-3">{{ $item->position }}</p>
-                        <div class="text-gray-600 mb-4">{!!$item->description!!}</div>
+                        <div class="text-gray-600 mb-4">{!! $item->description !!}</div>
                         <div class="flex justify-center space-x-3">
                             <span
                                 class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->email }}</span>
@@ -283,33 +283,29 @@
 
                 <div id="inquiry-form" class="bg-white rounded-2xl p-8 shadow-xl">
                     <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $settings['contactform_title'] }}</h4>
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-2 gap-4">
+                    <form action="{{ route('frontend.contact.submit') }}" method="POST" enctype="multipart/form-data"
+                        class="space-y-6">
+                        @csrf
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                <input type="text"
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name</label>
+                                <input name="name" id="name" placeholder=" " type="text"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                                <input type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                            </div>
-                        </div>
+
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email"
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email"type="email" name="email" id="email"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                            <input type="tel"
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" name="phone" id="phone"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
                         </div>
 
-                        <div>
+                        {{-- <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
                             <select
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
@@ -321,11 +317,11 @@
                                 <option>Orthodontics</option>
                                 <option>Emergency Care</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea rows="4"
+                            <textarea id="description" name="description" rows="4"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
                                 placeholder="Tell us about your dental needs..."></textarea>
                         </div>
