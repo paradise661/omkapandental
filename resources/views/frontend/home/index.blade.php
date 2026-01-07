@@ -102,7 +102,7 @@
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
                         <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
                         <ul class="list-disc pl-5">
-    <li>{!! $service->description !!}</li>
+   {!! $service->description !!}
 </ul>
                     </div>
                 @endforeach
