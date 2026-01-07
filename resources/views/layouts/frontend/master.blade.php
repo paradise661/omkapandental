@@ -28,6 +28,8 @@
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>::-webkit-scrollbar { display: none;}</style>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 </head>
 
 <body>

@@ -38,6 +38,14 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+             <div class="mb-4 col-md-6">
+                <label for="contact_map" class="form-label">Contact map</label>
+                <input type="text" class="form-control" id="contact_map" name="contact_map"
+                    placeholder="Contact map" value="{{ $settings['contact_map'] }}" />
+                @error('contact_map')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
 
             <div class="mb-4 col-md-6">
                 <label for="contact_email" class="form-label">Contact email</label>

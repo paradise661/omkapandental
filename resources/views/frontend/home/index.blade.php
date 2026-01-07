@@ -321,7 +321,7 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="description" name="description" rows="4"
+                            <textarea id="description" name="message" rows="4"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
                                 placeholder="Tell us about your dental needs..."></textarea>
                         </div>

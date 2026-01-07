@@ -41,7 +41,7 @@
 
                             <div class="mb-4">
                                 <label for="answer" class="form-label">Answer</label>
-                                <textarea class="form-control ckeditor" id="answer" name="answer" placeholder="Answer" rows="4">{{ old('answer', ${$name}->answer) }}</textarea>
+                                <textarea class="form-control" id="answer" name="answer" placeholder="Answer" rows="4">{{ old('answer', ${$name}->answer) }}</textarea>
                                 @error('answer')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror

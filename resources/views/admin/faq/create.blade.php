@@ -31,8 +31,8 @@
 
                             <div class="mb-4">
                                 <label for="question" class="form-label">Question</label>
-                                <input type="text" class="form-control" id="question" name="question"
-                                    placeholder="Question" value="{{ old('question') }}" />
+                                <input type="text" class="form-control" id="question" name="question" placeholder="Question"
+                                    value="{{ old('question') }}" />
                                 @error('question')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
@@ -42,7 +42,8 @@
 
                             <div class="mb-4">
                                 <label for="answer" class="form-label">answer</label>
-                                <textarea class="form-control ckeditor" id="answer" name="answer" placeholder="Answer" rows="10">{{ old('answer') }}</textarea>
+                                <textarea class="form-control" id="answer" name="answer" placeholder="Answer"
+                                    rows="10">{{ old('answer') }}</textarea>
 
                                 @error('answer')
                                     <p class="text-danger">{{ $message }}</p>

@@ -216,7 +216,10 @@ class FrontendController extends Controller
     {
         $contact_page = Page::where('status', 1)->where('slug', 'contact-us')->first();
         $branches = Branch::where('status', 1)->orderBy('order')->get();
-        return view('frontend.contact.index', compact('branches', 'contact_page'));
+        $faq_page = Page::where('status', 1)->where('slug', 'faq')->first();
+        $faqs = Faq::where('status', 1)->get();
+
+        return view('frontend.contact.index', compact('branches', 'contact_page','faq_page','faqs'));
     }
     public function contact_submite(Request $request)
     {

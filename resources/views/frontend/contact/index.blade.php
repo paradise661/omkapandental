@@ -12,141 +12,167 @@
     ])
 @endsection
 @section('content')
-    @if ($contact_page)
-        <div class="hero-banner2 position-relative ">
-            <div class="row g-0 text-bannner-section">
-                <div class="col-md-6 d-flex justify-content-center align-items-center py-5">
-                    <div class="text-center page-banner-lft px-4">
-                        <h1 class="text-white font-weight-bold">{{ $contact_page->title ?? 'About Us' }}</h1>
-                        <p class="breadcrumb-text text-white">
-                            <a href="{{ route('frontend.home') }}" class="text-white text-decoration-none">Home</a> /
-                            <a href="#"
-                                class="text-white text-decoration-none">{{ $contact_page->title ?? 'About Us' }}</a>
-                        </p>
-                        </p>
+
+    <section id="contact-hero" class="bg-gradient-to-br from-dental-light to-white h-[400px] flex items-center">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $contact_page->title ?? 'Contact Us' }}</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                {{ $contact_page->short_description ?? 'Contact Us' }}
+            </p>
+        </div>
+    </section>
+    <!-- Contact Information -->
+    <section id="contact-info" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-3 gap-8 mb-16">
+                <div id="contact-phone" class="bg-dental-light rounded-xl p-8 text-center">
+                    <div class="bg-dental-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-phone text-white text-2xl"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Phone</h3>
+                    <p class="text-dental-blue text-xl font-semibold mb-2">{{ $settings['contact_phone'] }}</p>
+                    {{-- <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                    <p class="text-gray-600">Saturday: 9:00 AM - 3:00 PM</p> --}}
                 </div>
-                <div class="col-md-6">
-                    <div class="img-container-banner">
-                        <div class="img-wrapper-2">
-                            <img src="{{ asset($contact_page->banner_image) }}" alt="Creative Design"
-                                class="background-img">
-                        </div>
+
+                <div id="contact-email" class="bg-dental-light rounded-xl p-8 text-center">
+                    <div class="bg-dental-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-envelope text-white text-2xl"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Email</h3>
+                    <p class="text-dental-blue text-xl font-semibold mb-2">{{ $settings['contact_email'] }}</p>
+                    {{-- <p class="text-gray-600">We respond within 24 hours</p> --}}
+                    {{-- <p class="text-gray-600">Emergency: emergency@smilecare.com</p> --}}
+                </div>
+
+                <div id="contact-location" class="bg-dental-light rounded-xl p-8 text-center">
+                    <div class="bg-dental-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-location-dot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Location</h3>
+                    <p class="text-gray-900 font-semibold mb-2">{{ $settings['contact_location'] }}</p>
+
                 </div>
             </div>
         </div>
-    @endif
-    <div class="container pt-4">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="card shadow contact-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-2 gap-2">
-                                <i class="ri-map-pin-line contact-icon ri-5x"></i>
-                                <div>
-                                    <p class="contact-css mb-0">Office Location</p>
-                                    <p class="bodypart-css">{{ $settings['contact_location'] }}</p>
-                                </div>
-                            </div>
+    </section>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card shadow contact-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-2 gap-2">
-                                <i class="ri-mail-line contact-icon ri-5x"></i>
-                                <div>
-                                    <p class="contact-css mb-0">Email Address</p>
-                                    <a href="mailto:{{ $settings['contact_email'] ?? 'mail@gmail.com' }}"
-                                        class="bodypart-css">{{ $settings['contact_email'] }}</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mb-4">
-                    <div class="card shadow contact-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-2 gap-2">
-                                <i class="ri-phone-line contact-icon ri-5x"></i>
-                                <div>
-                                    <p class="contact-css mb-0">WhatsApp / Phone</p>
-                                    <p class="bodypart-css">{{ $settings['contact_phone'] }}</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <section class=" py-5 contact-page">
-        <div class="container contact-main shadow p-4 py-3 ">
-            <div class="row d-flex align-items-center justify-content-center ">
-                {{-- <div class="col-md-4  gap-x-4 ">
-                    <div class="contact-container">
-                        <div class="contact-detail ">
-                            <div class="contact-title">{{ $settings['contact_title'] ?? 'Contact us' }}</div>
-                            <div class="contact-phone d-flex"><i class="ri-phone-line"></i>
-                                <a class="mx-2"
-                                    href="tel:{{ $settings['site_phone'] ?? '9876543212' }}">{{ $settings['site_phone'] ?? '9876543212' }}</a>
-                            </div>
-                            <div class="contact-location d-flex"><i class="ri-map-pin-line"></i>
-                                <p class="mx-2">{{ $settings['site_location'] ?? 'ktm' }}</p>
-                            </div>
-                            <div class="contact-mail d-flex"><i class="ri-mail-line"></i>
-                                <a class="mx-2"
-                                    href="mailto:{{ $settings['site_email'] ?? 'xyz@gmail.com' }}">{{ $settings['site_email'] ?? 'gmail' }}</a>
+    <!-- Contact Form & Map -->
+    <section id="contact-form-map" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div id="contact-form-container">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-8">{{ $settings['contactform_title'] }}</h3>
+                    <form action="{{ route('frontend.contact.submit') }}" method="POST" id="contact-form" class="space-y-6">
+                        @csrf
+                        <div class="">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Name *</label>
+                                <input name="name" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
                             </div>
                         </div>
-                    </div>
-                </div> --}}
-                <div class="col-md-12  ">
-                    {{-- {{ $settings }} --}}
-                    <div class="">
-                        <form class=" px-4 " action="" method="post">
-                            @csrf
-                            @method('post')
-                            <div class="heading-title-contact  center mt-1">
-                                {{ $settings['contact_section_title'] ?? 'Get In Touch' }} </div>
-                            <div class="form-group">
-                                <label for="name">First Name <i class="ri-asterisk asterisk"></i></label>
-                                <input id="name" type="text" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number <i class="ri-asterisk asterisk"></i></label>
-                                <input id="phone" type="tel" name="phone" placeholder="" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email <i class="ri-asterisk asterisk"></i></label>
-                                <input id="email" type="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message <i class="ri-asterisk asterisk"></i></label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <div class="form-group center">
-                                <a href="{{ route('frontend.contact.submit') }}">
-                                    <button class="custom-btn btn-8"><span>Contact Us <i
-                                     class="ri-arrow-right-up-line"></i></span></button>
-                                </a>
-                            </div>
-                    </div>
 
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                            <input name="email" type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input name="phone" type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+                        </div>
+
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Subject *</label>
+                            <input name="course" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
+
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message *</label>
+                            <textarea name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" placeholder="Please describe your inquiry or tell us how we can help you..." ></textarea>
+                        </div>
+
+
+
+                        <button type="submit" class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+                            Send Message
+                        </button>
                     </form>
                 </div>
+
+                <!-- Map & Directions -->
+                <div id="map-directions">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-8">Find Us</h3>
+
+                    <div class="bg-gray-300 rounded-xl h-80 mb-8 flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+
+                            <iframe src="{{ $settings['contact_map'] }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="map pt-5">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.7584007067744!2d84.42124197447188!3d27.69386112608786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb0b4d5486cf%3A0x33f37bae941e59c9!2sHELPFUL%20EDUCATIONAL%20INSTITUTE!5e0!3m2!1sen!2snp!4v1751616338506!5m2!1sen!2snp"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ $faq_page->title }}</h3>
+                <p class="text-xl text-gray-600">{{ $faq_page->short_description }}</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                {{-- <div id="faq-left" class="space-y-6"> --}}
+                    @foreach ($faqs as $faq)
+                        
+                    <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">{{ $faq->question }}</h4>
+                        <p class="text-gray-600">{{ $faq->answer }}</p>
+                    </div>
+                    @endforeach
+
+
+                    {{-- <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">How do I schedule an appointment?</h4>
+                        <p class="text-gray-600">You can schedule online, call us, or use our contact form. We'll confirm your appointment within 24 hours.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">What should I bring to my first visit?</h4>
+                        <p class="text-gray-600">Please bring your insurance cards, ID, list of medications, and any previous dental records.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">What should I bring to my first visit?</h4>
+                        <p class="text-gray-600">Please bring your insurance cards, ID, list of medications, and any previous dental records.</p>
+                    </div> --}}
+                {{-- </div> --}}
+
+                {{-- <div id="faq-right" class="space-y-6"> --}}
+                    {{-- <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Do you offer payment plans?</h4>
+                        <p class="text-gray-600">Yes, we offer flexible payment options including monthly payment plans and financing through CareCredit.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">How often should I visit the dentist?</h4>
+                        <p class="text-gray-600">We recommend regular checkups and cleanings every 6 months for optimal oral health.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Do you see children?</h4>
+                        <p class="text-gray-600">Yes, we welcome patients of all ages and have specialized pediatric services for children.</p>
+                    </div> --}}
+                {{-- </div> --}}
+            </div>
         </div>
     </section>
     @if (session('success'))
@@ -163,4 +189,19 @@
             });
         </script>
     @endif
+     @if ($errors->any())
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    Toastify({
+        text: "{{ $errors->first() }}",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#ff4d4d", // red for error
+        stopOnFocus: true,
+    }).showToast();
+});
+</script>
+@endif
+
 @endsection
