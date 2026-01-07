@@ -47,7 +47,7 @@ class ServiceController extends Controller
 
         foreach ($imagelist as $image) {
             if ($request->$image != '') {
-                $rules[$image] = 'image';
+                $rules[$image] = 'mimes:jpeg,png,jpg,gif,svg|max:204';
             }
         }
 
@@ -106,7 +106,7 @@ class ServiceController extends Controller
 
         foreach ($imagelist as $image) {
             if ($request->$image != '') {
-                $rules[$image] = 'image';
+                $rules[$image] = 'mimes:jpeg,png,jpg,gif,svg|max:204';
             }
         }
 

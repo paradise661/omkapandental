@@ -93,10 +93,10 @@
                 @foreach ($services as $service)
                 <div id="service-1" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
                     <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <img src="{{ $service->title }}">
+                        <img src="{{ $service->image }}">
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">General Dentistry</h4>
-                    <p class="text-gray-600 mb-4">Comprehensive oral health care including cleanings, fillings, and preventive treatments.</p>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
+                    <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
                     <ul class="text-sm text-gray-600 space-y-2">
                         <li>• Regular cleanings & exams</li>
                         <li>• Cavity fillings</li>
