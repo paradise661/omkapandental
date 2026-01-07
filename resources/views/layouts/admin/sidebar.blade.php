@@ -174,6 +174,18 @@
                 <div>Blogs</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::segment(2) == 'country' ? 'active' : '' }}">
+            <a href="{{ route('country.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-globe-alt"></i>
+                <div>Mission</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::segment(2) == 'course' ? 'active' : '' }}">
+            <a href="{{ route('course.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div>Facility</div>
+            </a>
+        </li>
         {{-- <li class="menu-item {{ Request::segment(2) == 'gallery' ? 'active' : '' }}">
             <a href="{{ route('gallery.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-images"></i>

@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 @php
-    $title = 'Courses';
+    $title = 'Facilities';
     $name = 'course';
 @endphp
 

@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 @php
-    $title = 'Countries';
+    $title = 'Mission';
     $name = 'country';
 @endphp
 
