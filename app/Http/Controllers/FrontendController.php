@@ -159,6 +159,7 @@ class FrontendController extends Controller
             return view("frontend.blog.show", compact('blogs', 'blogsingle', 'blog_page', 'abroadstudies'));
         }
     }
+
     public function page($slug)
     {
         $page = Page::where('slug', $slug)->first();
@@ -169,6 +170,12 @@ class FrontendController extends Controller
         $team_page = Page::where('status', 1)->where('slug', 'our-team')->first();
         $teams = Team::where('status', 1)->oldest("order")->get() ?? [];
         return view('frontend.team', compact('teams', 'team_page'));
+    }
+    function appointment(){
+        $appointment_page = Page::where('status', 1)->where('slug', 'register')->first();
+
+        return view('frontend.appointment.index', compact( 'appointment_page'));
+
     }
     function testimonial()
     {
