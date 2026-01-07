@@ -9,8 +9,8 @@
         </div>
 
         <nav class="hidden md:flex space-x-8">
-            <a href="#home" class="text-gray-700 hover:text-dental-blue font-medium">Home</a>
-            <a href="#about" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
+            <a href="/" class="text-gray-700 hover:text-dental-blue font-medium">Home</a>
+            <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
             <a href="#services" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
             <a href="#doctors" class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
             <a href="#contact" class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
