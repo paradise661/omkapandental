@@ -13,7 +13,7 @@
             <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
             <a href="{{ route('frontend.service') }}"
                 class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
-            <a href="{{ route('frontend.service') }}"
+            <a href="{{ route('frontend.team') }}"
                 class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
             <a href="{{ route('frontend.contact') }}"
                 class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
