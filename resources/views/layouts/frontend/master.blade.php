@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dental Clinic</title>
-    <link rel="icon" href="data:,">
+ <link rel="icon" type="image/x-icon"
+        href="{{ $settings['site_fav_icon'] ? asset($settings['site_fav_icon']) : 'omkapan dental' }}" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>

@@ -366,7 +366,7 @@
     </section> --}}
 
     <!-- CTA Section -->
-    <section id="cta" class="py-20 bg-gradient-to-r from-dental-blue to-dental-accent">
+    {{-- <section id="cta" class="py-20 bg-gradient-to-r from-dental-blue to-dental-accent">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h3 class="text-4xl font-bold text-white mb-6">Ready to Schedule Your Appointment?</h3>
             <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -384,5 +384,5 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
