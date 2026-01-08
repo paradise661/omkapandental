@@ -11,36 +11,35 @@
 @extends('layouts.frontend.master')
 @section('content')
     <!-- Hero Section -->
-    <section id="hero" class="bg-gradient-to-br from-dental-light to-white h-[600px] flex items-center">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                    {{ $sliders->title }}
-                </h2>
-                <p class="text-xl text-gray-600 mb-8">
-                    {{ $sliders->short_description }}
-                </p>
-                <div class="flex space-x-4">
-                    <a href="{{ route('frontend.appointment') }}">
-                        <button
-                            class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
-                            Schedule Consultation
-                        </button>
-                    </a>
-                    <a href="{{ route('frontend.contact') }}">
-                        <button
-                            class="border-2 border-dental-blue text-dental-blue px-8 py-3 rounded-lg text-lg font-semibold hover:bg-dental-blue hover:text-white transition">
-                            Learn More
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="h-96 overflow-hidden rounded-2xl">
-                <img class="w-full h-full object-cover" src="{{ $sliders->image }}"
-                    alt="modern dental office with comfortable patient chair, bright lighting, professional dental equipment, clean white interior" />
+    <section id="hero" class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="text-center lg:text-left">
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
+                {{ $sliders->title }}
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-600 mb-8">
+                {{ $sliders->short_description }}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="{{ route('frontend.appointment') }}">
+                    <button class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
+                        Schedule Consultation
+                    </button>
+                </a>
+                <a href="{{ route('frontend.contact') }}">
+                    <button class="border-2 border-dental-blue text-dental-blue px-8 py-3 rounded-lg text-lg font-semibold hover:bg-dental-blue hover:text-white transition">
+                        Learn More
+                    </button>
+                </a>
             </div>
         </div>
-    </section>
+
+        <div class="h-72 sm:h-96 overflow-hidden rounded-2xl">
+            <img class="w-full h-full object-cover" src="{{ $sliders->image }}">
+        </div>
+    </div>
+</section>
+
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
@@ -52,7 +51,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-3 gap-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
@@ -93,7 +93,8 @@
                 <p class="text-xl text-gray-600">{{ $settings['services_description'] }}</p>
             </div>
 
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                 @foreach ($services as $service)
                     <div id="service-1" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
                         <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
@@ -183,7 +184,8 @@
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title'] }}</h3>
                 <p class="text-xl text-gray-600">{{ $settings['teams_description'] }}</p>
             </div>
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                 @foreach ($teams as $item)
                     <div id="doctor-1" class="text-center">
                         <div class="mb-6">
@@ -233,7 +235,8 @@
     <!-- Contact & Inquiry Form -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 gap-16 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
                 <div>
                     <h3 class="text-4xl font-bold text-gray-900 mb-6">{{ $settings['contact_section_title'] }}</h3>
                     <p class="text-xl text-gray-600 mb-8">{{ $settings['contact_description'] }}</p>
@@ -302,7 +305,7 @@
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
                             <input type="tel" name="phone" id="phone"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+                                class="w-full text-sm sm:text-base px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue">
                         </div>
 
                         {{-- <div>
