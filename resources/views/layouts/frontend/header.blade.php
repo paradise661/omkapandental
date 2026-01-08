@@ -22,7 +22,7 @@
         <div class="flex items-center space-x-4">
             <span class="text-dental-blue font-semibold">
                 <i class="fa-solid fa-phone mr-2"></i>
-                (555) 123-4567
+                {{ $settings['site_phone'] }}
             </span>
             <a href="{{ route('frontend.appointment') }}">
                 <button class="bg-dental-blue text-white px-6 py-2 rounded-lg hover:bg-[#2fa3c6] transition">

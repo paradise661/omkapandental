@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <div class="border-t border-white mt-8 pt-8 text-center">
             <p>&copy; {{ date('Y') }}
                 {!! $settings['site_copyright'] ?? 'u00a9 Celta Eucare. All rights reserved' !!}
             </p>
