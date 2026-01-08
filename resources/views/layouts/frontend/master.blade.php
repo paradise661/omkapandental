@@ -17,9 +17,9 @@
                         'sans': ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'dental-blue': '#1E40AF',
+                        'dental-blue': '#d5277b',
                         'dental-light': '#EFF6FF',
-                        'dental-accent': '#3B82F6'
+                        'dental-accent': '#d5277b'
                     }
                 }
             }

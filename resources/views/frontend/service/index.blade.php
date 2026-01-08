@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="h-80 overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover" src="{{ asset($service_page->image) }}"
+                    <img class="w-full h-full object-cover" src="{{ $service_page->banner_image }}"
                         alt="modern dental clinic interior with multiple treatment rooms, advanced equipment, clean white design, professional lighting" />
                 </div>
             </div>
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="h-96 overflow-hidden rounded-2xl">
-                            <img class="w-full h-full object-cover" src="{{ asset($service1->image_1) }}"
+                            <img class="w-full h-full object-cover" src="{{ $service1->image_1 }}"
                                 alt="dentist performing dental cleaning on patient, professional dental hygiene procedure, modern dental office" />
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                 <div id="cosmetic-dentistry" class="mb-20">
                     <div class="grid grid-cols-2 gap-12 items-center">
                         <div class="h-96 overflow-hidden rounded-2xl">
-                            <img class="w-full h-full object-cover" src="{{ asset($service2->image_1) }}"
+                            <img class="w-full h-full object-cover" src="{{ $service2->image_1 }}"
                                 alt="before and after teeth whitening results, bright white smile, cosmetic dentistry transformation" />
                         </div>
                         <div>

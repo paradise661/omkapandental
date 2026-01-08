@@ -21,9 +21,9 @@
                     {{ $sliders->short_description }}
                 </p>
                 <div class="flex space-x-4">
-                    <a href="{{ route('frontend.contact') }}">
+                    <a href="{{ route('frontend.appointment') }}">
                         <button
-                            class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+                            class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
                             Schedule Consultation
                         </button>
                     </a>
@@ -327,7 +327,7 @@
                         </div>
 
                         <button type="submit"
-                            class="w-full bg-dental-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                            class="w-full bg-dental-blue text-white py-3 rounded-lg font-semibold hover:bg-[#2fa3c6] transition">
                             Schedule Appointment
                         </button>
                     </form>

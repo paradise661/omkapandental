@@ -2,10 +2,10 @@
 <header id="header" class="bg-white shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center space-x-3">
-            <div class="bg-dental-blue rounded-full p-2">
-                <i class="fa-solid fa-tooth text-white text-xl"></i>
+            <div class="rounded-full p-2">
+                <img height="100px" width="100px" src="{{ $settings['site_main_logo'] }}">
             </div>
-            <h1 class="text-2xl font-bold text-gray-900"> {{ $settings['site_title'] }}</h1>
+            {{-- <h1 class="text-2xl font-bold text-gray-900"> {{ $settings['site_title'] }}</h1> --}}
         </div>
 
         <nav class="hidden md:flex space-x-8">
@@ -25,7 +25,7 @@
                 (555) 123-4567
             </span>
             <a href="{{ route('frontend.appointment') }}">
-                <button class="bg-dental-blue text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                <button class="bg-dental-blue text-white px-6 py-2 rounded-lg hover:bg-[#2fa3c6] transition">
                     Book Appointment
                 </button>
             </a>
