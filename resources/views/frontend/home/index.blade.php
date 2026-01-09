@@ -12,33 +12,35 @@
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="text-center lg:text-left">
-            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
-                {{ $sliders->title }}
-            </h2>
-            <p class="text-lg lg:text-xl text-gray-600 mb-8">
-                {{ $sliders->short_description }}
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a href="{{ route('frontend.appointment') }}">
-                    <button class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
-                        Schedule Consultation
-                    </button>
-                </a>
-                <a href="{{ route('frontend.contact') }}">
-                    <button class="border-2 border-dental-blue text-dental-blue px-8 py-3 rounded-lg text-lg font-semibold hover:bg-dental-blue hover:text-white transition">
-                        Learn More
-                    </button>
-                </a>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
+                    {{ $sliders->title }}
+                </h2>
+                <p class="text-lg lg:text-xl text-gray-600 mb-8">
+                    {{ $sliders->short_description }}
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="{{ route('frontend.appointment') }}">
+                        <button
+                            class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
+                            Schedule Consultation
+                        </button>
+                    </a>
+                    <a href="{{ route('frontend.contact') }}">
+                        <button
+                            class="border-2 border-dental-blue text-dental-blue px-8 py-3 rounded-lg text-lg font-semibold hover:bg-dental-blue hover:text-white transition">
+                            Learn More
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="h-72 sm:h-96 overflow-hidden rounded-2xl">
+                <img class="w-full h-full object-cover" src="{{ $sliders->image }}">
             </div>
         </div>
-
-        <div class="h-72 sm:h-96 overflow-hidden rounded-2xl">
-            <img class="w-full h-full object-cover" src="{{ $sliders->image }}">
-        </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- About Section -->
@@ -103,76 +105,10 @@
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
                         <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
                         <ul class="list-disc pl-5">
-   {!! $service->description !!}
-</ul>
+                            {!! $service->description !!}
+                        </ul>
                     </div>
                 @endforeach
-
-
-                {{-- <div id="service-2" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-smile text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Cosmetic Dentistry</h4>
-                    <p class="text-gray-600 mb-4">Transform your smile with our advanced cosmetic procedures and treatments.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Teeth whitening</li>
-                        <li>• Veneers</li>
-                        <li>• Smile makeovers</li>
-                    </ul>
-                </div>
-
-                <div id="service-3" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-user-doctor text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Oral Surgery</h4>
-                    <p class="text-gray-600 mb-4">Expert surgical procedures performed with precision and care.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Tooth extractions</li>
-                        <li>• Dental implants</li>
-                        <li>• Wisdom tooth removal</li>
-                    </ul>
-                </div>
-
-                <div id="service-4" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-child text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Pediatric Dentistry</h4>
-                    <p class="text-gray-600 mb-4">Specialized care for children in a fun, comfortable environment.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Children's cleanings</li>
-                        <li>• Fluoride treatments</li>
-                        <li>• Sealants</li>
-                    </ul>
-                </div>
-
-                <div id="service-5" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-align-center text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Orthodontics</h4>
-                    <p class="text-gray-600 mb-4">Straighten your teeth with traditional braces or clear aligners.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Traditional braces</li>
-                        <li>• Clear aligners</li>
-                        <li>• Retainers</li>
-                    </ul>
-                </div>
-
-                <div id="service-6" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-shield-halved text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Preventive Care</h4>
-                    <p class="text-gray-600 mb-4">Maintain optimal oral health with our preventive treatments.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Regular check-ups</li>
-                        <li>• Professional cleanings</li>
-                        <li>• Oral cancer screenings</li>
-                    </ul>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -203,34 +139,43 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- <div id="doctor-2" class="text-center">
-                    <div class="mb-6">
-                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Dr. Michael Chen" class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Dr. Michael Chen</h4>
-                    <p class="text-dental-blue font-medium mb-3">Oral Surgeon</p>
-                    <p class="text-gray-600 mb-4">Specialist in oral surgery and dental implants. 12+ years of surgical experience with advanced training.</p>
-                    <div class="flex justify-center space-x-3">
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Oral Surgery</span>
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Implants</span>
-                    </div>
-                </div>
-
-                <div id="doctor-3" class="text-center">
-                    <div class="mb-6">
-                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Dr. Emily Rodriguez" class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Dr. Emily Rodriguez</h4>
-                    <p class="text-dental-blue font-medium mb-3">Pediatric Dentist</p>
-                    <p class="text-gray-600 mb-4">Specializes in children's dentistry with a gentle approach. Board certified in pediatric dental care.</p>
-                    <div class="flex justify-center space-x-3">
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Pediatric</span>
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Prevention</span>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
+    <!--blog section start-->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['blogs_title'] }}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['blogs_description'] }}</p>
+            </div>
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Blog Card -->
+                @foreach ($blogs as $item)
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
+                        <img src="{{ $item->image }}" class="w-full h-52 object-cover" alt="Blog image">
+                        <div class="p-6">
+                            <span
+                                class="inline-block text-justify text-sm font-semibold text-white
+             bg-[#D5277B] px-3 py-1 rounded-full">
+                                {{ $item->short_description }}
+                            </span>
+                            <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
+                                {{ $item->title }}
+                            </h3>
+                            <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
+                                {!! $item->description !!}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
 
     <!-- Contact & Inquiry Form -->
     <section id="contact" class="py-20 bg-gray-50">
@@ -289,11 +234,11 @@
                     <form action="{{ route('frontend.contact.submit') }}" method="POST" enctype="multipart/form-data"
                         class="space-y-6">
                         @csrf
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name</label>
-                                <input name="name" id="name" placeholder=" " type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                            </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name</label>
+                            <input name="name" id="name" placeholder=" " type="text"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+                        </div>
 
 
                         <div>
@@ -307,21 +252,6 @@
                             <input type="tel" name="phone" id="phone"
                                 class="w-full text-sm sm:text-base px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue">
                         </div>
-
-                        {{-- <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
-                            <select
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                                <option>Select a service</option>
-                                <option>General Dentistry</option>
-                                <option>Cosmetic Dentistry</option>
-                                <option>Oral Surgery</option>
-                                <option>Pediatric Dentistry</option>
-                                <option>Orthodontics</option>
-                                <option>Emergency Care</option>
-                            </select>
-                        </div> --}}
-
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
                             <textarea id="description" name="message" rows="4"
