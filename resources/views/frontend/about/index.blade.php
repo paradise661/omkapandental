@@ -152,7 +152,7 @@
                     <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $techno->title }}</h4>
                     <div class="space-y-4">
                         {!! $techno->description !!}
-                        
+
                     </div>
                 </div>
             </div>

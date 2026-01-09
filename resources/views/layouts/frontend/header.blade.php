@@ -1,6 +1,6 @@
 <!-- Header -->
 <header id="header" class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
         <!-- Logo -->
         <div class="flex items-center space-x-3">
@@ -15,6 +15,7 @@
             <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
             <a href="{{ route('frontend.service') }}" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
             <a href="{{ route('frontend.team') }}" class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
+                        <a href="{{ route('frontend.blog') }}" class="text-gray-700 hover:text-dental-blue font-medium">Blog</a>
             <a href="{{ route('frontend.contact') }}" class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
         </nav>
 
@@ -39,7 +40,7 @@
 
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-        <nav class="flex flex-col space-y-4 px-6 py-4">
+        <nav class="flex flex-col space-y-4 px-6">
             <a href="/" class="text-gray-700 hover:text-dental-blue font-medium">Home</a>
             <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
             <a href="{{ route('frontend.service') }}" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
