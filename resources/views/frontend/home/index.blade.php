@@ -155,12 +155,16 @@
 
                 <!-- Blog Card -->
                 @foreach ($blogs as $item)
-                    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-                        <img src="{{ $item->image }}" class="w-full h-52 object-cover" alt="Blog image">
+                    <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
+                        <div class="overflow-hidden">
+                            <img src="{{ $item->image }}"
+                                class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                                alt="Blog image">
+                        </div>
                         <div class="p-6">
                             <span
                                 class="inline-block text-justify text-sm font-semibold text-white
-             bg-[#D5277B] px-3 py-1 rounded-full">
+                bg-[#D5277B] px-3 py-1 rounded-full">
                                 {{ $item->short_description }}
                             </span>
                             <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
@@ -169,6 +173,50 @@
                             <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
                                 {!! $item->description !!}
                             </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section id="reviews" class=" bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] }}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['testioninal_description'] }}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Review Card -->
+                @foreach ($testimonials as $item)
+                    <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200">
+                        <!-- Header -->
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="{{$item->image}}" class="w-14 h-14 rounded-full object-cover"
+                                alt="Reviewer">
+
+                            <div>
+                                <h4 class="font-bold text-gray-900 uppercase text-sm">
+                                   {{$item->name}}
+                                </h4>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                                   {{$item->position}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Stars (Icons) -->
+                        <div class="flex gap-1 mb-4 text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-4">
+                           {!!$item->description!!}
                         </div>
                     </div>
                 @endforeach

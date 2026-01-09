@@ -12,65 +12,54 @@
 @extends('layouts.frontend.master')
 @section('content')
     @if ($testimonial_page)
-        <div class="hero-banner2 position-relative ">
-            <div class="row g-0 text-bannner-section">
-                <div class="col-md-6 d-flex justify-content-center align-items-center py-5">
-                    <div class="text-center page-banner-lft px-4">
-                        <h1 class="text-white font-weight-bold">{{ $testimonial_page->title ?? 'About Us' }}</h1>
-                        <p class="breadcrumb-text text-white">
-                            <a href="{{ route('frontend.home') }}" class="text-white text-decoration-none">Home</a> /
-                            <a href="#"
-                                class="text-white text-decoration-none">{{ $testimonial_page->title ?? 'About Us' }}</a>
-                        </p>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="img-container-banner">
-                        <div class="img-wrapper-2">
-                            <img src="{{ asset($testimonial_page->banner_image) }}" alt="Creative Design"
-                                class="background-img">
+        <section id="services-hero" class="bg-gradient-to-br from-dental-light to-white h-[400px] flex items-center">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $testimonial_page->title ?? 'About Us' }}</h2>
+                <div class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    {{ $testimonial_page->short_description ?? 'About Us' }} </div>
+            </div>
+        </section>
+    @endif
+    <section id="reviews" class=" bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Review Card -->
+                @foreach ($testimonial as $item)
+                    <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200">
+                        <!-- Header -->
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="{{ $item->image }}" class="w-14 h-14 rounded-full object-cover" alt="Reviewer">
+
+                            <div>
+                                <h4 class="font-bold text-gray-900 uppercase text-sm">
+                                    {{ $item->name }}
+                                </h4>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                                    {{ $item->position }}
+                                </p>
+                            </div>
                         </div>
+
+                        <!-- Stars (Icons) -->
+                        <div class="flex gap-1 mb-4 text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="text-gray-600 text-sm line-clamp-3 leading-relaxed mb-4">
+                            {!! $item->description !!}
+                        </div>
+
                     </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
-    @endif
-    <div class="container">
-        <div class="row">
-            @foreach ($testimonial as $testimonial)
-                <div class="col-lg-4" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="scholar-main-card bg-white">
-                        <div class="p-3 my-4">
-                            <div class="swiper-icon center"><i class="ri-double-quotes-l"></i></div>
 
-                            <div class="text-css text-center line-clamp my-2">
-                                {!! $testimonial->description !!}
-                            </div>
-
-                            <div class="scholar-img-container center mb-2">
-                                <img class="scholarship-img" src="{{ asset($testimonial->image) }}"
-                                    alt="{{ $testimonial->name }}">
-                            </div>
-
-                            <div class="name center">
-                                <p>{{ $testimonial->name }}</p>
-                            </div>
-
-                            <div class="center">
-                                @for ($i = 0; $i < $testimonial->rating; $i++)
-                                    <svg class="rating w-5 h-5 text-warning" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M10 2l2.72 5.792H18l-4.271 4.324 1.013 7.057L10 15.16l-5.742 3.013 1.013-7.057L2 7.792h4.28L10 2z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                @endfor
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+    </section>
 @endsection

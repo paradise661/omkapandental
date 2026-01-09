@@ -13,10 +13,14 @@
         <nav class="hidden md:flex space-x-8">
             <a href="/" class="text-gray-700 hover:text-dental-blue font-medium">Home</a>
             <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
-            <a href="{{ route('frontend.service') }}" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
+            <a href="{{ route('frontend.service') }}"
+                class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
             <a href="{{ route('frontend.team') }}" class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
-                        <a href="{{ route('frontend.blog') }}" class="text-gray-700 hover:text-dental-blue font-medium">Blog</a>
-            <a href="{{ route('frontend.contact') }}" class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
+            <a href="{{ route('frontend.blog') }}" class="text-gray-700 hover:text-dental-blue font-medium">Blog</a>
+                        <a href="{{ route('frontend.testimonial') }}" class="text-gray-700 hover:text-dental-blue font-medium">Review</a>
+
+            <a href="{{ route('frontend.contact') }}"
+                class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
         </nav>
 
         <!-- Right Section -->
@@ -43,9 +47,14 @@
         <nav class="flex flex-col space-y-4 px-6">
             <a href="/" class="text-gray-700 hover:text-dental-blue font-medium">Home</a>
             <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">About</a>
-            <a href="{{ route('frontend.service') }}" class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
+            <a href="{{ route('frontend.service') }}"
+                class="text-gray-700 hover:text-dental-blue font-medium">Services</a>
+            <a href="{{ route('frontend.blog') }}" class="text-gray-700 hover:text-dental-blue font-medium">blog</a>
+            <a href="{{ route('frontend.testimonial') }}" class="text-gray-700 hover:text-dental-blue font-medium">testimonials</a>
+
             <a href="{{ route('frontend.team') }}" class="text-gray-700 hover:text-dental-blue font-medium">Doctors</a>
-            <a href="{{ route('frontend.contact') }}" class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
+            <a href="{{ route('frontend.contact') }}"
+                class="text-gray-700 hover:text-dental-blue font-medium">Contact</a>
 
             <span class="text-dental-blue font-semibold pt-2">
                 <i class="fa-solid fa-phone mr-2"></i>
@@ -63,7 +72,7 @@
 
 <!-- Toggle Script -->
 <script>
-    document.getElementById('menuBtn').addEventListener('click', function () {
+    document.getElementById('menuBtn').addEventListener('click', function() {
         document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 </script>
