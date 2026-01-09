@@ -203,31 +203,6 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- <div id="doctor-2" class="text-center">
-                    <div class="mb-6">
-                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Dr. Michael Chen" class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Dr. Michael Chen</h4>
-                    <p class="text-dental-blue font-medium mb-3">Oral Surgeon</p>
-                    <p class="text-gray-600 mb-4">Specialist in oral surgery and dental implants. 12+ years of surgical experience with advanced training.</p>
-                    <div class="flex justify-center space-x-3">
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Oral Surgery</span>
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Implants</span>
-                    </div>
-                </div>
-
-                <div id="doctor-3" class="text-center">
-                    <div class="mb-6">
-                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Dr. Emily Rodriguez" class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Dr. Emily Rodriguez</h4>
-                    <p class="text-dental-blue font-medium mb-3">Pediatric Dentist</p>
-                    <p class="text-gray-600 mb-4">Specializes in children's dentistry with a gentle approach. Board certified in pediatric dental care.</p>
-                    <div class="flex justify-center space-x-3">
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Pediatric</span>
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Prevention</span>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -307,21 +282,6 @@
                             <input type="tel" name="phone" id="phone"
                                 class="w-full text-sm sm:text-base px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue">
                         </div>
-
-                        {{-- <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
-                            <select
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                                <option>Select a service</option>
-                                <option>General Dentistry</option>
-                                <option>Cosmetic Dentistry</option>
-                                <option>Oral Surgery</option>
-                                <option>Pediatric Dentistry</option>
-                                <option>Orthodontics</option>
-                                <option>Emergency Care</option>
-                            </select>
-                        </div> --}}
-
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
                             <textarea id="description" name="message" rows="4"
