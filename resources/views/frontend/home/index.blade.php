@@ -66,7 +66,7 @@
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-users text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_students_img'] }}">
+                        <img src="{{ $settings['home_counter_scholarship_img'] }}">
 
                     </div>
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_scholarship_title'] }}
@@ -76,7 +76,7 @@
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-microscope text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_students_img'] }}">
+                        <img src="{{ $settings['home_counter_enrolled_img'] }}">
 
                     </div>
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_enrolled_title'] }}
