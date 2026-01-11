@@ -11,7 +11,7 @@
                             <img src="{{ asset($settings['site_footer_logo']) }}" style="height: 100px" alt="" />
                         </a>
                     </div>
-                    <h1 class="text-2xl font-bold">{{ $settings['site_title'] }}</h1>
+                    {{-- <h1 class="text-2xl font-bold">{{ $settings['site_title'] }}</h1> --}}
                 </div>
 
                 <p class="mb-4">

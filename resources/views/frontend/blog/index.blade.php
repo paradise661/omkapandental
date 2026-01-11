@@ -14,9 +14,9 @@
     @if ($blog_page)
         <section id="services-hero" class="bg-gradient-to-br from-dental-light to-white h-[400px] flex items-center">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $blog_page->title ?? 'About Us' }}</h2>
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $blog_page->title ?? 'Blogs' }}</h2>
                 <div class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    {{ $blog_page->title ?? 'About Us' }} </div>
+                    {{ $blog_page->short_description ?? 'About Us' }} </div>
             </div>
         </section>
     @endif
