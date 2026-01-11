@@ -103,7 +103,7 @@
                             <img src="{{ $service->image }}">
                         </div>
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
-                        <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
+                        <p class="line-clamp-5 text-gray-600 mb-4">{{ $service->short_description }}</p>
                     </div>
                 @endforeach
             </div>
