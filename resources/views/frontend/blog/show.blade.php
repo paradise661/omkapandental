@@ -46,7 +46,7 @@
                         @foreach ($blogs as $item)
                             <div class="space-y-4">
                                 <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link"></a>
-                                <a href="#"
+                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
                                     class="flex gap-4 items-center group hover:bg-gray-100 p-2 rounded transition">
                                     <img src="{{ $item->image }}" alt="" class="w-16 h-16 object-cover rounded">
                                     <h4 class="text-gray-800 font-medium group-hover:text-blue-600">{{ $item->title }}
