@@ -56,17 +56,17 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
 
                 <div class="text-center">
-                    <div class="bg-dental-blue rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                    <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_scholarship_img'] }}">
+                        <img src="{{ $settings['home_counter_students_img'] }}">
                     </div>
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title'] }}</h4>
                     <p class="text-gray-600">{{ $settings['home_counter_students'] }}</p>
                 </div>
                 <div class="text-center">
-                    <div class="bg-dental-blue rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                    <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-users text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_enrolled_img'] }}">
+                        <img src="{{ $settings['home_counter_students_img'] }}">
 
                     </div>
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_scholarship_title'] }}
@@ -74,7 +74,7 @@
                     <p class="text-gray-600">{{ $settings['home_counter_scholarship'] }}</p>
                 </div>
                 <div class="text-center">
-                    <div class="bg-dental-blue rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                    <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-microscope text-dental-blue text-2xl"></i> --}}
                         <img src="{{ $settings['home_counter_students_img'] }}">
 
@@ -104,9 +104,6 @@
                         </div>
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
                         <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
-                        <ul class="list-disc pl-5">
-                            {!! $service->description !!}
-                        </ul>
                     </div>
                 @endforeach
             </div>
