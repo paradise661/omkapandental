@@ -98,6 +98,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 @foreach ($services as $service)
+                      <a href="{{ route('frontend.service') }}" class=" stretched-card-link">
                     <div id="service-1" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
                         <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
                             <img src="{{ $service->image }}">
@@ -105,6 +106,7 @@
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
                         <p class="line-clamp-5 text-gray-600 mb-4">{{ $service->short_description }}</p>
                     </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -151,26 +153,30 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Blog Card -->
-                @foreach ($blogs as $item)
+               @foreach ($blogs as $item)
                     <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
-                        <div class="overflow-hidden">
-                            <img src="{{ $item->image }}"
-                                class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
-                                alt="Blog image">
-                        </div>
-                        <div class="p-6">
-                            <span
-                                class="inline-block text-justify text-sm font-semibold text-white
-                bg-[#D5277B] px-3 py-1 rounded-full">
-                                {{ $item->short_description }}
-                            </span>
-                            <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
-                                {{ $item->title }}
-                            </h3>
-                            <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
-                                {!! $item->description !!}
+                        <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link">
+                            <div class="overflow-hidden">
+                                <img src="{{ $item->image }}"
+                                    class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                                    alt="Blog image">
                             </div>
-                        </div>
+                            <div class="p-6">
+
+                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+                                    class="inline-block text-justify text-sm font-semibold text-white
+                bg-[#D5277B] px-3 py-1 rounded-full">
+                                    {{ $item->short_description }}
+                                </a>
+
+                                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
+                                    {{ $item->title }}
+                                </h3>
+                                <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
+                                    {!! $item->description !!}
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
