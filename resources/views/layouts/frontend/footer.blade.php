@@ -8,7 +8,7 @@
                 <div class="flex items-center justify-center sm:justify-start space-x-3 mb-4">
                     <div class="p-1">
                         <a href="#">
-                            <img src="{{ asset($settings['site_main_logo']) }}" style="height: 100px" alt="" />
+                            <img src="{{ asset($settings['site_footer_logo']) }}" style="height: 100px" alt="" />
                         </a>
                     </div>
                     <h1 class="text-2xl font-bold">{{ $settings['site_title'] }}</h1>
