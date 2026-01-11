@@ -55,7 +55,7 @@
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const header = document.querySelector("#header");
             const navLogo = document.querySelector("#nav-logo");
 
@@ -82,7 +82,34 @@
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 
-
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Toastify({
+                    text: "{{ session('success') }}",
+                    duration: 3000,
+                    gravity: "top", // top or bottom
+                    position: "right", // left, center or right
+                    backgroundColor: "#4BB543", // green success color
+                    stopOnFocus: true,
+                }).showToast();
+            });
+        </script>
+    @endif
+    @if ($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Toastify({
+                    text: "{{ $errors->first() }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "#ff4d4d", // red for error
+                    stopOnFocus: true,
+                }).showToast();
+            });
+        </script>
+    @endif
 
 
 

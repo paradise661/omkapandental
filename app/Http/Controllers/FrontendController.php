@@ -236,6 +236,9 @@ class FrontendController extends Controller
         // dd($input);
         $rules = [
             'name' => 'required|min:3',
+            'email'=>'required|email',
+            'phone'=>'required|min:10',
+            'message'=>'required'
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
