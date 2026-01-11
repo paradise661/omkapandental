@@ -49,7 +49,7 @@
                 <ul class="space-y-2">
                     <li><a href="{{ route('frontend.about') }}" class="hover:text-white transition">About Us</a></li>
                     <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Services</a></li>
-                    <li><a href="#" class="hover:text-white transition">Doctors</a></li>
+                    <li><a href="{{ route('frontend.team') }}" class="hover:text-white transition">Doctors</a></li>
                     <li><a href="{{ route('frontend.contact') }}" class="hover:text-white transition">Contact</a></li>
                     <li><a href="{{ route('frontend.appointment') }}" class="hover:text-white transition">Appointment</a></li>
                 </ul>
