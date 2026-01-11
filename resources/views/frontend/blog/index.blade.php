@@ -27,24 +27,30 @@
                 <!-- Blog Card -->
                 @foreach ($blog as $item)
                     <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
-                        <div class="overflow-hidden">
-                            <img src="{{ $item->image }}"
-                                class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
-                                alt="Blog image">
-                        </div>
-                        <div class="p-6">
-                            <span
-                                class="inline-block text-justify text-sm font-semibold text-white
-                bg-[#D5277B] px-3 py-1 rounded-full">
-                                {{ $item->short_description }}
-                            </span>
-                            <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
-                                {{ $item->title }}
-                            </h3>
-                            <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
-                                {!! $item->description !!}
+                        <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link">
+                            <div class="overflow-hidden">
+                                <img src="{{ $item->image }}"
+                                    class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                                    alt="Blog image">
                             </div>
-                        </div>
+                            <div class="p-6">
+
+                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+                                    class="inline-block text-justify text-sm font-semibold text-white
+                bg-[#D5277B] px-3 py-1 rounded-full">
+                                    {{ $item->short_description }}
+                                </a>
+
+                                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
+                                    {{ $item->title }}
+                                </h3>
+                                <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
+                                    {!! $item->description !!}
+                                </div>
+
+                            </div>
+                        </a>
+
                     </div>
                 @endforeach
             </div>
