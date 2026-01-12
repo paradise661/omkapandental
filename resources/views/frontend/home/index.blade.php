@@ -11,16 +11,16 @@
 @extends('layouts.frontend.master')
 @section('content')
     <!-- Hero Section -->
-    <section id="hero" class="bg-gradient-to-br from-dental-light to-white h-[600px] flex items-center">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+    <section id="hero" class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
                     {{ $sliders->title }}
                 </h2>
-                <p class="text-xl text-gray-600 mb-8">
+                <p class="text-lg lg:text-xl text-gray-600 mb-8">
                     {{ $sliders->short_description }}
                 </p>
-                <div class="flex space-x-4">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="{{ route('frontend.appointment') }}">
                         <button
                             class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
@@ -35,12 +35,13 @@
                     </a>
                 </div>
             </div>
-            <div class="h-96 overflow-hidden rounded-2xl">
-                <img class="w-full h-full object-cover" src="{{ $sliders->image }}"
-                    alt="modern dental office with comfortable patient chair, bright lighting, professional dental equipment, clean white interior" />
+
+            <div class="h-72 sm:h-96 overflow-hidden rounded-2xl">
+                <img class="w-full h-full object-cover" src="{{ $sliders->image }}">
             </div>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
@@ -52,7 +53,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-3 gap-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
@@ -64,7 +66,7 @@
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-users text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_students_img'] }}">
+                        <img src="{{ $settings['home_counter_scholarship_img'] }}">
 
                     </div>
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_scholarship_title'] }}
@@ -74,7 +76,7 @@
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-microscope text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_students_img'] }}">
+                        <img src="{{ $settings['home_counter_enrolled_img'] }}">
 
                     </div>
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_enrolled_title'] }}
@@ -93,85 +95,19 @@
                 <p class="text-xl text-gray-600">{{ $settings['services_description'] }}</p>
             </div>
 
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                 @foreach ($services as $service)
+                      <a href="{{ route('frontend.service') }}" class=" stretched-card-link">
                     <div id="service-1" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
                         <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
                             <img src="{{ $service->image }}">
                         </div>
                         <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
-                        <p class="text-gray-600 mb-4">{{ $service->short_description }}</p>
-                        <ul class="list-disc pl-5">
-   {!! $service->description !!}
-</ul>
+                        <p class="line-clamp-5 text-gray-600 mb-4">{{ $service->short_description }}</p>
                     </div>
+                    </a>
                 @endforeach
-
-
-                {{-- <div id="service-2" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-smile text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Cosmetic Dentistry</h4>
-                    <p class="text-gray-600 mb-4">Transform your smile with our advanced cosmetic procedures and treatments.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Teeth whitening</li>
-                        <li>• Veneers</li>
-                        <li>• Smile makeovers</li>
-                    </ul>
-                </div>
-
-                <div id="service-3" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-user-doctor text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Oral Surgery</h4>
-                    <p class="text-gray-600 mb-4">Expert surgical procedures performed with precision and care.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Tooth extractions</li>
-                        <li>• Dental implants</li>
-                        <li>• Wisdom tooth removal</li>
-                    </ul>
-                </div>
-
-                <div id="service-4" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-child text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Pediatric Dentistry</h4>
-                    <p class="text-gray-600 mb-4">Specialized care for children in a fun, comfortable environment.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Children's cleanings</li>
-                        <li>• Fluoride treatments</li>
-                        <li>• Sealants</li>
-                    </ul>
-                </div>
-
-                <div id="service-5" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-align-center text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Orthodontics</h4>
-                    <p class="text-gray-600 mb-4">Straighten your teeth with traditional braces or clear aligners.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Traditional braces</li>
-                        <li>• Clear aligners</li>
-                        <li>• Retainers</li>
-                    </ul>
-                </div>
-
-                <div id="service-6" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-shield-halved text-dental-blue text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-4">Preventive Care</h4>
-                    <p class="text-gray-600 mb-4">Maintain optimal oral health with our preventive treatments.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>• Regular check-ups</li>
-                        <li>• Professional cleanings</li>
-                        <li>• Oral cancer screenings</li>
-                    </ul>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -183,7 +119,8 @@
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title'] }}</h3>
                 <p class="text-xl text-gray-600">{{ $settings['teams_description'] }}</p>
             </div>
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                 @foreach ($teams as $item)
                     <div id="doctor-1" class="text-center">
                         <div class="mb-6">
@@ -201,39 +138,101 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- <div id="doctor-2" class="text-center">
-                    <div class="mb-6">
-                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Dr. Michael Chen" class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Dr. Michael Chen</h4>
-                    <p class="text-dental-blue font-medium mb-3">Oral Surgeon</p>
-                    <p class="text-gray-600 mb-4">Specialist in oral surgery and dental implants. 12+ years of surgical experience with advanced training.</p>
-                    <div class="flex justify-center space-x-3">
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Oral Surgery</span>
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Implants</span>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
+    <!--blog section start-->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['blogs_title'] }}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['blogs_description'] }}</p>
+            </div>
 
-                <div id="doctor-3" class="text-center">
-                    <div class="mb-6">
-                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Dr. Emily Rodriguez" class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Blog Card -->
+               @foreach ($blogs as $item)
+                    <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
+                        <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link">
+                            <div class="overflow-hidden">
+                                <img src="{{ $item->image }}"
+                                    class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                                    alt="Blog image">
+                            </div>
+                            <div class="p-6">
+
+                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+                                    class="inline-block text-justify text-sm font-semibold text-white
+                bg-[#D5277B] px-3 py-1 rounded-full">
+                                    {{ $item->short_description }}
+                                </a>
+
+                                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
+                                    {{ $item->title }}
+                                </h3>
+                                <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
+                                    {!! $item->description !!}
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Dr. Emily Rodriguez</h4>
-                    <p class="text-dental-blue font-medium mb-3">Pediatric Dentist</p>
-                    <p class="text-gray-600 mb-4">Specializes in children's dentistry with a gentle approach. Board certified in pediatric dental care.</p>
-                    <div class="flex justify-center space-x-3">
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Pediatric</span>
-                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">Prevention</span>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section id="reviews" class=" bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] }}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['testioninal_description'] }}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Review Card -->
+                @foreach ($testimonials as $item)
+                    <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200">
+                        <!-- Header -->
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="{{$item->image}}" class="w-14 h-14 rounded-full object-cover"
+                                alt="Reviewer">
+
+                            <div>
+                                <h4 class="font-bold text-gray-900 uppercase text-sm">
+                                   {{$item->name}}
+                                </h4>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide">
+                                   {{$item->position}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Stars (Icons) -->
+                        <div class="flex gap-1 mb-4 text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-4">
+                           {!!$item->description!!}
+                        </div>
                     </div>
-                </div> --}}
+                @endforeach
             </div>
         </div>
     </section>
 
+
     <!-- Contact & Inquiry Form -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 gap-16 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
                 <div>
                     <h3 class="text-4xl font-bold text-gray-900 mb-6">{{ $settings['contact_section_title'] }}</h3>
                     <p class="text-xl text-gray-600 mb-8">{{ $settings['contact_description'] }}</p>
@@ -286,11 +285,11 @@
                     <form action="{{ route('frontend.contact.submit') }}" method="POST" enctype="multipart/form-data"
                         class="space-y-6">
                         @csrf
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name</label>
-                                <input name="name" id="name" placeholder=" " type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                            </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name</label>
+                            <input name="name" id="name" placeholder=" " type="text"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+                        </div>
 
 
                         <div>
@@ -302,23 +301,8 @@
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
                             <input type="tel" name="phone" id="phone"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+                                class="w-full text-sm sm:text-base px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue">
                         </div>
-
-                        {{-- <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
-                            <select
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                                <option>Select a service</option>
-                                <option>General Dentistry</option>
-                                <option>Cosmetic Dentistry</option>
-                                <option>Oral Surgery</option>
-                                <option>Pediatric Dentistry</option>
-                                <option>Orthodontics</option>
-                                <option>Emergency Care</option>
-                            </select>
-                        </div> --}}
-
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
                             <textarea id="description" name="message" rows="4"

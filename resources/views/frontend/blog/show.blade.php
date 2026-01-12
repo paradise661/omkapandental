@@ -11,74 +11,52 @@
 @endsection
 @extends('layouts.frontend.master')
 @section('content')
-    @if ($blog_page)
-        <div class="hero-banner2 position-relative ">
-            <div class="row g-0 text-bannner-section">
-                <div class="col-md-6 d-flex justify-content-center align-items-center py-5">
-                    <div class="text-center page-banner-lft px-4">
-                        <h1 class="text-white font-weight-bold">{{ $blogsingle->title ?? 'About Us' }}</h1>
-                        <p class="breadcrumb-text text-white">
-                            <a href="{{ route('frontend.home') }}" class="text-white text-decoration-none">Home</a> /
-                            <a href="{{ route('frontend.abroad') }}"
-                                class="text-white text-decoration-none">{{ $blog_page->title }}</a> /
-                            <a href="#"
-                                class="text-white text-decoration-none">{{ $blogsingle->title ?? 'About Us' }}</a>
-                        </p>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="img-container-banner">
-                        <div class="img-wrapper-2">
-                            <img src="{{ asset($blog_page->banner_image) }}" alt="Creative Design" class="background-img">
-                        </div>
-                    </div>
-                </div>
+    @if ($blogsingle)
+        <section id="services-hero" class="bg-gradient-to-br from-dental-light to-white h-[400px] flex items-center">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $blogsingle->title ?? 'Page Title' }}</h2>
+                <div class="text-xl text-gray-600 max-w-3xl mx-auto">
+                     {{ $blogsingle->short_description ?? 'Page Title' }} </div>
             </div>
-        </div>
+        </section>
     @endif
-    <section class="bg-light py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8" data-aos="fade-right"  data-aos-duration="3000">
-                    <div class="blog-image-wrapper">
-                        <img src="{{asset($blogsingle->image)}}" alt="" class="img-fluid">
+    <section class="py-10 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Main Blog -->
+                <div class="lg:w-2/3">
+                    <div class="mb-8">
+                        <img src="{{ $blogsingle->image }}" alt=""
+                            class="w-full h-64 md:h-96 lg:h-[500px] rounded-lg object-cover">
                     </div>
-                    <h2 class="py-3"> {{$blogsingle->title}}</h2>
-                    <div class="text-css text-justify">
-                       {!!$blogsingle->description!!}
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-bold text-gray-800">{{ $blogsingle->title }}</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            {!! $blogsingle->description !!}
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-4 position-relative" data-aos="fade-left"  data-aos-duration="3000">
-                    <div class="blog-sidebar p-4 position-sticky">
-                        <p class="blog-heading-text py-3">
-                            Recent Posts
-                        </p>
-                        <div class="d-flex align-items-center mb-3">
-                            <!-- Dot -->
-                            <div class="dot-blog"></div>
-                            <!-- Line -->
-                            <div class="line-blog ms-2"></div>
-                        </div>
-                        @foreach($blogs as $blog)
-                            <div class="blog-sidebar-section d-flex gap-3 mb-4 position-relative">
-                                <div class="main-img-blog-container">
-                                    <img src="{{ asset($blog->image ?? 'frontend/assets/images/default.jpg') }}" alt="{{ $blog->title }}" class="main-img-blog">
-                                </div>
-                                <div class="blog-sidebar-text">
-                                    <div class="date-blog-sidebar mb-2">
-                                        {{ $blog->created_at->format('d/m/Y') }}
-                                    </div>
-                                    <a href="{{ route('frontend.blogsingle', $blog->slug) }}" class="text-decoration-none text-css blog-link-text">
-                                        {{ $blog->title }}
-                                    </a>
-                                </div>
-                                <a class="stretched-link" href="{{route('frontend.blogsingle', $blog->slug) }}"></a>
+
+                <!-- Sidebar -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Popular Blogs</h3>
+
+                        <!-- Blog Card -->
+                        @foreach ($blogs as $item)
+                            <div class="space-y-4">
+                                <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link"></a>
+                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+                                    class="flex gap-4 items-center group hover:bg-gray-100 p-2 rounded transition">
+                                    <img src="{{ $item->image }}" alt="" class="w-16 h-16 object-cover rounded">
+                                    <h4 class="text-gray-800 font-medium group-hover:text-blue-600">{{ $item->title }}
+                                    </h4>
+                                </a>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
