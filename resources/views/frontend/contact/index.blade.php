@@ -100,8 +100,8 @@
                                 <textarea name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" placeholder="Please describe your inquiry or tell us how we can help you..." ></textarea>
                             </div>
 
-                            <div class="g-recaptcha py-2" data-sitekey="6LdQyUcsAAAAANQzOYf32zmtSxRMnE8yN0NcteX3"></div>
-                            
+                            {{-- <div class="g-recaptcha py-2" data-sitekey="6LdQyUcsAAAAANQzOYf32zmtSxRMnE8yN0NcteX3"></div> --}}
+
                             <button type="submit" class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
                                 Send Message
                             </button>
@@ -142,32 +142,20 @@
             </div>
         </section>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        @if (session('success'))
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    Toastify({
-                        text: "{{ session('success') }}",
-                        duration: 3000,
-                        gravity: "top", // top or bottom
-                        position: "right", // left, center or right
-                        backgroundColor: "#4BB543", // green success color
-                        stopOnFocus: true,
-                    }).showToast();
-                });
-            </script>
-        @endif
+       
          @if ($errors->any())
+   @if (session('success'))
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        Toastify({
-            text: "{{ $errors->first() }}",
-            duration: 3000,
-            gravity: "top",
-            position: "right",
-            backgroundColor: "#ff4d4d", // red for error
-            stopOnFocus: true,
-        }).showToast();
-    });
+        document.addEventListener('DOMContentLoaded', function() {
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "#4BB543",
+            }).showToast();
+        });
     </script>
+@endif
     @endif
 @endsection
