@@ -103,7 +103,9 @@
                             </div>
 
 
-
+                            <div class="g-recaptcha"
+                            data-sitekey="{{ config('recaptcha.site_key') }}">
+                       </div>
                             <button type="submit" class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
                                 Send Message
                             </button>
@@ -155,6 +157,8 @@
                 </div>
             </div>
         </section>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
         @if (session('success'))
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
