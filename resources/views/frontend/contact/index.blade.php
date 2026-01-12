@@ -94,28 +94,22 @@
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Subject *</label>
                                 <input name="course" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
-
                             </div>
-
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Message *</label>
                                 <textarea name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" placeholder="Please describe your inquiry or tell us how we can help you..." ></textarea>
                             </div>
 
-
-                            <div class="g-recaptcha"
-                            data-sitekey="{{ config('recaptcha.site_key') }}">
-                       </div>
+                            <div class="g-recaptcha py-2" data-sitekey="6LdQyUcsAAAAANQzOYf32zmtSxRMnE8yN0NcteX3"></div>
+                            
                             <button type="submit" class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
                                 Send Message
                             </button>
                         </form>
                     </div>
-
                     <!-- Map & Directions -->
                     <div id="map-directions">
                         <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">Find Us</h3>
-
                         <div class="bg-gray-300 rounded-xl h-64 md:h-80 mb-8 flex items-center justify-center overflow-hidden">
                             <iframe
                                 src="{{ $settings['contact_map'] }}"
@@ -125,14 +119,10 @@
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </section>
-
-
         <!-- FAQ Section -->
         <section id="faq" class="py-20 bg-gray-50">
             <div class="max-w-7xl mx-auto px-6">
@@ -140,25 +130,18 @@
                     <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ $faq_page->title }}</h3>
                     <p class="text-xl text-gray-600">{{ $faq_page->short_description }}</p>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                    {{-- <div id="faq-left" class="space-y-6"> --}}
+                  {{-- <div id="faq-left" class="space-y-6"> --}}
                         @foreach ($faqs as $faq)
-
                         <div class="bg-white rounded-lg p-6">
                             <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">{{ $faq->question }}</h3>
                             <p class="text-base md:text-xl text-gray-600">{{ $faq->answer }}</p>
                         </div>
                         @endforeach
-
-
-
                 </div>
             </div>
         </section>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
         @if (session('success'))
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -187,5 +170,4 @@
     });
     </script>
     @endif
-
 @endsection
