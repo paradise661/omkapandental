@@ -231,22 +231,42 @@ class FrontendController extends Controller
     }
     public function contact_submite(Request $request)
     {
-        //
         $input = $request->all();
-        // dd($input);
         $rules = [
             'name' => 'required|min:3',
-            'email'=>'required|email',
-            'phone'=>'required|min:10',
-            'message'=>'required'
+            'email' => 'required|email',
+            'phone' => 'required|min:10',
+            'message' => 'required',
+            'g-recaptcha-response' => 'required'
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validator);
         }
-        // Create a new Inquiry instance with the validated data
+    
+        // Verify reCAPTCHA
+        $response = Http::asForm()->post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            [
+                'secret' => config('recaptcha.secret_key'),
+                'response' => $request->input('g-recaptcha-response'),
+                'remoteip' => $request->ip(),
+            ]
+        );
+    
+        if (!($response->json()['success'] ?? false)) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['captcha' => 'reCAPTCHA verification failed. Please try again.']);
+        }
+    
+        // Save inquiry
         ContactInquiry::create($input);
-        return redirect()->back()->with('success', 'Your message has been submitted successfully.');
+    
+        return redirect()->back()
+            ->with('success', 'Your message has been submitted successfully.');
     }
     public function contact_submite_home(Request $request)
     {

@@ -25,7 +25,6 @@
              </p>
                     </div>
                </section>
-
         <!-- Contact Information -->
         <section id="contact-info" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-6">
@@ -62,12 +61,10 @@
                 </div>
             </div>
         </section>
-
         <!-- Contact Form & Map -->
         <section id="contact-form-map" class="py-20 bg-gray-50">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-
                     <!-- Contact Form -->
                     <div id="contact-form-container">
                         <h3 class="text-3xl font-bold text-gray-900 mb-8">{{ $settings['contactform_title'] }}</h3>
@@ -79,18 +76,14 @@
                                     <input name="name" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
                                 </div>
                             </div>
-
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
                                 <input name="email" type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
                             </div>
-
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
                                 <input name="phone" type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
                             </div>
-
-
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Subject *</label>
                                 <input name="course" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" >
@@ -99,9 +92,7 @@
                                 <label class="block text-gray-700 font-medium mb-2">Message *</label>
                                 <textarea name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent" placeholder="Please describe your inquiry or tell us how we can help you..." ></textarea>
                             </div>
-
-                            {{-- <div class="g-recaptcha py-2" data-sitekey="6LdQyUcsAAAAANQzOYf32zmtSxRMnE8yN0NcteX3"></div> --}}
-
+                            <div class="g-recaptcha py-2" data-sitekey="6LfAyUcsAAAAAFAEUPm94HDa0Y13NTlbdB06w_mU"></div>
                             <button type="submit" class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
                                 Send Message
                             </button>
@@ -142,6 +133,4 @@
             </div>
         </section>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-       
-         
 @endsection
