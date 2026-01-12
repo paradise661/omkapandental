@@ -143,19 +143,5 @@
         </section>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
        
-         @if ($errors->any())
-   @if (session('success'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Toastify({
-                text: "{{ session('success') }}",
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                backgroundColor: "#4BB543",
-            }).showToast();
-        });
-    </script>
-@endif
-    @endif
+         
 @endsection
