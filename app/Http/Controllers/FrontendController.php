@@ -51,6 +51,8 @@ class FrontendController extends Controller
         $serviceIds = explode(',', $home_service->value);
         $services = Service::whereIn('id', $serviceIds)->where('status', 1)->get();
 
+        // dd($services);
+
         $home_course = Settings::where('key', 'home_courses')->first();
         $courseIds = explode(',', $home_course->value);
         $courses = Course::whereIn('id', $courseIds)->where('status', 1)->get();
@@ -69,7 +71,7 @@ class FrontendController extends Controller
 
         $faq_page = Page::where('status', 1)->where('slug', 'faq')->first();
 
-        return view('frontend.home.index', compact('sliders','popup', 'faq_page', 'countrylocation', 'faq', 'abroadstudies', 'universities', 'courses', 'countries', 'blogs', 'services', 'about_us', 'why_choose_us', 'teams', 'testimonials'));
+        return view('frontend.home.index', compact('sliders', 'popup', 'faq_page', 'countrylocation', 'faq', 'abroadstudies', 'universities', 'courses', 'countries', 'blogs', 'services', 'about_us', 'why_choose_us', 'teams', 'testimonials'));
     }
     public function about()
     {
@@ -81,7 +83,7 @@ class FrontendController extends Controller
         $missions = Country::where('status', 1)->oldest("order")->get();
         $techno = Course::where('status', 1)->where('slug', 'advanced-technology')->first();
         $patient = Course::where('status', 1)->where('slug', 'patient-comfort')->first();
-        return view('frontend.about.index', compact('about_us', 'why_us', 'teams', 'studentreviw','missions','mission_page','techno','patient'));
+        return view('frontend.about.index', compact('about_us', 'why_us', 'teams', 'studentreviw', 'missions', 'mission_page', 'techno', 'patient'));
     }
     public function service()
     {
@@ -172,11 +174,11 @@ class FrontendController extends Controller
         $teams = Team::where('status', 1)->oldest("order")->get() ?? [];
         return view('frontend.team', compact('teams', 'team_page'));
     }
-    function appointment(){
+    function appointment()
+    {
         $appointment_page = Page::where('status', 1)->where('slug', 'register')->first();
 
-        return view('frontend.appointment.index', compact( 'appointment_page'));
-
+        return view('frontend.appointment.index', compact('appointment_page'));
     }
     function testimonial()
     {
@@ -190,8 +192,8 @@ class FrontendController extends Controller
         $albums = Album::with(['galleries' => function ($query) {
             $query->orderBy('title'); // or 'id' or whatever you prefer
         }])
-        ->orderBy('order', 'asc')
-        ->get(); 
+            ->orderBy('order', 'asc')
+            ->get();
         // dd($albums);
         return view('frontend.gallery', compact('albums', 'gallery_page'));
     }
@@ -227,7 +229,7 @@ class FrontendController extends Controller
         $faq_page = Page::where('status', 1)->where('slug', 'faq')->first();
         $faqs = Faq::where('status', 1)->get();
 
-        return view('frontend.contact.index', compact('branches', 'contact_page','faq_page','faqs'));
+        return view('frontend.contact.index', compact('branches', 'contact_page', 'faq_page', 'faqs'));
     }
     public function contact_submite(Request $request)
     {
@@ -245,7 +247,7 @@ class FrontendController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-    
+
         // Verify reCAPTCHA
         $response = Http::asForm()->post(
             'https://www.google.com/recaptcha/api/siteverify',
@@ -255,16 +257,16 @@ class FrontendController extends Controller
                 'remoteip' => $request->ip(),
             ]
         );
-    
+
         if (!($response->json()['success'] ?? false)) {
             return redirect()->back()
                 ->withInput()
                 ->withErrors(['captcha' => 'reCAPTCHA verification failed. Please try again.']);
         }
-    
+
         // Save inquiry
         ContactInquiry::create($input);
-    
+
         return redirect()->back()
             ->with('success', 'Your message has been submitted successfully.');
     }
@@ -343,7 +345,7 @@ class FrontendController extends Controller
 
 
             $enquiry = Appointment::create($input);
-            
+
 
             return redirect()->back()->with('success', 'Appointment Request Submitted successful!');
         }

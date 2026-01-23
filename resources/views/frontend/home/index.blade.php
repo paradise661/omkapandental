@@ -89,23 +89,39 @@
     <!-- Services Section -->
     <section class="py-20 bg-gray-50" id="services">
         <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
             <div class="text-center mb-16">
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['services_title'] }}</h3>
                 <p class="text-xl text-gray-600">{{ $settings['services_description'] }}</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($services as $service)
-                    <a class=" stretched-card-link" href="{{ route('frontend.service') }}">
-                        <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition" id="service-1">
-                            <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                                <img src="{{ $service->image }}">
-                            </div>
-                            <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
-                            <p class="line-clamp-5 text-gray-600 mb-4">{{ $service->short_description }}</p>
+                    <div
+                        class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
+
+                        <!-- Top Image -->
+                        <div class="overflow-hidden">
+                            <img class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                                src="{{ $service->image }}" alt="{{ $service->title ?? '' }}">
                         </div>
-                    </a>
+
+                        <!-- Card Content -->
+                        <div class="p-6 flex flex-col flex-grow">
+                            <!-- Title -->
+                            <h4 class="text-2xl font-bold text-gray-900 mb-3">{{ $service->title ?? '' }}</h4>
+
+                            <!-- Short Description -->
+                            <p class="text-gray-600 mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
+
+                            <!-- Full Width Button -->
+                            <a class="w-full text-center bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 rounded-lg transition"
+                                href="{{ route('frontend.servicesingle', $service->slug) }}">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>
