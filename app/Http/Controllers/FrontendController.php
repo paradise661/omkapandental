@@ -177,8 +177,9 @@ class FrontendController extends Controller
     function appointment()
     {
         $appointment_page = Page::where('status', 1)->where('slug', 'register')->first();
-
-        return view('frontend.appointment.index', compact('appointment_page'));
+        $doctors = Team::where('status', 1)->oldest("order")->get();
+        $services = Service::where('status', 1)->oldest("order")->get();
+        return view('frontend.appointment.index', compact('appointment_page', 'doctors', 'services'));
     }
     function testimonial()
     {
