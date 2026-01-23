@@ -23,7 +23,7 @@
                 style="width: auto; height: auto;">
 
                 <!-- Close Button -->
-                <button class="absolute top-3 right-3 text-gray-700 hover:text-gray-900 text-3xl font-bold z-50"
+                <button class="absolute top-3 right-3 text-white text-gray-700 hover:text-gray-900 text-3xl font-bold z-50"
                     @click="open = false">
                     &times;
                 </button>
