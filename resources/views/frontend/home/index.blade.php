@@ -124,6 +124,14 @@
                     </div>
                 @endforeach
             </div>
+
+            <!-- View All Services Button -->
+            <div class="mt-12 text-center">
+                <a class="inline-block bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 px-8 rounded-lg transition text-lg"
+                    href="{{ route('frontend.service') }}">
+                    View All Services
+                </a>
+            </div>
         </div>
     </section>
 
