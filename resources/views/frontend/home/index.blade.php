@@ -10,6 +10,43 @@
 @endsection
 @extends('layouts.frontend.master')
 @section('content')
+    <!-- Include Alpine.js if not already -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- Popup Modal -->
+    @if ($popup)
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50" x-data="{ open: true }" x-show="open"
+            x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+
+            <!-- Modal Container -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-lg w-full relative" @click.away="open = false">
+
+                <!-- Close Button -->
+                <button class="absolute top-3 right-3 text-gray-700 hover:text-gray-900 text-3xl font-bold z-50"
+                    @click="open = false">
+                    &times;
+                </button>
+
+                <!-- Image Content -->
+                <img class="w-full object-cover h-72 sm:h-96" src="{{ $popup->image ?? '' }}" alt="Popup Image">
+
+                <!-- Optional Text Overlay -->
+                @if ($popup->title || $popup->description)
+                    <div class="p-6 text-center bg-white">
+                        @if ($popup->title)
+                            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{{ $popup->title }}</h3>
+                        @endif
+                        @if ($popup->description)
+                            <p class="text-gray-600 mb-4">{{ $popup->description }}</p>
+                        @endif
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center" id="hero">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -59,7 +96,8 @@
                         {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
                         <img src="{{ $settings['home_counter_students_img'] }}">
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title'] }}</h4>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title'] }}
+                    </h4>
                     <p class="text-gray-600">{{ $settings['home_counter_students'] }}</p>
                 </div>
                 <div class="text-center">

@@ -42,7 +42,7 @@ class FrontendController extends Controller
         $why_choose_us = WhyChooseUs::where('status', 1)->first();
         $teams = Team::where('status', 1)->oldest("order")->get();
         $faq = Faq::where('status', 1)->limit(6)->get();
-        $popup = Popup::where('status', 1)->get();
+        $popup = Popup::where('status', 1)->first();
         $home_country = Settings::where('key', 'home_countries')->first();
         $countryIds = explode(',', $home_country->value);
         $countries = Country::whereIn('id', $countryIds)->where('status', 1)->get();
