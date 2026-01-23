@@ -96,7 +96,7 @@ class FrontendController extends Controller
     {
         $service_page = Page::where('status', 1)->where('slug', 'service')->first();
         $servicesingle = Service::where('slug', $slug)->where('status', 1)->first();
-        $services = Service::where('status', 1)->oldest("order")->get();
+        $services = Service::where('status', 1)->limit(4)->oldest("order")->get();
 
         return view('frontend.service.show', compact('servicesingle', 'services', 'service_page'));
     }

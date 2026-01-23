@@ -67,6 +67,11 @@
                             </div>
                         </a>
                     @endforeach
+                   <a href="{{ route('frontend.appointment') }}">
+                <button class="w-full bg-dental-blue text-white px-6 py-2 rounded-lg hover:bg-[#2fa3c6] transition">
+                    Book Appointment
+                </button>
+            </a>
                 </div>
             </aside>
         </div>
