@@ -207,12 +207,12 @@
             </a>
         </li> --}}
 
-        {{-- <li class="menu-item {{ Request::segment(2) == 'event' ? 'active' : '' }}">
+        <li class="menu-item {{ Request::segment(2) == 'event' ? 'active' : '' }}">
             <a href="{{ route('event.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-slider"></i>
                 <div>Event</div>
             </a>
-        </li> --}}
+        </li>
         <li class="menu-item {{ Request::segment(2) == 'faq' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('faq.index') }}">
                 <i class="menu-icon tf-icons bx bx-help-circle"></i>
