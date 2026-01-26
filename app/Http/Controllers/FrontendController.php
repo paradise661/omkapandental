@@ -247,7 +247,6 @@ class FrontendController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-<<<<<<< HEAD
     
         // 2️⃣ Verify reCAPTCHA v3 (skip on localhost if you want)
         if (!app()->environment('local')) {
@@ -286,31 +285,10 @@ class FrontendController extends Controller
         ]);
     
         // 4️⃣ Success response
-=======
-
-        // Verify reCAPTCHA
-        $response = Http::asForm()->post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            [
-                'secret' => config('recaptcha.secret_key'),
-                'response' => $request->input('g-recaptcha-response'),
-                'remoteip' => $request->ip(),
-            ]
-        );
-
-        if (!($response->json()['success'] ?? false)) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['captcha' => 'reCAPTCHA verification failed. Please try again.']);
-        }
-
-        // Save inquiry
-        ContactInquiry::create($input);
-
->>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
         return redirect()->back()
             ->with('success', 'Your message has been submitted successfully.');
     }
+    
     
     public function contact_submite_home(Request $request)
     {
