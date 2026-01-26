@@ -297,13 +297,15 @@
                             </div>
                         </div> --}}
 
-                    <div class="flex justify-between items-center pt-6">
-                        <p class="text-gray-600 text-sm">* Required fields</p>
-                        <button
-                            class="w-full md:w-auto bg-dental-blue text-white px-8 md:px-12 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
-                            type="submit">Submit Appointment Request</button>
-
-                    </div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center pt-6 gap-4">
+                            <p class="text-gray-600 text-sm">* Required fields</p>
+                            <button
+                                class="w-full md:w-auto bg-dental-blue text-white px-8 md:px-12 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
+                                type="submit">
+                                Submit Appointment Request
+                            </button>
+                        </div>
+                        
                 </form>
             </div>
 
