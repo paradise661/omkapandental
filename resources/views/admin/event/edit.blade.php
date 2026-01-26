@@ -27,8 +27,8 @@
                             <div class="row">
                                 <div class="mb-4 col-md-8">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="name" value="{{ old('name', ${$name}->name) }}" />
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="name"
+                                        value="{{ old('name', ${$name}->name) }}" />
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -49,7 +49,7 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                            
+
                                 <div class="mb-4 col-md-4">
                                     <label for="location" class="form-label">Location</label>
                                     <input type="text" class="form-control" id="location" name="location"
@@ -60,12 +60,21 @@
                                 </div>
                                 <div class="mb-4 col-md-4">
                                     <label for="slug" class="form-label">slug</label>
-                                    <input type="text" class="form-control" id="slug" name="slug"
-                                        placeholder="Slug" value="{{ old('slug', ${$name}->slug) }}" />
+                                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug"
+                                        value="{{ old('slug', ${$name}->slug) }}" />
                                     @error('slug')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control ckeditor" id="description" name="description"
+                                    placeholder="Description"
+                                    rows="4">{{ old('description', ${$name}->description) }}</textarea>
+                                @error('description')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -117,7 +126,7 @@
                                     name="featured_image_1" value="{{ old('image', ${$name}->featured_image_1) }}"
                                     data-default-file="{{ asset(${$name}->featured_image_1) }}" />
                                 @error('featured_image_1')
-                                    <p class="text-danger">{{ $message }}</p>
+                                <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
                                 <div class="form-check form-switch form-switch-danger">
@@ -128,8 +137,7 @@
                             </div> --}}
                             <div class="mb-4">
                                 <label for="banner_image" class="form-label">Featured Image 2</label>
-                                <input class="form-control dropify" type="file" id="banner_image"
-                                    name="banner_image"
+                                <input class="form-control dropify" type="file" id="banner_image" name="banner_image"
                                     value="{{ old('banner_image', ${$name}->banner_image) }}"
                                     data-default-file="{{ asset(${$name}->banner_image) }}" />
                                 @error('banner_image')

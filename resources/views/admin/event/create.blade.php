@@ -26,8 +26,8 @@
                             <div class="row">
                                 <div class="mb-4 col-md-8">
                                     <label for="name" class="form-label">name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="name" value="{{ old('name') }}" />
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="name"
+                                        value="{{ old('name') }}" />
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -58,15 +58,25 @@
                                 </div>
                                 <div class="mb-4 col-md-4">
                                     <label for="slug" class="form-label">slug</label>
-                                    <input type="text" class="form-control" id="slug" name="slug"
-                                        placeholder="Slug" value="{{ old('slug') }}" />
+                                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug"
+                                        value="{{ old('slug') }}" />
                                     @error('slug')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
+                            <div class="mb-4">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control ckeditor" id="description" name="description"
+                                    placeholder="Description" rows="10">{{ old('description') }}</textarea>
+
+                                @error('description')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                     </div>
+
                     <div class="card mt-4">
                         <div class="card-body">
                             <div class="mb-4 text-2xl">
@@ -105,8 +115,8 @@
                             </div>
                             <div class="mb-4 text-2xl">
                                 <label for="banner_image" class="form-label">Featured Image 1</label>
-                                <input class="form-control dropify" type="file" id="banner_image"
-                                    name="banner_image" value="{{ old('banner_image') }}" data-default-file />
+                                <input class="form-control dropify" type="file" id="banner_image" name="banner_image"
+                                    value="{{ old('banner_image') }}" data-default-file />
                                 @error('banner_image')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
