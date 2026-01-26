@@ -1,3 +1,5 @@
+@extends('layouts.frontend.master')
+
 @section('seo')
     @include('frontend.seo', [
         'name' => $service_page->seo_title ?? '',
@@ -9,74 +11,69 @@
         'updated_at' => $service_page->updated_at,
     ])
 @endsection
-@extends('layouts.frontend.master')
+
 @section('content')
     @if ($service_page)
-        <div class="hero-banner2 position-relative ">
-            <div class="row g-0 text-bannner-section">
-                <div class="col-md-6 d-flex justify-content-center align-items-center py-5">
-                    <div class="text-center page-banner-lft px-4">
-                        <h1 class="text-white font-weight-bold">{{ $servicesingle->title ?? 'About Us' }}</h1>
-                        <p class="breadcrumb-text text-white">
-                            <a href="{{ route('frontend.home') }}" class="text-white text-decoration-none">Home</a> /
-                            <a href="{{ route('frontend.service') }}"
-                                class="text-white text-decoration-none">{{ $service_page->title ?? 'About Us' }}</a> /
-                            <a href="#"
-                                class="text-white text-decoration-none">{{ $servicesingle->title ?? 'About Us' }}</a>
-                        </p>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="img-container-banner">
-                        <div class="img-wrapper-2">
-                            <img src="{{ asset($service_page->banner_image) }}" alt="Creative Design" class="background-img">
-                        </div>
-                    </div>
+        <!-- Hero Banner -->
+        <section class="relative bg-gray-100">
+            <!-- Banner Image -->
+            <div class="relative">
+                <img class="w-full h-64 sm:h-96 object-cover" src="{{ asset($service_page->banner_image) }}"
+                    alt="{{ $service_page->title }}">
+
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-6">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                        {{ $servicesingle->title ?? 'Service Details' }}
+                    </h1>
+                    <p class="text-white/80 text-sm sm:text-base">
+                        <a class="hover:underline" href="{{ route('frontend.home') }}">Home</a> /
+                        <a class="hover:underline"
+                            href="{{ route('frontend.service') }}">{{ $service_page->title ?? 'Services' }}</a> /
+                        <span>{{ $servicesingle->title ?? '' }}</span>
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
     @endif
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 py-5">
-                    <div class="country-main-section ">
-                        <div class="country-img-wrapper">
-                            <img src="{{ asset($servicesingle->image_1) }}" class="country-image" alt="">
-                        </div>
-                        <div class="country-content pt-3">
-                            <h2 class="heading-css">{{ $servicesingle->title }}
-                            </h2>
-                            <div class="text-css mb-3">
-                                <p>{!! $servicesingle->description !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 py-3">
-                    <div class="sticky-sidebar" style="position: sticky; top: 85px;">
-                        <p class="course-detail-heading">Top Services</p>
-                        @foreach ($services as $course)
-                            <div class="shadow course-detail-list-card d-flex gap-3 position-relative">
-                                <div class="main-img-course-detail-container">
-                                    <img src="{{ asset($course->image_1 ?? 'frontend/assets/images/default.jpg') }}"
-                                        alt="{{ $course->title }}" class="main-img-course-detail">
-                                </div>
-                                <div class="course-detail-card-text">
-                                    <div class="fotter-headings">
-                                        {!! $course->title !!}
-                                    </div>
-                                    <div class="line-clamp-2 text-css">
-                                        {{ $course->short_description }}
-                                    </div>
-                                </div>
-                                <a class="stretched-link" href="{{ route('frontend.servicesingle', $course->slug) }}"></a>
-                            </div>
-                        @endforeach
-                    </div>
+
+    <!-- Main Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:flex lg:gap-12">
+            <!-- Main Content -->
+            <div class="lg:w-2/3 bg-white rounded-3xl shadow-xl p-8 mb-8 lg:mb-0">
+                <img class="w-full h-80 object-cover rounded-2xl mb-6" src="{{ asset($servicesingle->image_1) }}"
+                    alt="{{ $servicesingle->title }}">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $servicesingle->title }}</h2>
+                <div class="prose max-w-none text-gray-700">
+                    {!! $servicesingle->description !!}
                 </div>
             </div>
+
+            <!-- Sidebar: Top Services -->
+            <aside class="lg:w-1/3 flex-shrink-0">
+                <div class="sticky top-24 space-y-4">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Top Services</h3>
+                    @foreach ($services as $course)
+                        <a href="{{ route('frontend.servicesingle', $course->slug) }}">
+                            <div class="flex gap-4 bg-white rounded-2xl shadow hover:shadow-xl transition p-4 mb-3">
+                                <img class="w-20 h-20 object-cover rounded-xl flex-shrink-0"
+                                    src="{{ asset($course->image_1 ?? 'frontend/assets/images/default.jpg') }}"
+                                    alt="{{ $course->title }}">
+                                <div class="flex flex-col justify-between">
+                                    <h4 class="text-gray-900 font-semibold text-lg line-clamp-1">{{ $course->title }}</h4>
+                                    <p class="text-gray-600 text-sm line-clamp-2">{{ $course->short_description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                   <a href="{{ route('frontend.appointment') }}">
+                <button class="w-full bg-dental-blue text-white px-6 py-2 rounded-lg hover:bg-[#2fa3c6] transition">
+                    Book Appointment
+                </button>
+            </a>
+                </div>
+            </aside>
         </div>
     </section>
 @endsection

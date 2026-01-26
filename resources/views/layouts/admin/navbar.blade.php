@@ -28,10 +28,11 @@
 
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown" href="javascript:void(0);">
                     <div class="avatar avatar-online">
-                        <img src="{{ asset('frontend/assets/image/logo.png') }}" alt
-                            class="w-px-40 h-auto rounded-circle" />
+                        <img class="w-px-40 h-auto rounded-circle"
+                            src="{{ $settings['site_fav_icon'] ? asset($settings['site_fav_icon']) : asset('admin/default/img/favicon.png') }}"
+                            alt />
                         {{-- <img src="{{ $settings['site_fav_icon'] ? asset($settings['site_fav_icon']) : asset('admin/default/img/favicon.png') }}"
                             alt class="w-px-40 h-auto rounded-circle" /> --}}
                     </div>
@@ -42,11 +43,12 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ $settings['site_fav_icon'] ? asset($settings['site_fav_icon']) : asset('admin/default/img/favicon.png') }}"
-                                            alt class="w-px-40 h-auto rounded-circle" />
+                                        <img class="w-px-40 h-auto rounded-circle"
+                                            src="{{ $settings['site_fav_icon'] ? asset($settings['site_fav_icon']) : asset('admin/default/img/favicon.png') }}"
+                                            alt />
 
-                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                        <img class="w-px-40 h-auto rounded-circle"
+                                            src="{{ asset('assets/img/avatars/1.png') }}" alt />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">

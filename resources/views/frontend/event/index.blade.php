@@ -1,97 +1,100 @@
 @section('seo')
     @include('frontend.seo', [
-        'name' => $event_page->seo_title ?? '',
-        'title' => $event_page->seo_title ?? $event_page->title,
-        'description' => $event_page->meta_description ?? '',
-        'keyword' => $event_page->meta_keywords ?? '',
-        'schema' => $event_page->seo_schema ?? '',
-        'created_at' => $event_page->created_at,
-        'updated_at' => $event_page->updated_at,
-    ])
+    'name' => $event_page->seo_title ?? '',
+    'title' => $event_page->seo_title ?? $event_page->title,
+    'description' => $event_page->meta_description ?? '',
+    'keyword' => $event_page->meta_keywords ?? '',
+    'schema' => $event_page->seo_schema ?? '',
+    'created_at' => $event_page->created_at,
+    'updated_at' => $event_page->updated_at,
+])
 @endsection
 @extends('layouts.frontend.master')
 @section('content')
-    @if ($event_page)
-        <div class="hero-banner2 position-relative ">
-            <div class="row g-0 text-bannner-section">
-                <div class="col-md-6 d-flex justify-content-center align-items-center py-5">
-                    <div class="text-center page-banner-lft px-4">
-                        <h1 class="text-white font-weight-bold">{{ $event_page->title ?? 'About Us' }}</h1>
-                        <p class="breadcrumb-text text-white">
-                            <a href="{{ route('frontend.home') }}" class="text-white text-decoration-none">Home</a> /
-                            <a href="#"
-                                class="text-white text-decoration-none">{{ $event_page->title ?? 'About Us' }}</a>
-                        </p>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="img-container-banner">
-                        <div class="img-wrapper-2">
-                            <img src="{{ asset($event_page->banner_image) }}" alt="Creative Design" class="background-img">
-                        </div>
-                    </div>
-                </div>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-br from-dental-light to-white min-h-[400px] flex items-center" id="about-hero">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+                    {{ $event_page->title ?? 'Event' }}
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto" style="text-align: justify">
+                    {{ $event_page->short_description }}
+                </p>
             </div>
-        </div>
-    @endif
-    <div class="container py-5">
-        <!-- Events Grid -->
-        <div class="row g-4">
-            @foreach ($events as $event)
-                @php
-                    $eventDate = \Carbon\Carbon::parse($event->date);
-                    $today = now()->startOfDay();
-                    $isExpired = $eventDate->lt($today);
+        </section>
 
-                    $formattedDate = $eventDate->format('d M Y');
-                    $formattedTime = \Carbon\Carbon::parse($event->time)->format('h:i A');
-                @endphp
-                <div class="col-lg-12 col-md-6" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="row shadow">
-                        <div class="col-lg-6">
-                            <div class="card event-card h-100">
+        <div class="max-w-7xl mx-auto py-10 px-4">
+        <!-- Events Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach ($events as $event)
+                            @php
+                $eventDate = \Carbon\Carbon::parse($event->date);
+                $today = now()->startOfDay();
+                $isExpired = $eventDate->lt($today);
+
+                $formattedDate = $eventDate->format('d M Y');
+                $formattedTime = \Carbon\Carbon::parse($event->time)->format('h:i A');
+                            @endphp
+
+                            <div class="relative bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
+
                                 <!-- Status Badge -->
-                                <span class="badge status-badge {{ $isExpired ? 'badge-expired' : 'badge-upcoming' }}">
+                                {{-- <span
+                                    class="absolute top-4 right-4 z-10 px-3 py-1 text-xs font-semibold rounded-full
+                                    {{ $isExpired
+                                        ? 'bg-red-100 text-red-600'
+                                        : 'bg-green-100 text-green-600'
+                                    }}">
                                     {{ $isExpired ? 'Expired' : 'Upcoming' }}
-                                </span>
+                                </span> --}}
+
                                 <!-- Event Image -->
-                                <div class="event-image">
-                                    <img class="img-fluidevent" style="height: 280px" src="{{ asset($event->image) }}"
-                                        alt="{{ $event->name ?? '' }}">
+                                <div class="overflow-hidden">
+                                    <img
+                                        src="{{  $event->image }}"
+                                        alt="{{ $event->name ?? '' }}"
+                                        class="w-full h-[280px] object-cover transition duration-300 hover:scale-105"
+                                    />
                                 </div>
+
                                 <!-- Event Details -->
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="event-details">
-                                <h3 class="event-title">{{ $event->name ?? '' }}</h3>
-                                <p class="event-description">
-                                    {!! Str::words(strip_tags($event->description ?? ''), 18, '...') !!}
-                                </p>
-                                <div class="event-info">
-                                    <div class="info-item">
-                                        <i class="fas fa-calendar info-icon"></i>
-                                        <span><strong>{{ $formattedDate }}</strong></span>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                                        {{ $event->name ?? '' }}
+                                    </h3>
+
+                                    <p class="text-gray-600 text-sm mb-4">
+                                        {!! Str::words(strip_tags($event->description ?? ''), 18, '...') !!}
+                                    </p>
+
+                                    <!-- Event Info -->
+                                    <div class="space-y-3 text-sm text-gray-700 mb-6">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-calendar text-yellow-500"></i>
+                                            <span><strong>{{ $formattedDate }}</strong></span>
+                                        </div>
+
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-clock text-yellow-500"></i>
+                                            <span>{{ $formattedTime }} onwards</span>
+                                        </div>
+
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-map-marker-alt text-yellow-500"></i>
+                                            <span>{{ $event->location ?? '' }}</span>
+                                        </div>
                                     </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-clock info-icon"></i>
-                                        <span>{{ $formattedTime }} onwards</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-map-marker-alt info-icon"></i>
-                                        <span>{{ $event->location ?? '' }}</span>
-                                    </div>
+
+                                    <!-- Button -->
+                                    <a
+                                        href="{{ route('frontend.eventsingle', $event->slug) }}"
+                                        class="mt-auto inline-block text-center px-6 py-3 rounded-lg font-medium transition bg-dental-blue text-white ">
+                                        Learn More
+                                    </a>
                                 </div>
-                                <a class="btn btn-register btn-upcoming"
-                                    href="{{ route('frontend.eventsingle', $event->slug) }}">
-                                    Learn More
-                                </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
             @endforeach
         </div>
     </div>
+
 @endsection

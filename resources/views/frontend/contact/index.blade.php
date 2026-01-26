@@ -12,9 +12,16 @@
     ])
 @endsection
 @section('content')
+<<<<<<< HEAD
     <section id="contact-hero"
         class="bg-gradient-to-br from-dental-light to-white 
                        h-[280px] md:h-[400px] flex items-center">
+=======
+    <section
+        class="bg-gradient-to-br from-dental-light to-white
+                       h-[280px] md:h-[400px] flex items-center"
+        id="contact-hero">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
                 {{ $contact_page->title ?? 'Contact Us' }}
@@ -25,11 +32,19 @@
         </div>
     </section>
     <!-- Contact Information -->
+<<<<<<< HEAD
     <section id="contact-info" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
 
                 <div id="contact-phone" class="bg-dental-light rounded-xl p-8 text-center">
+=======
+    <section class="py-20 bg-white" id="contact-info">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+
+                <div class="bg-dental-light rounded-xl p-8 text-center" id="contact-phone">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                     <div class="bg-dental-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                         <i class="fa-solid fa-phone text-white text-2xl"></i>
                     </div>
@@ -39,7 +54,11 @@
                         <p class="text-gray-600">Saturday: 9:00 AM - 3:00 PM</p> --}}
                 </div>
 
+<<<<<<< HEAD
                 <div id="contact-email" class="bg-dental-light rounded-xl p-8 text-center">
+=======
+                <div class="bg-dental-light rounded-xl p-8 text-center" id="contact-email">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                     <div class="bg-dental-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                         <i class="fa-solid fa-envelope text-white text-2xl"></i>
                     </div>
@@ -49,7 +68,11 @@
                     {{-- <p class="text-gray-600">Emergency: emergency@smilecare.com</p> --}}
                 </div>
 
+<<<<<<< HEAD
                 <div id="contact-location" class="bg-dental-light rounded-xl p-8 text-center">
+=======
+                <div class="bg-dental-light rounded-xl p-8 text-center" id="contact-location">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                     <div class="bg-dental-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                         <i class="fa-solid fa-location-dot text-white text-2xl"></i>
                     </div>
@@ -61,24 +84,40 @@
         </div>
     </section>
     <!-- Contact Form & Map -->
+<<<<<<< HEAD
     <section id="contact-form-map" class="py-20 bg-gray-50">
+=======
+    <section class="py-20 bg-gray-50" id="contact-form-map">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
                 <!-- Contact Form -->
                 <div id="contact-form-container">
                     <h3 class="text-3xl font-bold text-gray-900 mb-8">{{ $settings['contactform_title'] }}</h3>
+<<<<<<< HEAD
                     <form action="{{ route('frontend.contact.submit') }}" method="POST" id="contact-form"
                         class="space-y-6">
+=======
+                    <form class="space-y-6" id="contact-form" action="{{ route('frontend.contact.submit') }}"
+                        method="POST">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                         @csrf
                         <div class="">
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Name *</label>
+<<<<<<< HEAD
                                 <input name="name" type="text"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+=======
+                                <input
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                    name="name" type="text">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                             </div>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
+<<<<<<< HEAD
                             <input name="email" type="email"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
                         </div>
@@ -102,6 +141,34 @@
 
                         <button type="submit"
                             class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+=======
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                name="email" type="email">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                name="phone" type="tel">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Subject *</label>
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                name="course" type="text">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message *</label>
+                            <textarea
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                name="message" rows="5" placeholder="Please describe your inquiry or tell us how we can help you..."></textarea>
+                        </div>
+                        <div class="g-recaptcha py-2" data-sitekey="6LfAyUcsAAAAAFAEUPm94HDa0Y13NTlbdB06w_mU"></div>
+                        <button
+                            class="w-full bg-dental-blue text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
+                            type="submit">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                             Send Message
                         </button>
                     </form>
@@ -110,7 +177,11 @@
                 <div id="map-directions">
                     <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">Find Us</h3>
                     <div class="bg-gray-300 rounded-xl h-64 md:h-80 mb-8 flex items-center justify-center overflow-hidden">
+<<<<<<< HEAD
                         <iframe src="{{ $settings['contact_map'] }}" class="w-full h-full border-0" allowfullscreen
+=======
+                        <iframe class="w-full h-full border-0" src="{{ $settings['contact_map'] }}" allowfullscreen
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
@@ -119,7 +190,11 @@
         </div>
     </section>
     <!-- FAQ Section -->
+<<<<<<< HEAD
     <section id="faq" class="py-20 bg-gray-50">
+=======
+    <section class="py-20 bg-gray-50" id="faq">
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ $faq_page->title }}</h3>
@@ -130,12 +205,17 @@
                 @foreach ($faqs as $faq)
                     <div class="bg-white rounded-lg p-6">
                         <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">{{ $faq->question }}</h3>
+<<<<<<< HEAD
                         <p class="text-base md:text-xl text-gray-600">{{ $faq->answer }}</p>
+=======
+                        <p class="text-base text-gray-600">{{ $faq->answer }}</p>
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
+<<<<<<< HEAD
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptcha.site_key') }}"></script>
     <script>
         document.getElementById('contact-form').addEventListener('submit', function (e) {
@@ -152,4 +232,7 @@
         });
     </script>
     
+=======
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+>>>>>>> 85780ec6388be0899a3070f6fc2042e215f935bf
 @endsection

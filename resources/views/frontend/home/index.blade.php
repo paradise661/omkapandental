@@ -10,8 +10,40 @@
 @endsection
 @extends('layouts.frontend.master')
 @section('content')
+    <!-- Include Alpine.js if not already -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- Popup Modal with Title on Top -->
+    @if ($popup)
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6" x-data="{ open: true }"
+            x-show="open" x-cloak x-transition.opacity>
+
+            <!-- Modal Container -->
+            <div class="relative bg-white rounded-2xl shadow-2xl max-w-full max-h-full" @click.away="open = false"
+                style="width: auto; height: auto;">
+
+                <!-- Close Button -->
+                <button class="absolute top-3 right-3 text-white text-gray-700 hover:text-gray-900 text-3xl font-bold z-50"
+                    @click="open = false">
+                    &times;
+                </button>
+
+                <!-- Title on Top -->
+                {{-- @if ($popup->title)
+                    <div class="absolute top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-black/60 rounded-lg z-50">
+                        <h3 class="text-white text-xl sm:text-2xl font-bold">{{ $popup->title }}</h3>
+                    </div>
+                @endif --}}
+
+                <!-- Image with natural aspect ratio -->
+                <img class="block max-w-full max-h-[90vh] w-auto h-auto mx-auto object-contain"
+                    src="{{ $popup->image ?? '' }}" alt="Popup Image">
+            </div>
+        </div>
+    @endif
+
     <!-- Hero Section -->
-    <section id="hero" class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center">
+    <section class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center" id="hero">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="text-center lg:text-left">
                 <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
@@ -42,9 +74,8 @@
         </div>
     </section>
 
-
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section class="py-20 bg-white" id="about">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['aboutus_title'] }}</h3>
@@ -60,7 +91,8 @@
                         {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
                         <img src="{{ $settings['home_counter_students_img'] }}">
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title'] }}</h4>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title'] }}
+                    </h4>
                     <p class="text-gray-600">{{ $settings['home_counter_students'] }}</p>
                 </div>
                 <div class="text-center">
@@ -88,32 +120,56 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-50">
+    <section class="py-20 bg-gray-50" id="services">
         <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
             <div class="text-center mb-16">
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['services_title'] }}</h3>
                 <p class="text-xl text-gray-600">{{ $settings['services_description'] }}</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($services as $service)
-                      <a href="{{ route('frontend.service') }}" class=" stretched-card-link">
-                    <div id="service-1" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                        <div class="bg-dental-light rounded-lg w-16 h-16 flex items-center justify-center mb-6">
-                            <img src="{{ $service->image }}">
+                    <div
+                        class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
+
+                        <!-- Top Image -->
+                        <div class="overflow-hidden">
+                            <img class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                                src="{{ $service->image }}" alt="{{ $service->title ?? '' }}">
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-4">{{ $service->title }}</h4>
-                        <p class="line-clamp-5 text-gray-600 mb-4">{{ $service->short_description }}</p>
+
+                        <!-- Card Content -->
+                        <div class="p-6 flex flex-col flex-grow">
+                            <!-- Title -->
+                            <h4 class="text-2xl font-bold text-gray-900 mb-3">{{ $service->title ?? '' }}</h4>
+
+                            <!-- Short Description -->
+                            <p class="text-gray-600 mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
+
+                            <!-- Full Width Button -->
+                            <a class="w-full text-center bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 rounded-lg transition"
+                                href="{{ route('frontend.servicesingle', $service->slug) }}">
+                                View Details
+                            </a>
+                        </div>
                     </div>
-                    </a>
                 @endforeach
+            </div>
+
+            <!-- View All Services Button -->
+            <div class="mt-12 text-center">
+                <a class="inline-block bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 px-8 rounded-lg transition text-lg"
+                    href="{{ route('frontend.service') }}">
+                    View All Services
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Doctors Section -->
-    <section id="doctors" class="py-20 bg-white">
+    <section class="py-20 bg-white" id="doctors">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title'] }}</h3>
@@ -122,19 +178,19 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 @foreach ($teams as $item)
-                    <div id="doctor-1" class="text-center">
+                    <div class="text-center" id="doctor-1">
                         <div class="mb-6">
-                            <img src="{{ asset($item->image) }}" alt="{{ $item->title }}"
-                                class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg">
+                            <img class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg"
+                                src="{{ asset($item->image) }}" alt="{{ $item->title }}">
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $item->title }}</h4>
-                        <p class="text-dental-blue font-medium mb-3">{{ $item->position }}</p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $item->name ?? '' }}</h4>
+                        <p class="text-dental-blue font-medium mb-3">{{ $item->position ?? '' }}</p>
                         <div class="text-gray-600 mb-4">{!! $item->description !!}</div>
                         <div class="flex justify-center space-x-3">
                             <span
-                                class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->email }}</span>
+                                class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->email ?? '' }}</span>
                             <span
-                                class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->whatsapp }}</span>
+                                class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->whatsapp ?? '' }}</span>
                         </div>
                     </div>
                 @endforeach
@@ -149,23 +205,21 @@
                 <p class="text-xl text-gray-600">{{ $settings['blogs_description'] }}</p>
             </div>
 
-
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Blog Card -->
-               @foreach ($blogs as $item)
+                @foreach ($blogs as $item)
                     <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
-                        <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link">
+                        <a class=" stretched-card-link" href="{{ route('frontend.blogsingle', $item->slug) }}">
                             <div class="overflow-hidden">
-                                <img src="{{ $item->image }}"
-                                    class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
-                                    alt="Blog image">
+                                <img class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                                    src="{{ $item->image }}" alt="Blog image">
                             </div>
                             <div class="p-6">
 
-                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
-                                    class="inline-block text-justify text-sm font-semibold text-white
-                bg-[#D5277B] px-3 py-1 rounded-full">
+                                <a class="inline-block text-justify text-sm font-semibold text-white
+                bg-[#D5277B] px-3 py-1 rounded-full"
+                                    href="{{ route('frontend.blogsingle', $item->slug) }}">
                                     {{ $item->short_description }}
                                 </a>
 
@@ -182,7 +236,7 @@
             </div>
         </div>
     </section>
-    <section id="reviews" class=" bg-white">
+    <section class=" bg-white" id="reviews">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-16">
                 <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] }}</h3>
@@ -195,15 +249,14 @@
                     <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200">
                         <!-- Header -->
                         <div class="flex items-center gap-4 mb-4">
-                            <img src="{{$item->image}}" class="w-14 h-14 rounded-full object-cover"
-                                alt="Reviewer">
+                            <img class="w-14 h-14 rounded-full object-cover" src="{{ $item->image }}" alt="Reviewer">
 
                             <div>
                                 <h4 class="font-bold text-gray-900 uppercase text-sm">
-                                   {{$item->name}}
+                                    {{ $item->name }}
                                 </h4>
                                 <p class="text-xs text-gray-500 uppercase tracking-wide">
-                                   {{$item->position}}
+                                    {{ $item->position }}
                                 </p>
                             </div>
                         </div>
@@ -219,7 +272,7 @@
 
                         <!-- Review Text -->
                         <div class="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-4">
-                           {!!$item->description!!}
+                            {!! $item->description !!}
                         </div>
                     </div>
                 @endforeach
@@ -227,9 +280,8 @@
         </div>
     </section>
 
-
     <!-- Contact & Inquiry Form -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section class="py-20 bg-gray-50" id="contact">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -280,38 +332,41 @@
                     </div>
                 </div>
 
-                <div id="inquiry-form" class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="bg-white rounded-2xl p-8 shadow-xl" id="inquiry-form">
                     <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $settings['contactform_title'] }}</h4>
-                    <form action="{{ route('frontend.contact.submit') }}" method="POST" enctype="multipart/form-data"
-                        class="space-y-6">
+                    <form class="space-y-6" action="{{ route('frontend.contact.submit') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name</label>
-                            <input name="name" id="name" placeholder=" " type="text"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
-                        </div>
-
-
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email"type="email" name="email" id="email"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="name"> Name</label>
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                id="name" name="name" placeholder=" " type="text">
                         </div>
 
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                            <input type="tel" name="phone" id="phone"
-                                class="w-full text-sm sm:text-base px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="email">Email</label>
+                            <input
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
+                                id="email" type="email"type="email" name="email">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="phone">Phone</label>
+                            <input
+                                class="w-full text-sm sm:text-base px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue"
+                                id="phone" type="tel" name="phone">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="description" name="message" rows="4"
+                            <textarea
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
-                                placeholder="Tell us about your dental needs..."></textarea>
+                                id="description" name="message" rows="4" placeholder="Tell us about your dental needs..."></textarea>
                         </div>
 
-                        <button type="submit"
-                            class="w-full bg-dental-blue text-white py-3 rounded-lg font-semibold hover:bg-[#2fa3c6] transition">
+                        <button
+                            class="w-full bg-dental-blue text-white py-3 rounded-lg font-semibold hover:bg-[#2fa3c6] transition"
+                            type="submit">
                             Schedule Appointment
                         </button>
                     </form>
