@@ -19,3 +19,12 @@
     -webkit-line-clamp: 5;
     line-clamp: 5;
 }
+.footer-social {
+    background-color: #742a78 !important;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social:hover {
+    background-color: #D5277B !important;
+    /* transform: translateY(-3px); */
+}

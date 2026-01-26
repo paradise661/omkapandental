@@ -19,13 +19,13 @@
                 </p>
 
                 <div class="flex justify-center sm:justify-start space-x-4">
-                    <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-dental-blue transition">
+                    <a href="#" class="footer-social w-10 h-10 rounded-full flex items-center justify-center ">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-dental-blue transition">
+                    <a href="#" class="footer-social w-10 h-10 rounded-full flex items-center justify-center ">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-dental-blue transition">
+                    <a href="#" class="footer-social w-10 h-10 rounded-full flex items-center justify-center ">
                         <i class="fa-brands fa-twitter"></i>
                     </a>
                 </div>
