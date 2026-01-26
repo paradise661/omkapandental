@@ -24,20 +24,20 @@ use App\Models\University;
 use App\Models\Application;
 use App\Models\Testimonial;
 use App\Models\WhyChooseUs;
-use Illuminate\Http\Request;
 use App\Models\DocumentImage;
 use App\Models\ContactInquiry;
 use App\Models\CountryLocation;
 use App\Models\Popup;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Http;
 
 class FrontendController extends Controller
 {
     //
     public function home()
     {
-        $sliders = Slider::where('status', 1)->oldest("order")->first();
+        $sliders = Slider::where('status', 1)->oldest("order")->get();
         $about_us = Page::where('status', 1)->where('slug', 'about-us')->first();
         $why_choose_us = WhyChooseUs::where('status', 1)->first();
         $teams = Team::where('status', 1)->oldest("order")->get();
@@ -231,43 +231,61 @@ class FrontendController extends Controller
     }
     public function contact_submite(Request $request)
     {
-        $input = $request->all();
-        $rules = [
-            'name' => 'required|min:3',
-            'email' => 'required|email',
-            'phone' => 'required|min:10',
+        // 1️⃣ Validate form fields (NO captcha rule for v3)
+        $validator = Validator::make($request->all(), [
+            'name'    => 'required|min:3',
+            'email'   => 'required|email',
+            'phone'   => 'required|min:10',
             'message' => 'required',
-            'g-recaptcha-response' => 'required'
-        ];
-        $validator = Validator::make($input, $rules);
+        ]);
+    
         if ($validator->fails()) {
             return redirect()->back()
                 ->withInput()
                 ->withErrors($validator);
         }
     
-        // Verify reCAPTCHA
-        $response = Http::asForm()->post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            [
-                'secret' => config('recaptcha.secret_key'),
-                'response' => $request->input('g-recaptcha-response'),
-                'remoteip' => $request->ip(),
-            ]
-        );
+        // 2️⃣ Verify reCAPTCHA v3 (skip on localhost if you want)
+        if (!app()->environment('local')) {
     
-        if (!($response->json()['success'] ?? false)) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['captcha' => 'reCAPTCHA verification failed. Please try again.']);
+            /** @var \Illuminate\Http\Client\Response $response */
+            $response = Http::asForm()->post(
+                'https://www.google.com/recaptcha/api/siteverify',
+                [
+                    'secret'   => config('recaptcha.secret_key'),
+                    'response' => $request->input('g-recaptcha-response'),
+                    'remoteip' => $request->ip(),
+                ]
+            );
+    
+            $data = $response->json();
+    
+            $success = $data['success'] ?? false;
+            $score   = $data['score'] ?? 0;
+            $action  = $data['action'] ?? null;
+    
+            if (!$success || $score < 0.5 || $action !== 'contact') {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors([
+                        'captcha' => 'reCAPTCHA verification failed. Please try again.'
+                    ]);
+            }
         }
     
-        // Save inquiry
-        ContactInquiry::create($input);
+        // 3️⃣ Save inquiry (safe fields only)
+        ContactInquiry::create([
+            'name'    => $request->name,
+            'email'   => $request->email,
+            'phone'   => $request->phone,
+            'message' => $request->message,
+        ]);
     
+        // 4️⃣ Success response
         return redirect()->back()
             ->with('success', 'Your message has been submitted successfully.');
     }
+    
     public function contact_submite_home(Request $request)
     {
         //
@@ -293,9 +311,7 @@ class FrontendController extends Controller
     {
         $input = $request->all();
         // dd($input);
-
         $rules = [
-
             // Step 1: Personal Information
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
