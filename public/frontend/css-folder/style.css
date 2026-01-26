@@ -21,7 +21,6 @@
     -webkit-line-clamp: 5;
     line-clamp: 5;
 }
-<<<<<<< HEAD
 .footer-social {
     background-color: #742a78 !important;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -31,11 +30,9 @@
     background-color: #D5277B !important;
     /* transform: translateY(-3px); */
 }
-=======
 
 .message-from-ceo p {
     color: gray;
     text-align: justify;
-    
+
 }
->>>>>>> 102b29e68c8d096205b126b253d05da469869f5b
