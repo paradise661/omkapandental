@@ -125,23 +125,53 @@
         </div>
     </section>
     <!-- FAQ Section -->
-    <section class="py-20 bg-gray-50" id="faq">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ $faq_page->title }}</h3>
-                <p class="text-xl text-gray-600">{{ $faq_page->short_description }}</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {{-- <div id="faq-left" class="space-y-6"> --}}
-                @foreach ($faqs as $faq)
-                    <div class="bg-white rounded-lg p-6">
-                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">{{ $faq->question }}</h3>
-                        <p class="text-base text-gray-600">{{ $faq->answer }}</p>
-                    </div>
-                @endforeach
-            </div>
+   <section class="py-20 bg-gray-50" id="faq">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">
+                {{ $faq_page->title }}
+            </h3>
+            <p class="text-xl text-gray-600">
+                {{ $faq_page->short_description }}
+            </p>
         </div>
-    </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            @foreach ($faqs as $faq)
+                <div x-data="{ open: false }" class="bg-white rounded-lg p-6">
+
+                    <button
+                        @click="open = !open"
+                        class="w-full text-left flex justify-between items-center"
+                    >
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-900">
+                            {{ $faq->question }}
+                        </h3>
+
+                        <span
+                            class="text-2xl transition-transform duration-300"
+                            :class="open ? 'rotate-45' : ''"
+                        >
+                            +
+                        </span>
+                    </button>
+
+                    <div
+                        x-show="open"
+                        x-collapse
+                        class="mt-4 text-gray-600 text-base"
+                    >
+                        {{ $faq->answer }}
+                    </div>
+
+                </div>
+            @endforeach
+        </div>
+
+    </div>
+</section>
+
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptcha.site_key') }}"></script>
 
 @endsection
