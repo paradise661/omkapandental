@@ -43,36 +43,61 @@
     @endif
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center" id="hero">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="text-center lg:text-left">
-                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
-                    {{ $sliders->title }}
-                </h2>
-                <p class="text-lg lg:text-xl text-gray-600 mb-8">
-                    {{ $sliders->short_description }}
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="{{ route('frontend.appointment') }}">
-                        <button
-                            class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
-                            Schedule Consultation
-                        </button>
-                    </a>
-                    <a href="{{ route('frontend.contact') }}">
-                        <button
-                            class="border-2 border-dental-blue text-dental-blue px-8 py-3 rounded-lg text-lg font-semibold hover:bg-dental-blue hover:text-white transition">
-                            Learn More
-                        </button>
-                    </a>
+   <section class="bg-gradient-to-br from-dental-light to-white min-h-[600px] flex items-center" id="hero"
+    x-data="{ active: 0, total: {{ count($sliders) }}, next() { this.active = (this.active + 1) % this.total }, prev() { this.active = (this.active - 1 + this.total) % this.total } }"
+    x-init="setInterval(() => next(), 6000)">
+
+    <div class="relative w-full h-[600px] overflow-hidden">
+        @foreach ($sliders as $index => $slider)
+            <div x-show="active === {{ $index }}" x-transition.opacity.duration.700ms x-cloak
+                class="relative w-full h-full">
+
+                <!-- Responsive container for huge screens -->
+                <div class="mx-auto h-full flex items-center grid grid-cols-1 lg:grid-cols-2 gap-12
+                            px-4 sm:px-6 lg:px-8 2xl:max-w-[1600px]">
+
+                    <!-- Text -->
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight mt-6">
+                            {{ $slider->title }}
+                        </h2>
+                        <p class="text-lg lg:text-xl text-gray-600 mb-8">
+                            {{ $slider->short_description }}
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="{{ route('frontend.appointment') }}">
+                                <button class="bg-dental-blue text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#2fa3c6] transition">
+                                    Schedule Consultation
+                                </button>
+                            </a>
+                            <a href="{{ route('frontend.contact') }}">
+                                <button class="border-2 border-dental-blue text-dental-blue px-8 py-3 rounded-lg text-lg font-semibold hover:bg-dental-blue hover:text-white transition">
+                                    Learn More
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="h-72 sm:h-96 overflow-hidden rounded-2xl">
+                        <img class="w-full h-full object-cover" src="{{ $slider->image }}">
+                    </div>
+
                 </div>
             </div>
+        @endforeach
 
-            <div class="h-72 sm:h-96 overflow-hidden rounded-2xl">
-                <img class="w-full h-full object-cover" src="{{ $sliders->image }}">
-            </div>
+        <!-- Optional dots -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2 mt-6">
+            @foreach ($sliders as $index => $slider)
+                <button @click="active = {{ $index }}" class="w-3 h-3 rounded-full"
+                    :class="active === {{ $index }} ? 'bg-dental-blue' : 'bg-gray-300'"></button>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <!-- About Section -->
     <section class="py-20 bg-white" id="about">

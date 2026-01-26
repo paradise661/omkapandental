@@ -37,7 +37,7 @@ class FrontendController extends Controller
     //
     public function home()
     {
-        $sliders = Slider::where('status', 1)->oldest("order")->first();
+        $sliders = Slider::where('status', 1)->oldest("order")->get();
         $about_us = Page::where('status', 1)->where('slug', 'about-us')->first();
         $why_choose_us = WhyChooseUs::where('status', 1)->first();
         $teams = Team::where('status', 1)->oldest("order")->get();
@@ -241,16 +241,16 @@ class FrontendController extends Controller
             'phone'   => 'required|min:10',
             'message' => 'required',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withInput()
                 ->withErrors($validator);
         }
-    
+
         // 2️⃣ Verify reCAPTCHA v3 (skip on localhost if you want)
         if (!app()->environment('local')) {
-    
+
             /** @var \Illuminate\Http\Client\Response $response */
             $response = Http::asForm()->post(
                 'https://www.google.com/recaptcha/api/siteverify',
@@ -260,13 +260,13 @@ class FrontendController extends Controller
                     'remoteip' => $request->ip(),
                 ]
             );
-    
+
             $data = $response->json();
-    
+
             $success = $data['success'] ?? false;
             $score   = $data['score'] ?? 0;
             $action  = $data['action'] ?? null;
-    
+
             if (!$success || $score < 0.5 || $action !== 'contact') {
                 return redirect()->back()
                     ->withInput()
@@ -275,7 +275,7 @@ class FrontendController extends Controller
                     ]);
             }
         }
-    
+
         // 3️⃣ Save inquiry (safe fields only)
         ContactInquiry::create([
             'name'    => $request->name,
@@ -283,13 +283,13 @@ class FrontendController extends Controller
             'phone'   => $request->phone,
             'message' => $request->message,
         ]);
-    
+
         // 4️⃣ Success response
         return redirect()->back()
             ->with('success', 'Your message has been submitted successfully.');
     }
-    
-    
+
+
     public function contact_submite_home(Request $request)
     {
         //
