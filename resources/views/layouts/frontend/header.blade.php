@@ -42,15 +42,15 @@
                         Message from CEO
                     </a>
                     <a class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white"
-                        href="{{ route('frontend.gallery') }}">
-                        Gallery
+                        href="{{ route('frontend.team') }}">
+                        Doctors
                     </a>
                 </div>
             </div>
 
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.service') }}">Services</a>
-            <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.team') }}">Doctors</a>
+            <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.gallery') }}">Gallery</a>
             <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.blog') }}">Blog</a>
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.testimonial') }}">Review</a>
