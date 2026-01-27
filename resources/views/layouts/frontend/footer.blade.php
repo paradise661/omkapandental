@@ -65,7 +65,7 @@
         <p><i class="fa-solid fa-location-dot mr-2"></i>{{ $settings['contact_location'] ?? 'location' }}</p>
 
         <!-- Opening Hours -->
-        <p><i class="fa-solid fa-clock mr-2"></i>{{ $settings['opening_hours'] }}</p>
+        <p><i class="fa-solid fa-clock mr-2"></i>{{ $settings['opening_hours'] ?? ' ' }}</p>
         {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sat: 9AM-3PM</p> --}}
         {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sun: Closed</p> --}}
     </div>

@@ -329,7 +329,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900">Hours</h4>
-                                <p class="text-gray-600">{{ $settings['opening_hours'] }}</p>
+                                <p class="text-gray-600">{{ $settings['opening_hours'] ?? ' ' }}</p>
                             </div>
                         </div>
                     </div>
