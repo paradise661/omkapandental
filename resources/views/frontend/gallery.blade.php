@@ -16,10 +16,10 @@
             <section id="about-hero" class="bg-gradient-to-br from-dental-light to-white min-h-[400px] flex items-center">
                 <div class="max-w-7xl mx-auto px-6 text-center">
                     <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                   {{ $gallery_page->title ?? 'About Us' }}
+                   {{ $gallery_page->title ?? 'gallery' }}
                 </h2>
                 <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                    {{ $gallery_page->short_description }}
+                    {{ $gallery_page->short_description ?? '' }}
                 </p>
                 </div>
             </section>

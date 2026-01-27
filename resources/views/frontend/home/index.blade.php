@@ -81,9 +81,9 @@
     <section class="py-20 bg-white" id="about">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['aboutus_title'] }}</h3>
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['aboutus_title'] ?? '' }}</h3>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    {{ $settings['aboutus_description'] }}
+                    {{ $settings['aboutus_description'] ?? '' }}
                 </p>
             </div>
 
@@ -92,31 +92,31 @@
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_students_img'] }}">
+                        <img src="{{ $settings['home_counter_students_img'] ?? ''}}">
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title'] }}
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title']  ?? ''}}
                     </h4>
-                    <p class="text-gray-600">{{ $settings['home_counter_students'] }}</p>
+                    <p class="text-gray-600">{{ $settings['home_counter_students'] ?? '' }}</p>
                 </div>
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-users text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_scholarship_img'] }}">
+                        <img src="{{ $settings['home_counter_scholarship_img'] ?? ''}}">
 
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_scholarship_title'] }}
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_scholarship_title']?? '' }}
                     </h4>
-                    <p class="text-gray-600">{{ $settings['home_counter_scholarship'] }}</p>
+                    <p class="text-gray-600">{{ $settings['home_counter_scholarship']?? '' }}</p>
                 </div>
                 <div class="text-center">
                     <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         {{-- <i class="fa-solid fa-microscope text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_enrolled_img'] }}">
+                        <img src="{{ $settings['home_counter_enrolled_img'] ?? ' ' }}">
 
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_enrolled_title'] }}
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_enrolled_title']?? '' }}
                     </h4>
-                    <p class="text-gray-600">{{ $settings['home_counter_enrolled'] }}</p>
+                    <p class="text-gray-600">{{ $settings['home_counter_enrolled']?? '' }}</p>
                 </div>
             </div>
         </div>
@@ -127,8 +127,8 @@
         <div class="max-w-7xl mx-auto px-6">
             <!-- Section Header -->
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['services_title'] }}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['services_description'] }}</p>
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['services_title']?? '' }}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['services_description']?? '' }}</p>
             </div>
 
             <!-- Services Grid -->
@@ -175,8 +175,8 @@
     <section class="py-20 bg-white" id="doctors">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title'] }}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['teams_description'] }}</p>
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title']?? '' }}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['teams_description']?? '' }}</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -204,8 +204,8 @@
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['blogs_title'] }}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['blogs_description'] }}</p>
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['blogs_title'] ?? ''}}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['blogs_description']?? '' }}</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -242,8 +242,8 @@
     <section class=" bg-white" id="reviews">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] }}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['testioninal_description'] }}</p>
+                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] ?? ''}}</h3>
+                <p class="text-xl text-gray-600">{{ $settings['testioninal_description']?? '' }}</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
@@ -289,8 +289,8 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                 <div>
-                    <h3 class="text-4xl font-bold text-gray-900 mb-6">{{ $settings['contact_section_title'] }}</h3>
-                    <p class="text-xl text-gray-600 mb-8">{{ $settings['contact_description'] }}</p>
+                    <h3 class="text-4xl font-bold text-gray-900 mb-6">{{ $settings['contact_section_title']?? '' }}</h3>
+                    <p class="text-xl text-gray-600 mb-8">{{ $settings['contact_description'] ?? ''}}</p>
 
                     <div class="space-y-6">
                         <div class="flex items-center space-x-4">
@@ -299,7 +299,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900">Phone</h4>
-                                <p class="text-gray-600">{{ $settings['contact_phone'] }}</p>
+                                <p class="text-gray-600">{{ $settings['contact_phone'] ?? ''}}</p>
                             </div>
                         </div>
 
@@ -309,7 +309,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900">Email</h4>
-                                <p class="text-gray-600">{{ $settings['contact_email'] }}</p>
+                                <p class="text-gray-600">{{ $settings['contact_email'] ?? ''}}</p>
                             </div>
                         </div>
 
@@ -319,7 +319,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900">Address</h4>
-                                <p class="text-gray-600">{{ $settings['contact_location'] }}</p>
+                                <p class="text-gray-600">{{ $settings['contact_location'] ?? ' '}}</p>
                             </div>
                         </div>
 
@@ -336,7 +336,7 @@
                 </div>
 
                 <div class="bg-white rounded-2xl p-8 shadow-xl" id="inquiry-form">
-                    <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $settings['contactform_title'] }}</h4>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $settings['contactform_title'] ?? ' ' }}</h4>
                     <form class="space-y-6" action="{{ route('frontend.contact.submit') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
