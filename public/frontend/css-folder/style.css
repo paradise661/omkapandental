@@ -39,3 +39,59 @@
 [x-cloak] {
     display: none !important;
 }
+
+/* Banner responsive heights */
+.banner {
+    width: 100% !important;
+    height: 450px !important;
+    overflow: hidden;
+}
+
+/* Small tablets */
+@media (min-width: 640px) {
+    .banner {
+        height: 420px !important;
+    }
+}
+
+/* Medium screens / large tablets */
+@media (min-width: 768px) {
+    .banner {
+        height: 520px !important;
+    }
+}
+
+/* Laptops */
+@media (min-width: 1024px) {
+    .banner {
+        height: 600px !important;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+    .banner {
+        height: 700px !important;
+    }
+}
+
+/* Large desktop / ultrawide */
+@media (min-width: 1920px) {
+    .banner {
+        height: 900px !important;
+    }
+}
+
+/* Ultra ultrawide (2720px+) */
+@media (min-width: 2720px) {
+    .banner {
+        height: 1100px !important;
+    }
+}
+
+/* Ensure images always fill container */
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
