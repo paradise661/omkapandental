@@ -21,24 +21,28 @@
             <div class="relative" @mouseenter="aboutOpenDesktop = true" @mouseleave="aboutOpenDesktop = false">
 
                 <!-- About Link (clickable) -->
-                <a href="{{ route('frontend.about') }}"
-                    class="text-gray-700 hover:text-dental-blue font-medium flex items-center space-x-1 cursor-pointer">
+                <a class="text-gray-700 hover:text-dental-blue font-medium flex items-center space-x-1 cursor-pointer"
+                    href="{{ route('frontend.about') }}">
                     <span>About</span>
 
                     <!-- Only one icon visible at a time -->
-                    <i x-show="!aboutOpenDesktop" x-cloak class="fa-solid fa-chevron-down text-sm"></i>
-                    <i x-show="aboutOpenDesktop" x-cloak class="fa-solid fa-chevron-up text-sm"></i>
+                    <i class="fa-solid fa-chevron-down text-sm" x-show="!aboutOpenDesktop" x-cloak></i>
+                    <i class="fa-solid fa-chevron-up text-sm" x-show="aboutOpenDesktop" x-cloak></i>
 
                 </a>
                 <!-- Dropdown menu -->
-                <div x-show="aboutOpenDesktop" x-transition.opacity.duration.300ms x-cloak
-                    class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                    <a href="{{ route('frontend.messagefromfounder') }}"
-                        class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white">
+                <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+                    x-show="aboutOpenDesktop" x-transition.opacity.duration.300ms x-cloak>
+                    <a class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white"
+                        href="{{ route('frontend.about') }}">
+                        About Us
+                    </a>
+                    <a class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white"
+                        href="{{ route('frontend.messagefromfounder') }}">
                         Message from CEO
                     </a>
-                    <a href="{{ route('frontend.gallery') }}"
-                        class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white">
+                    <a class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white"
+                        href="{{ route('frontend.gallery') }}">
                         Gallery
                     </a>
                 </div>
@@ -76,7 +80,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div x-show="mobileMenuOpen" x-transition class="lg:hidden bg-white border-t">
+    <div class="lg:hidden bg-white border-t" x-show="mobileMenuOpen" x-transition>
         <nav class="flex flex-col space-y-4 px-6 py-4">
 
             <a class="text-gray-700 hover:text-dental-blue font-medium" href="/">Home</a>
@@ -84,20 +88,20 @@
             <!-- About Dropdown Mobile -->
             <div class="relative">
                 <div class="flex justify-between items-center">
-                    <a href="{{ route('frontend.about') }}" class="text-gray-700 hover:text-dental-blue font-medium">
+                    <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.about') }}">
                         About
                     </a>
-                    <button @click="aboutOpenMobile = !aboutOpenMobile" class="text-gray-700">
+                    <button class="text-gray-700" @click="aboutOpenMobile = !aboutOpenMobile">
                         <i :class="aboutOpenMobile ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
                     </button>
                 </div>
 
-                <div x-show="aboutOpenMobile" x-transition class="mt-2 flex flex-col space-y-1 pl-4">
-                    <a href="{{ route('frontend.messagefromfounder') }}"
-                        class="text-gray-700 hover:text-dental-blue font-medium">
+                <div class="mt-2 flex flex-col space-y-1 pl-4" x-show="aboutOpenMobile" x-transition>
+                    <a class="text-gray-700 hover:text-dental-blue font-medium"
+                        href="{{ route('frontend.messagefromfounder') }}">
                         Message from CEO
                     </a>
-                    <a href="{{ route('frontend.gallery') }}" class="text-gray-700 hover:text-dental-blue font-medium">
+                    <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.gallery') }}">
                         Gallery
                     </a>
                 </div>
