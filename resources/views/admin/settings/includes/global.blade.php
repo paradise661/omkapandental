@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-  
+
         <div class="col-md-12">
             <div class="form-group mb-3">
                 <label for="site_information">Site Information</label>
@@ -86,7 +86,15 @@
                     class="form-control br-8" placeholder="Enter Location">
             </div>
         </div>
-       
+       <div class="col-md-6">
+    <div class="form-group mb-3">
+        <label for="opening_hours">Opening Hours</label>
+        <input type="text" name="opening_hours"
+               value="{{ $settings['opening_hours'] ?? '' }}"
+               class="form-control br-8"
+               placeholder=" Sat: 10 AM - 4 PM">
+    </div>
+</div>
         <div class="col-md-12">
             <div class="form-group mb-3">
                 <label for="site_location_url">Map</label>

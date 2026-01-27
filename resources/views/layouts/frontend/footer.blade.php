@@ -56,14 +56,21 @@
             </div>
 
             <!-- Contact Info -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                <div class="space-y-3">
-                    <p><i class="fa-solid fa-phone mr-2"></i>{{ $settings['contact_phone'] ?? '(555) 123-4567' }}</p>
-                    <p><i class="fa-solid fa-envelope mr-2"></i>{{ $settings['contact_email'] ?? 'email' }}</p>
-                    <p><i class="fa-solid fa-location-dot mr-2"></i>{{ $settings['contact_location'] ?? 'location' }}</p>
-                </div>
-            </div>
+           <!-- Contact Info -->
+<div>
+    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+    <div class="space-y-3">
+        <p><i class="fa-solid fa-phone mr-2"></i>{{ $settings['contact_phone'] ?? '(555) 123-4567' }}</p>
+        <p><i class="fa-solid fa-envelope mr-2"></i>{{ $settings['contact_email'] ?? 'email' }}</p>
+        <p><i class="fa-solid fa-location-dot mr-2"></i>{{ $settings['contact_location'] ?? 'location' }}</p>
+
+        <!-- Opening Hours -->
+        <p><i class="fa-solid fa-clock mr-2"></i>{{ $settings['opening_hours'] }}</p>
+        {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sat: 9AM-3PM</p> --}}
+        {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sun: Closed</p> --}}
+    </div>
+</div>
+
         </div>
 
         <!-- Bottom -->
