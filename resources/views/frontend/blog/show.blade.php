@@ -16,7 +16,7 @@
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $blogsingle->title ?? 'Page Title' }}</h2>
                 <div class="text-xl text-gray-600 max-w-3xl mx-auto">
-                     {{ $blogsingle->short_description ?? 'Page Title' }} </div>
+                    {{ $blogsingle->short_description ?? 'Page Title' }} </div>
             </div>
         </section>
     @endif
@@ -38,23 +38,34 @@
                 </div>
 
                 <!-- Sidebar -->
-                <div class="lg:w-1/3">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Popular Blogs</h3>
+                <div class=" lg:w-1/3">
+                    <div class=" sticky top-24 space-y-4">
 
-                        <!-- Blog Card -->
-                        @foreach ($blogs as $item)
-                            <div class="space-y-4">
-                                <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link"></a>
-                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
-                                    class="flex gap-4 items-center group hover:bg-gray-100 p-2 rounded transition">
-                                    <img src="{{ $item->image }}" alt="" class="w-16 h-16 object-cover rounded">
-                                    <h4 class="text-gray-800 font-medium group-hover:text-blue-600">{{ $item->title }}
-                                    </h4>
-                                </a>
-                            </div>
-                        @endforeach
 
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-6">Popular Blogs</h3>
+
+                            <!-- Blog Card -->
+                            @foreach ($blogs as $item)
+                                <div class=" space-y-4">
+                                    <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+                                        class=" stretched-card-link"></a>
+                                    <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+                                        class="flex gap-4 items-center group hover:bg-gray-100 p-2 rounded transition">
+                                        <img src="{{ $item->image }}" alt=""
+                                            class="w-16 h-16 object-cover rounded">
+                                        <h4 class="text-gray-800 font-medium group-hover:text-blue-600">{{ $item->title }}
+                                        </h4>
+                                    </a>
+                                </div>
+                            @endforeach
+                            <a href="{{ route('frontend.appointment') }}">
+                                <button
+                                    class="w-full bg-dental-blue text-white px-6 py-2 my-4 rounded-lg hover:bg-[#2fa3c6] transition">
+                                    Book Appointment
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

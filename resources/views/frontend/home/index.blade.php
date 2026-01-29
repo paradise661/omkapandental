@@ -42,81 +42,82 @@
         </div>
     @endif
 
- <!--  banner -->
-   <section class="bg-gradient-to-br from-dental-light to-white" id="hero"
-    x-data="{ active: 0, total: {{ count($sliders) }}, next() { this.active = (this.active + 1) % this.total } }"
-    x-init="setInterval(() => next(), 6000)">
+    <!--  banner -->
+    <section class="bg-gradient-to-br from-dental-light to-white" id="hero" x-data="{ active: 0, total: {{ count($sliders) }}, next() { this.active = (this.active + 1) % this.total } }"
+        x-init="setInterval(() => next(), 6000)">
 
 
-    <div class="banner relative w-full overflow-hidden">
+        <div class="banner relative w-full overflow-hidden">
 
-        @foreach ($sliders as $index => $slider)
-            <div x-show="active === {{ $index }}"
-                 x-transition.opacity.duration.700ms
-                 x-cloak
-                 class="absolute inset-0">
-
-                <img src="{{ $slider->image }}"
-                     class="w-full h-full object-cover"
-                     alt="Slider image">
-            </div>
-        @endforeach
-
-        <!-- Dots -->
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             @foreach ($sliders as $index => $slider)
-                <button @click="active = {{ $index }}"
-                        class="w-3 h-3 rounded-full transition"
-                        :class="active === {{ $index }} ? 'bg-dental-blue' : 'bg-gray-300'">
-                </button>
-            @endforeach
-        </div>
+                <div x-show="active === {{ $index }}" x-transition.opacity.duration.700ms x-cloak
+                    class="absolute inset-0">
 
-    </div>
-</section>
+                    <img src="{{ $slider->image }}" class="w-full h-full object-cover" alt="Slider image">
+                </div>
+            @endforeach
+
+            <!-- Dots -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                @foreach ($sliders as $index => $slider)
+                    <button @click="active = {{ $index }}" class="w-3 h-3 rounded-full transition"
+                        :class="active === {{ $index }} ? 'bg-dental-blue' : 'bg-gray-300'">
+                    </button>
+                @endforeach
+            </div>
+
+        </div>
+    </section>
 
 
 
     <!-- About Section -->
     <section class="py-20 bg-white" id="about">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['aboutus_title'] ?? '' }}</h3>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    {{ $settings['aboutus_description'] ?? '' }}
-                </p>
+            <div data-aos="fade-up" data-aos-duration="800">
+
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['aboutus_title'] ?? '' }}</h3>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        {{ $settings['aboutus_description'] ?? '' }}
+                    </p>
+                </div>
             </div>
+            <div data-aos="fade-up" data-aos-duration="1500">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-
-                <div class="text-center">
-                    <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_students_img'] ?? ''}}">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center">
+                        <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            {{-- <i class="fa-solid fa-award text-dental-blue text-2xl"></i> --}}
+                            <img src="{{ $settings['home_counter_students_img'] ?? '' }}">
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                            {{ $settings['home_counter_students_title'] ?? '' }}
+                        </h4>
+                        <p class="text-gray-600">{{ $settings['home_counter_students'] ?? '' }}</p>
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_students_title']  ?? ''}}
-                    </h4>
-                    <p class="text-gray-600">{{ $settings['home_counter_students'] ?? '' }}</p>
-                </div>
-                <div class="text-center">
-                    <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        {{-- <i class="fa-solid fa-users text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_scholarship_img'] ?? ''}}">
+                    <div class="text-center">
+                        <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            {{-- <i class="fa-solid fa-users text-dental-blue text-2xl"></i> --}}
+                            <img src="{{ $settings['home_counter_scholarship_img'] ?? '' }}">
 
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                            {{ $settings['home_counter_scholarship_title'] ?? '' }}
+                        </h4>
+                        <p class="text-gray-600">{{ $settings['home_counter_scholarship'] ?? '' }}</p>
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_scholarship_title']?? '' }}
-                    </h4>
-                    <p class="text-gray-600">{{ $settings['home_counter_scholarship']?? '' }}</p>
-                </div>
-                <div class="text-center">
-                    <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        {{-- <i class="fa-solid fa-microscope text-dental-blue text-2xl"></i> --}}
-                        <img src="{{ $settings['home_counter_enrolled_img'] ?? ' ' }}">
+                    <div class="text-center">
+                        <div class="bg-dental-light rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            {{-- <i class="fa-solid fa-microscope text-dental-blue text-2xl"></i> --}}
+                            <img src="{{ $settings['home_counter_enrolled_img'] ?? ' ' }}">
 
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                            {{ $settings['home_counter_enrolled_title'] ?? '' }}
+                        </h4>
+                        <p class="text-gray-600">{{ $settings['home_counter_enrolled'] ?? '' }}</p>
                     </div>
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $settings['home_counter_enrolled_title']?? '' }}
-                    </h4>
-                    <p class="text-gray-600">{{ $settings['home_counter_enrolled']?? '' }}</p>
                 </div>
             </div>
         </div>
@@ -126,41 +127,44 @@
     <section class="py-20 bg-gray-50" id="services">
         <div class="max-w-7xl mx-auto px-6">
             <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['services_title']?? '' }}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['services_description']?? '' }}</p>
+            <div data-aos="fade-up" data-aos-duration="800">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['services_title'] ?? '' }}</h3>
+                    <p class="text-xl text-gray-600">{{ $settings['services_description'] ?? '' }}</p>
+                </div>
             </div>
-
             <!-- Services Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($services as $service)
-                    <div
-                        class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
+            <div data-aos="fade-up" data-aos-duration="1500">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    @foreach ($services as $service)
+                        <div
+                            class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
 
-                        <!-- Top Image -->
-                        <div class="overflow-hidden">
-                            <img class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                                src="{{ $service->image }}" alt="{{ $service->title ?? '' }}">
+                            <!-- Top Image -->
+                            <div class="overflow-hidden">
+                                <img class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                                    src="{{ $service->image }}" alt="{{ $service->title ?? '' }}">
+                            </div>
+
+                            <!-- Card Content -->
+                            <div class="p-6 flex flex-col flex-grow">
+                                <!-- Title -->
+                                <h4 class="text-2xl font-bold text-gray-900 mb-3">{{ $service->title ?? '' }}</h4>
+
+                                <!-- Short Description -->
+                                <p class="text-gray-600 mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
+
+                                <!-- Full Width Button -->
+                                <a class="w-full text-center bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 rounded-lg transition"
+                                    href="{{ route('frontend.servicesingle', $service->slug) }}">
+                                    View Details
+                                </a>
+                            </div>
                         </div>
-
-                        <!-- Card Content -->
-                        <div class="p-6 flex flex-col flex-grow">
-                            <!-- Title -->
-                            <h4 class="text-2xl font-bold text-gray-900 mb-3">{{ $service->title ?? '' }}</h4>
-
-                            <!-- Short Description -->
-                            <p class="text-gray-600 mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
-
-                            <!-- Full Width Button -->
-                            <a class="w-full text-center bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 rounded-lg transition"
-                                href="{{ route('frontend.servicesingle', $service->slug) }}">
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-
             <!-- View All Services Button -->
             <div class="mt-12 text-center">
                 <a class="inline-block bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 px-8 rounded-lg transition text-lg"
@@ -174,97 +178,144 @@
     <!-- Doctors Section -->
     <section class="py-20 bg-white" id="doctors">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title']?? '' }}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['teams_description']?? '' }}</p>
+            <div data-aos="fade-up" data-aos-duration="800">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['teams_title'] ?? '' }}</h3>
+                    <p class="text-xl text-gray-600">{{ $settings['teams_description'] ?? '' }}</p>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div data-aos="fade-up" data-aos-duration="1500" class="w-full">
+                <div class="swiper cardswiper w-full">
+                    <div class="swiper-wrapper">
+                        @foreach ($teams as $item)
+                            <div class="swiper-slide">
+                                <div class="text-center px-4">
 
-                @foreach ($teams as $item)
-                    <div class="text-center" id="doctor-1">
-                        <div class="mb-6">
-                            <img class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg"
-                                src="{{ asset($item->image) }}" alt="{{ $item->title }}">
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">{{ $item->name ?? '' }}</h4>
-                        <p class="text-dental-blue font-medium mb-3">{{ $item->position ?? '' }}</p>
-                        <div class="text-gray-600 mb-4">{!! $item->description !!}</div>
-                        <div class="flex justify-center space-x-3">
-                            <span
-                                class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->email ?? '' }}</span>
-                            <span
-                                class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">{{ $item->whatsapp ?? '' }}</span>
-                        </div>
+                                    <div class="mb-6">
+                                        <img class="w-48 h-48 rounded-full mx-auto object-cover shadow-lg"
+                                            src="{{ asset($item->image) }}" alt="{{ $item->title }}">
+                                    </div>
+
+                                    <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                                        {{ $item->name ?? '' }}
+                                    </h4>
+
+                                    <p class="text-dental-blue font-medium mb-3">
+                                        {{ $item->position ?? '' }}
+                                    </p>
+
+                                    <div class="text-gray-600 mb-4">
+                                        {!! $item->description !!}
+                                    </div>
+
+                                    <div class="flex justify-center space-x-3">
+                                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">
+                                            {{ $item->email ?? '' }}
+                                        </span>
+                                        <span class="bg-dental-light text-dental-blue px-3 py-1 rounded-full text-sm">
+                                            {{ $item->whatsapp ?? '' }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                    <!-- Optional controls -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    {{-- <div class="swiper-pagination mt-6"></div> --}}
+
+                </div>
+
             </div>
+
         </div>
     </section>
     <!--blog section start-->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['blogs_title'] ?? ''}}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['blogs_description']?? '' }}</p>
+            <div data-aos="fade-up" data-aos-duration="800">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['blogs_title'] ?? '' }}</h3>
+                    <p class="text-xl text-gray-600">{{ $settings['blogs_description'] ?? '' }}</p>
+                </div>
             </div>
+           <div data-aos="fade-up" data-aos-duration="1500" class="w-full">
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="swiper cardswiper w-full">
+        <div class="swiper-wrapper">
 
-                <!-- Blog Card -->
-                @foreach ($blogs as $item)
-                    <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
-                        <a class=" stretched-card-link" href="{{ route('frontend.blogsingle', $item->slug) }}">
+            @foreach ($blogs as $item)
+                <div class="swiper-slide px-4">
+                    <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group h-full">
+
+                        <a class="stretched-card-link" href="{{ route('frontend.blogsingle', $item->slug) }}">
                             <div class="overflow-hidden">
                                 <img class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
-                                    src="{{ $item->image }}" alt="Blog image">
+                                     src="{{ $item->image }}" alt="Blog image">
                             </div>
-                            <div class="p-6">
 
+                            <div class="p-6">
                                 <a class="inline-block text-justify text-sm font-semibold text-white
-                bg-[#D5277B] px-3 py-1 rounded-full"
-                                    href="{{ route('frontend.blogsingle', $item->slug) }}">
+                                         bg-[#D5277B] px-3 py-1 rounded-full mb-2"
+                                   href="{{ route('frontend.blogsingle', $item->slug) }}">
                                     {{ $item->short_description }}
                                 </a>
 
                                 <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
                                     {{ $item->title }}
                                 </h3>
+
                                 <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
                                     {!! $item->description !!}
                                 </div>
                             </div>
                         </a>
+
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
+
+        </div>
+
+        <!-- Optional controls -->
+        {{-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> --}}
+        {{-- <div class="swiper-pagination mt-6"></div> --}}
+    </div>
+
+</div>
+
         </div>
     </section>
     <section class=" bg-white" id="reviews">
         <div class="max-w-6xl mx-auto px-4 py-12">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] ?? ''}}</h3>
-                <p class="text-xl text-gray-600">{{ $settings['testioninal_description']?? '' }}</p>
+            <div data-aos="fade-up" data-aos-duration="800">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-gray-900 mb-4">{{ $settings['testioninal_title'] ?? '' }}</h3>
+                    <p class="text-xl text-gray-600">{{ $settings['testioninal_description'] ?? '' }}</p>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+           <div data-aos="fade-up" data-aos-duration="1500" class="w-full">
 
-                <!-- Review Card -->
-                @foreach ($testimonials as $item)
-                    <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200">
+    <div class="swiper review-swiper w-full">
+        <div class="swiper-wrapper">
+
+            @foreach ($testimonials as $item)
+                <div class="swiper-slide px-4">
+                    <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200 h-full">
+
                         <!-- Header -->
                         <div class="flex items-center gap-4 mb-4">
                             <img class="w-14 h-14 rounded-full object-cover" src="{{ $item->image }}" alt="Reviewer">
 
                             <div>
-                                <h4 class="font-bold text-gray-900 uppercase text-sm">
-                                    {{ $item->name }}
-                                </h4>
-                                <p class="text-xs text-gray-500 uppercase tracking-wide">
-                                    {{ $item->position }}
-                                </p>
+                                <h4 class="font-bold text-gray-900 uppercase text-sm">{{ $item->name }}</h4>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide">{{ $item->position }}</p>
                             </div>
                         </div>
 
-                        <!-- Stars (Icons) -->
+                        <!-- Stars -->
                         <div class="flex gap-1 mb-4 text-yellow-400">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -277,14 +328,62 @@
                         <div class="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-4">
                             {!! $item->description !!}
                         </div>
+
                     </div>
-                @endforeach
+                </div>
+            @endforeach
+
+        </div>
+
+        <!-- Optional navigation -->
+        {{-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> --}}
+        {{-- <div class="swiper-pagination mt-6"></div> --}}
+    </div>
+
+</div>
+
+        </div>
+    </section>
+    <section class="py-20 bg-gray-50" id="faq">
+        <div class="max-w-7xl mx-auto px-6">
+            <div data-aos="fade-up" data-aos-duration="800">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">
+                        {{ $faq_page->title }}
+                    </h3>
+                    <p class="text-xl text-gray-600">
+                        {{ $faq_page->short_description }}
+                    </p>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="1500">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    @foreach ($faqs as $faq)
+                        <div x-data="{ open: false }" class="bg-white rounded-lg p-6">
+
+                            <button @click="open = !open" class="w-full text-left flex justify-between items-center">
+                                <h3 class="text-xl md:text-2xl font-semibold text-gray-900">
+                                    {{ $faq->question }}
+                                </h3>
+
+                                <span class="text-2xl transition-transform duration-300" :class="open ? 'rotate-45' : ''">
+                                    +
+                                </span>
+                            </button>
+
+                            <div x-show="open" x-collapse class="mt-4 text-gray-600 text-base">
+                                {{ $faq->answer }}
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
-
     <!-- Contact & Inquiry Form -->
-    <section class="py-20 bg-gray-50" id="contact">
+    {{-- <section class="py-20 bg-gray-50" id="contact">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -376,5 +475,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dental Clinic</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="icon" type="image/x-icon"
         href="{{ $settings['site_fav_icon'] ? asset($settings['site_fav_icon']) : 'omkapan dental' }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -75,7 +76,7 @@
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector("#header");
             const navLogo = document.querySelector("#nav-logo");
 
@@ -98,15 +99,15 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="{{ asset('frontend/assets/js/scrollScript.js') }}"></script>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     {{--
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
     @if (session('success'))
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 Toastify({
                     text: "{{ session('success') }}",
                     duration: 3000,
@@ -120,7 +121,7 @@
     @endif
     @if ($errors->any())
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 Toastify({
                     text: "{{ $errors->first() }}",
                     duration: 3000,
@@ -133,8 +134,81 @@
         </script>
     @endif
 
+<script>
+  new Swiper('.cardswiper', {
+    slidesPerView: 3,
+    slidesPerGroup: 1,
+    spaceBetween: 32,
+    loop: true,
+    speed: 700,
 
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
 
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    autoplay: {
+      delay: 3000,         // 3 seconds between slides
+      disableOnInteraction: false, // continue autoplay even after user interacts
+    },
+
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+
+    on: {
+      slideChange: () => AOS.refresh(),
+    }
+  });
+</script>
+<script>
+  new Swiper('.review-swiper', {
+    slidesPerView: 2,           // 👈 2 slides visible at a time
+    slidesPerGroup: 1,           // slide 1 card per swipe
+    spaceBetween: 32,
+    loop: true,
+    speed: 700,
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    autoplay: {
+      delay: 3000,               // 3 seconds between slides
+      disableOnInteraction: false,
+    },
+
+    breakpoints: {
+      0: { slidesPerView: 1 },     // mobile: 1 slide
+      640: { slidesPerView: 1 },   // small tablet: 1 slide
+      1024: { slidesPerView: 2 },  // desktop: 2 slides
+    },
+
+    on: {
+      slideChange: () => AOS.refresh(),
+    }
+  });
+</script>
+
+    <script>
+        AOS.init({
+            duration: 1200, // default animation duration in ms
+            // once: true,     // whether animation should happen only once
+        });
+    </script>
 
 </body>
 

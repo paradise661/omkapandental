@@ -95,3 +95,12 @@
     height: 100%;
     object-fit: cover;
 }
+.ceo-name{
+    font-weight: 700;
+}
+.swiper-button-prev{
+    color: #D5277B !important;
+}
+.swiper-button-next{
+        color: #D5277B !important;
+}

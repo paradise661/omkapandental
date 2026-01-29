@@ -41,7 +41,7 @@ class FrontendController extends Controller
         $about_us = Page::where('status', 1)->where('slug', 'about-us')->first();
         $why_choose_us = WhyChooseUs::where('status', 1)->first();
         $teams = Team::where('status', 1)->oldest("order")->get();
-        $faq = Faq::where('status', 1)->limit(6)->get();
+        $faqs = Faq::where('status', 1)->limit(6)->get();
         $popup = Popup::where('status', 1)->first();
         $home_country = Settings::where('key', 'home_countries')->first();
         $countryIds = explode(',', $home_country->value);
@@ -71,7 +71,7 @@ class FrontendController extends Controller
 
         $faq_page = Page::where('status', 1)->where('slug', 'faq')->first();
 
-        return view('frontend.home.index', compact('sliders', 'popup', 'faq_page', 'countrylocation', 'faq', 'abroadstudies', 'universities', 'courses', 'countries', 'blogs', 'services', 'about_us', 'why_choose_us', 'teams', 'testimonials'));
+        return view('frontend.home.index', compact('sliders', 'popup', 'faq_page', 'countrylocation', 'faqs', 'abroadstudies', 'universities', 'courses', 'countries', 'blogs', 'services', 'about_us', 'why_choose_us', 'teams', 'testimonials'));
     }
     public function about()
     {

@@ -100,13 +100,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
 
                 <div class="h-80 overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover" src="{{ $techno->image }}"
+                    <img class="w-full h-full object-cover" src="{{ $techno->image ?? '' }}"
                         alt="modern dental treatment room, advanced dental chair, digital monitors, clean white interior, professional medical equipment" />
                 </div>
                 <div>
-                    <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $techno->title }}</h4>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $techno->title ?? ''}}</h4>
                     <div class="space-y-4" style="text-align: justify">
-                        {!! $techno->description !!}
+                        {!! $techno->description ?? '' !!}
 
                     </div>
                 </div>
@@ -115,15 +115,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 <div>
-                    <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $patient->title }}</h4>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6">{{ $patient->title ?? '' }}</h4>
                     <div class="space-y-4" style="text-align: justify">
-                        {!! $patient->description !!}
+                        {!! $patient->description ?? ''!!}
 
                     </div>
                 </div>
                 <div class="h-64 sm:h-80 lg:h-96 overflow-hidden rounded-2xl">
 
-                    <img class="w-full h-full object-cover" src="{{ $patient->image }}"
+                    <img class="w-full h-full object-cover" src="{{ $patient->image ?? '' }}"
                         alt="comfortable dental waiting room, modern furniture, natural lighting, plants, relaxing atmosphere, magazine rack, coffee station" />
                 </div>
             </div>
