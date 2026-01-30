@@ -16,7 +16,7 @@
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="text-5xl font-bold text-gray-900 mb-6">{{ $blogsingle->title ?? 'Page Title' }}</h2>
                 <div class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    {{ $blogsingle->short_description ?? 'Page Title' }} </div>
+                    {{ $blogsingle->short_description ?? '' }} </div>
             </div>
         </section>
     @endif

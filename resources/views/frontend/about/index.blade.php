@@ -103,10 +103,9 @@
             <div data-aos="fade-up" data-aos-duration="800">
 
                 <div class="text-center mb-16">
-                    <h3 class="text-4xl font-bold text-gray-900 mb-6">State-of-the-Art Facility</h3>
+                    <h3 class="text-4xl font-bold text-gray-900 mb-6">Dental Treatment Process</h3>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Our modern clinic features the latest dental technology and amenities designed for your comfort and
-                        optimal treatment outcomes.
+                        Our dental treatment process is designed to be simple, transparent, and comfortable for every patient.
                     </p>
                 </div>
             </div>

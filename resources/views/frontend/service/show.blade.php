@@ -58,7 +58,7 @@
                         <a href="{{ route('frontend.servicesingle', $course->slug) }}">
                             <div class="flex gap-4 bg-white rounded-2xl shadow hover:shadow-xl transition p-4 mb-3">
                                 <img class="w-20 h-20 object-cover rounded-xl flex-shrink-0"
-                                    src="{{ asset($course->image_1 ?? 'frontend/assets/images/default.jpg') }}"
+                                    src="{{ asset($course->image ?? 'frontend/assets/images/default.jpg') }}"
                                     alt="{{ $course->title }}">
                                 <div class="flex flex-col justify-between">
                                     <h4 class="text-gray-900 font-semibold text-lg line-clamp-1">{{ $course->title }}</h4>
