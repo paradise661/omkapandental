@@ -67,22 +67,22 @@
                             {{-- <i class="fa-solid fa-award text-white text-2xl"></i> --}}
                             <img class="rounded-full object-cover" src="{{ $mission->image }}">
                         </div>
-                        <h6 class="text-2xl font-bold text-gray-900 mb-4">{{ $mission->short_description }}</h6>
+                        <h6 class="text-2xl font-bold text-gray-900 mb-4">{{ $mission->title }}</h6>
                         <p class="text-gray-600">
-                            {!! $mission->description !!}
+                          {{ $mission->short_description }}
                         </p>
                     </div>
                 @endforeach
 
             </div>
 
-            <div class="bg-dental-blue rounded-2xl p-12 text-white text-center">
+            {{-- <div class="bg-dental-blue rounded-2xl p-12 text-white text-center">
                 <h4 class="text-3xl font-bold mb-6">Our Mission</h4>
                 <p class="text-xl leading-relaxed max-w-4xl mx-auto">
                     "To provide exceptional dental care that enhances the health, function, and beauty of our patients'
                     smiles while fostering long-lasting relationships built on trust, respect, and personalized attention."
                 </p>
-            </div>
+            </div> --}}
         </div>
     </section>
 

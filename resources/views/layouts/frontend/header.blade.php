@@ -1,3 +1,44 @@
+<div
+    x-data="{ showTopBar: true, lastScroll: 0 }"
+    @scroll.window="
+        showTopBar = (window.pageYOffset < lastScroll) || window.pageYOffset < 10;
+        lastScroll = window.pageYOffset;
+    "
+    class="sticky top-0 z-50"
+>
+
+    <!-- Top Info Bar -->
+    <div
+        x-show="showTopBar"
+        x-transition:enter="transition transform duration-300"
+        x-transition:enter-start="-translate-y-full"
+        x-transition:enter-end="translate-y-0"
+        x-transition:leave="transition transform duration-300"
+        x-transition:leave-start="translate-y-0"
+        x-transition:leave-end="-translate-y-full"
+        class="bg-[#802F84] text-white text-sm"
+    >
+        <div class="max-w-7xl mx-auto px-6 py-2 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center">
+                    <i class="fa-solid fa-phone mr-2"></i>
+                    {{ $settings['site_phone'] }}
+                </span>
+                <span class="hidden sm:flex items-center">
+                    <i class="fa-solid fa-envelope mr-2"></i>
+                    {{ $settings['site_email'] ?? 'info@example.com' }}
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center">
+                <i class="fa-solid fa-clock mr-2"></i>
+                Mon–Sat: 9:00 AM – 8:00 PM
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <header class="bg-white shadow-lg sticky top-0 z-50" x-data="{ aboutOpenDesktop: false, aboutOpenMobile: false, mobileMenuOpen: false }">
 
     <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between">

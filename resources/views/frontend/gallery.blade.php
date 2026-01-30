@@ -52,7 +52,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($album->galleries as $gallery)
                             <a
-                                class="block overflow-hidden rounded-lg fro-dropzone-image-a fancybox"
+                                class="block overflow-hidden rounded-lg fro-dropzone-image-a fancybox h-[500px]"
                                 data-fancybox="gallery"
                                 data-caption="{{ $gallery->title }}"
                                 href="{{ $gallery->image }}">
