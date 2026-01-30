@@ -25,34 +25,34 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Blog Card -->
-                @foreach ($blog as $item)
-                    <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
-                        <a href="{{ route('frontend.blogsingle', $item->slug) }}" class=" stretched-card-link">
-                            <div class="overflow-hidden">
-                                <img src="{{ $item->image }}"
-                                    class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
-                                    alt="Blog image">
-                            </div>
-                            <div class="p-6">
+               @foreach ($blog as $item)
+    <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+       class="block bg-white rounded-2xl border border-gray-300 overflow-hidden transition group">
 
-                                <a href="{{ route('frontend.blogsingle', $item->slug) }}"
-                                    class="inline-block text-justify text-sm font-semibold text-white
-                bg-[#D5277B] px-3 py-1 rounded-full">
-                                    {{ $item->short_description }}
-                                </a>
+        <div class="overflow-hidden">
+            <img src="{{ $item->image }}"
+                class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                alt="Blog image">
+        </div>
 
-                                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
-                                    {{ $item->title }}
-                                </h3>
-                                <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
-                                    {!! $item->description !!}
-                                </div>
+        <div class="p-6">
+            <span
+                class="inline-block text-sm font-semibold text-white bg-[#D5277B] px-3 py-1 rounded-full">
+                {{ $item->short_description }}
+            </span>
 
-                            </div>
-                        </a>
+            <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
+                {{ $item->title }}
+            </h3>
 
-                    </div>
-                @endforeach
+            <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
+                {!! $item->description !!}
+            </div>
+        </div>
+
+    </a>
+@endforeach
+
             </div>
         </div>
     </section>

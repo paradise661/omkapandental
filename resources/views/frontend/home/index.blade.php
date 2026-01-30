@@ -136,7 +136,7 @@
             <!-- Services Grid -->
             <div data-aos="fade-up" data-aos-duration="1500">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
+
                     @foreach ($services as $service)
                         <div
                             class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
@@ -245,36 +245,36 @@
     <div class="swiper cardswiper w-full">
         <div class="swiper-wrapper">
 
-            @foreach ($blogs as $item)
-                <div class="swiper-slide px-4">
-                    <div class="bg-white rounded-2xl border border-gray-300 overflow-hidden transition group h-full">
+           @foreach ($blogs as $item)
+    <div class="swiper-slide px-4">
+        <a href="{{ route('frontend.blogsingle', $item->slug) }}"
+           class="block bg-white rounded-2xl border border-gray-300 overflow-hidden transition group h-full">
 
-                        <a class="stretched-card-link" href="{{ route('frontend.blogsingle', $item->slug) }}">
-                            <div class="overflow-hidden">
-                                <img class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
-                                     src="{{ $item->image }}" alt="Blog image">
-                            </div>
+            <div class="overflow-hidden">
+                <img src="{{ $item->image }}"
+                     class="w-full h-52 object-cover transform transition duration-500 group-hover:scale-105"
+                     alt="Blog image">
+            </div>
 
-                            <div class="p-6">
-                                <a class="inline-block text-justify text-sm font-semibold text-white
-                                         bg-[#D5277B] px-3 py-1 rounded-full mb-2"
-                                   href="{{ route('frontend.blogsingle', $item->slug) }}">
-                                    {{ $item->short_description }}
-                                </a>
+            <div class="p-6">
+                <!-- Converted inner link to span -->
+                <span class="inline-block text-sm font-semibold text-white bg-[#D5277B] px-3 py-1 rounded-full mb-2">
+                    {{ $item->short_description }}
+                </span>
 
-                                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
-                                    {{ $item->title }}
-                                </h3>
+                <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900">
+                    {{ $item->title }}
+                </h3>
 
-                                <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
-                                    {!! $item->description !!}
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
+                <div class="text-gray-600 line-clamp-4 text-justify text-base mb-5">
+                    {!! $item->description !!}
                 </div>
-            @endforeach
+            </div>
+
+        </a>
+    </div>
+@endforeach
+
 
         </div>
 
