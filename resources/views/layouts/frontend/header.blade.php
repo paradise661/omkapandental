@@ -1,23 +1,15 @@
-<div
-    x-data="{ showTopBar: true, lastScroll: 0 }"
+<div x-data="{ showTopBar: true, lastScroll: 0 }"
     @scroll.window="
         showTopBar = (window.pageYOffset < lastScroll) || window.pageYOffset < 10;
         lastScroll = window.pageYOffset;
     "
-    class="sticky top-0 z-50"
->
+    class="sticky top-0 z-50">
 
     <!-- Top Info Bar -->
-    <div
-        x-show="showTopBar"
-        x-transition:enter="transition transform duration-300"
-        x-transition:enter-start="-translate-y-full"
-        x-transition:enter-end="translate-y-0"
-        x-transition:leave="transition transform duration-300"
-        x-transition:leave-start="translate-y-0"
-        x-transition:leave-end="-translate-y-full"
-        class="bg-[#802F84] text-white text-sm"
-    >
+    <div x-show="showTopBar" x-transition:enter="transition transform duration-300"
+        x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0"
+        x-transition:leave="transition transform duration-300" x-transition:leave-start="translate-y-0"
+        x-transition:leave-end="-translate-y-full" class="bg-[#802F84] text-white text-sm">
         <div class="max-w-7xl mx-auto px-6 py-2 flex flex-wrap justify-between items-center">
             <div class="flex items-center space-x-4">
                 <span class="flex items-center">
@@ -91,7 +83,8 @@
 
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.service') }}">Services</a>
-            <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.gallery') }}">Gallery</a>
+            <a class="text-gray-700 hover:text-dental-blue font-medium"
+                href="{{ route('frontend.gallery') }}">Gallery</a>
             <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.blog') }}">Blog</a>
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.testimonial') }}">Review</a>
@@ -132,12 +125,14 @@
                     <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.about') }}">
                         About
                     </a>
+
                     <button class="text-gray-700" @click="aboutOpenMobile = !aboutOpenMobile">
-                        <i :class="aboutOpenMobile ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+                        <i class="fa-solid fa-chevron-down" x-show="!aboutOpenMobile" x-cloak></i>
+                        <i class="fa-solid fa-chevron-up" x-show="aboutOpenMobile" x-cloak></i>
                     </button>
                 </div>
 
-                <div class="mt-2 flex flex-col space-y-1 pl-4" x-show="aboutOpenMobile" x-transition>
+                <div class="mt-2 flex flex-col space-y-1 pl-4" x-show="aboutOpenMobile" x-transition x-cloak>
                     <a class="text-gray-700 hover:text-dental-blue font-medium"
                         href="{{ route('frontend.messagefromfounder') }}">
                         Message from CEO
@@ -147,6 +142,7 @@
                     </a>
                 </div>
             </div>
+
 
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.service') }}">Services</a>
