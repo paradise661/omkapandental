@@ -72,7 +72,7 @@
                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
 
                 <!-- Dark Overlay -->
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
+                <div class="absolute inset-0 bg-[#111827]/40 group-hover:bg-[#802F84]/50 transition"></div>
 
                 <!-- Title -->
                 <div class="absolute inset-0 flex items-center justify-center">

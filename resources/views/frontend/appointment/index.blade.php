@@ -53,10 +53,10 @@
                                     name="last_name" type="text" required>
                             </div>
                             <div>
-                                <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                                <label class="block text-gray-700 font-medium mb-2">Email Address </label>
                                 <input
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
-                                    name="email" type="email" required>
+                                    name="email" type="email" >
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Phone Number *</label>
