@@ -139,7 +139,7 @@
 
                     @foreach ($services as $service)
                         <div
-                            class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
+                            class=" group bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col transition hover:shadow-2xl duration-300">
 
                             <!-- Top Image -->
                             <div class="overflow-hidden">
