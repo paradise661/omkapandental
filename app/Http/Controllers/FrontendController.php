@@ -288,6 +288,20 @@ class FrontendController extends Controller
         return redirect()->back()
             ->with('success', 'Your message has been submitted successfully.');
     }
+    public function gallerysingle($slug)
+    {
+        $gallery_page = Page::where('status', 1)
+            ->where('slug', 'gallery')
+            ->first();
+
+        $album = Album::with('galleries')
+            ->where('slug', $slug)
+            ->where('status', 1)
+            ->firstOrFail();
+
+        return view('frontend.gallerysingle', compact('album', 'gallery_page'));
+    }
+
 
 
     public function contact_submite_home(Request $request)

@@ -23,7 +23,6 @@
     <section id="reviews" class=" bg-white">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
                 <!-- Review Card -->
                 @foreach ($testimonial as $item)
                     <div class="bg-gradient-to-br from-white to-gray-100 rounded-2xl p-8 border border-gray-200">
@@ -40,7 +39,6 @@
                                 </p>
                             </div>
                         </div>
-
                         <!-- Stars (Icons) -->
                         <div class="flex gap-1 mb-4 text-yellow-400">
                             <i class="fa-solid fa-star"></i>
@@ -51,15 +49,12 @@
                         </div>
 
                         <!-- Review Text -->
-                        <div class="text-gray-600 text-sm line-clamp-3 leading-relaxed mb-4">
+                        <div class="text-gray-600 text-justify text-sm line-clamp-3 leading-relaxed mb-4">
                             {!! $item->description !!}
                         </div>
-
                     </div>
                 @endforeach
-
             </div>
         </div>
-
     </section>
 @endsection

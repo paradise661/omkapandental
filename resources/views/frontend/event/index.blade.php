@@ -1,12 +1,12 @@
 @section('seo')
     @include('frontend.seo', [
     'name' => $event_page->seo_title ?? '',
-    'title' => $event_page->seo_title ?? $event_page->title,
+    'title' => $event_page->seo_title ?? $event_page->title ?? '',
     'description' => $event_page->meta_description ?? '',
     'keyword' => $event_page->meta_keywords ?? '',
     'schema' => $event_page->seo_schema ?? '',
-    'created_at' => $event_page->created_at,
-    'updated_at' => $event_page->updated_at,
+    'created_at' => $event_page->created_at ?? now(),
+    'updated_at' => $event_page->updated_at ?? now(),
 ])
 @endsection
 @extends('layouts.frontend.master')
@@ -18,7 +18,7 @@
                     {{ $event_page->title ?? 'Event' }}
                 </h2>
                 <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto" style="text-align: justify">
-                    {{ $event_page->short_description }}
+                    {{ $event_page->short_description ?? ''}}
                 </p>
             </div>
         </section>
@@ -51,7 +51,7 @@
                                 <!-- Event Image -->
                                 <div class="overflow-hidden">
                                     <img
-                                        src="{{  $event->image }}"
+                                        src="{{  $event->image ?? '' }}"
                                         alt="{{ $event->name ?? '' }}"
                                         class="w-full h-[280px] object-cover transition duration-300 hover:scale-105"
                                     />

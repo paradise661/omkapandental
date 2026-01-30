@@ -153,7 +153,7 @@
                                 <h4 class="text-2xl font-bold text-gray-900 mb-3">{{ $service->title ?? '' }}</h4>
 
                                 <!-- Short Description -->
-                                <p class="text-gray-600 mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
+                                <p class="text-gray-600 text-justify mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
 
                                 <!-- Full Width Button -->
                                 <a class="w-full text-center bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 rounded-lg transition"
@@ -325,7 +325,7 @@
                         </div>
 
                         <!-- Review Text -->
-                        <div class="text-gray-600 line-clamp-3 text-sm leading-relaxed mb-4">
+                        <div class="text-gray-600 text-justify line-clamp-3 text-sm leading-relaxed mb-4">
                             {!! $item->description !!}
                         </div>
 

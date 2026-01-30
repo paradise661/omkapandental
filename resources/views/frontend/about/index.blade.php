@@ -34,7 +34,7 @@
                     {{-- <p class="text-lg text-gray-600 mb-6">
                             Founded in 2004 by Dr. Sarah Johnson, SmileCare began with a simple mission: to provide comprehensive, compassionate dental care that puts patients first. What started as a small practice has grown into a leading dental clinic serving thousands of families.
                         </p> --}}
-                    <p class="text-lg text-gray-600 mb-6">
+                    <p class="text-lg text-justify text-gray-600 mb-6">
                         {{ $about_us->short_description }}
                     </p>
                     <div class="flex items-center space-x-6">

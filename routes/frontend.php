@@ -27,7 +27,9 @@ Route::name('frontend.')->group(
         Route::get('/pages/{slug}', [FrontendController::class, 'page'])->name('pages');
         Route::get('/student-registration', [FrontendController::class, 'register'])->name('register');
         Route::post('/appointment', [FrontendController::class, 'registerstudent'])->name('register.submit');
-        Route::get('/gallery/{album:slug}', [FrontendController::class, 'galleryshow'])->name('albums.show');
+
+        Route::get('/gallery/{slug}', [FrontendController::class, 'gallerysingle'])
+            ->name('gallerysingle');
         Route::get('/appointment',[FrontendController::class, 'appointment'])->name('appointment');
     }
 );

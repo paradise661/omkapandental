@@ -25,8 +25,9 @@
                     <a href="#" class="footer-social w-10 h-10 rounded-full flex items-center justify-center ">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="#" class="footer-social w-10 h-10 rounded-full flex items-center justify-center ">
-                        <i class="fa-brands fa-twitter"></i>
+                    <a href="https://www.youtube.com/@Omkapandental" target="_blank"
+                        class="footer-social w-10 h-10 rounded-full flex items-center justify-center ">
+                        <i class="fa-brands fa-youtube"></i>
                     </a>
                 </div>
             </div>
@@ -35,11 +36,16 @@
             <div>
                 <h4 class="text-lg font-semibold mb-4">Services</h4>
                 <ul class="space-y-2">
-                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">General Dentistry</a></li>
-                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Cosmetic Dentistry</a></li>
-                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Oral Surgery</a></li>
-                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Pediatric Care</a></li>
-                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Orthodontics</a></li>
+                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">General
+                            Dentistry</a></li>
+                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Cosmetic
+                            Dentistry</a></li>
+                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Oral Surgery</a>
+                    </li>
+                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Pediatric Care</a>
+                    </li>
+                    <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Orthodontics</a>
+                    </li>
                 </ul>
             </div>
 
@@ -51,25 +57,27 @@
                     <li><a href="{{ route('frontend.service') }}" class="hover:text-white transition">Services</a></li>
                     <li><a href="{{ route('frontend.team') }}" class="hover:text-white transition">Doctors</a></li>
                     <li><a href="{{ route('frontend.contact') }}" class="hover:text-white transition">Contact</a></li>
-                    <li><a href="{{ route('frontend.appointment') }}" class="hover:text-white transition">Appointment</a></li>
+                    <li><a href="{{ route('frontend.appointment') }}"
+                            class="hover:text-white transition">Appointment</a></li>
                 </ul>
             </div>
 
             <!-- Contact Info -->
-           <!-- Contact Info -->
-<div>
-    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-    <div class="space-y-3">
-        <p><i class="fa-solid fa-phone mr-2"></i>{{ $settings['contact_phone'] ?? '(555) 123-4567' }}</p>
-        <p><i class="fa-solid fa-envelope mr-2"></i>{{ $settings['contact_email'] ?? 'email' }}</p>
-        <p><i class="fa-solid fa-location-dot mr-2"></i>{{ $settings['contact_location'] ?? 'location' }}</p>
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                <div class="space-y-3">
+                    <p><i class="fa-solid fa-phone mr-2"></i>{{ $settings['contact_phone'] ?? '(555) 123-4567' }}</p>
+                    <p><i class="fa-solid fa-envelope mr-2"></i>{{ $settings['contact_email'] ?? 'email' }}</p>
+                    <p><i class="fa-solid fa-location-dot mr-2"></i>{{ $settings['contact_location'] ?? 'location' }}
+                    </p>
 
-        <!-- Opening Hours -->
-        <p><i class="fa-solid fa-clock mr-2"></i>{{ $settings['opening_hours'] ?? ' ' }}</p>
-        {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sat: 9AM-3PM</p> --}}
-        {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sun: Closed</p> --}}
-    </div>
-</div>
+                    <!-- Opening Hours -->
+                    <p><i class="fa-solid fa-clock mr-2"></i>{{ $settings['opening_hours'] ?? ' ' }}</p>
+                    {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sat: 9AM-3PM</p> --}}
+                    {{-- <p><i class="fa-solid fa-clock mr-2"></i>Sun: Closed</p> --}}
+                </div>
+            </div>
 
         </div>
 

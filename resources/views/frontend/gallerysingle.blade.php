@@ -22,9 +22,9 @@
             </p>
         </div>
     </section>
-    {{-- <div class="container mx-auto py-6">
+    <div class="container mx-auto py-6">
         <!-- Tabs -->
-        <div class="flex justify-center border-b border-gray-200">
+        {{-- <div class="flex justify-center border-b border-gray-200">
             <ul class="flex flex-wrap -mb-px" id="albumTab">
                 @foreach ($albums as $key => $album)
                     <li class="mr-2">
@@ -39,54 +39,49 @@
                     </li>
                 @endforeach
             </ul>
-        </div>
+        </div> --}}
 
         <!-- Tabs Content -->
-        <div class="mt-6">
-            @foreach ($albums as $gallery)
-                <div id="content-{{ $gallery->slug }}" class="tab-content ">
+        {{-- <div class="mt-6">
+            @foreach ($albums as $key => $album)
+                <div id="content-{{ $album->slug }}" class="tab-content {{ $key == 0 ? '' : 'hidden' }}">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        @foreach ($albums as $gallery)
-                            <a class="block overflow-hidden rounded-lg h-[400px]"
-                               href="{{ route('frontend.gallerysingle', $gallery->slug) }}">
-                                <img src="{{ $gallery->image }}" alt=""
+                        @foreach ($album->galleries as $gallery)
+                            <a class="block overflow-hidden rounded-lg fro-dropzone-image-a fancybox h-[400px]"
+                                data-fancybox="gallery" data-caption="{{ $gallery->title }}" href="{{ $gallery->image }}">
+                                <img src="{{ $gallery->image }}" alt="{{ $gallery->title }}"
                                     class=" fro-dropzone-image-a w-full h-full p-3 object-cover rounded-lg hover:scale-105 transition duration-300" />
                             </a>
- <h1>   {{ $gallery->name }}</h1>
                         @endforeach
                     </div>
                 </div>
             @endforeach
+        </div> --}}
+        <section class="py-16">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">
+            {{ $album->name }}
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            @foreach ($album->galleries as $gallery)
+                <a href="{{ $gallery->image }}"
+                   data-fancybox="gallery"
+                   data-caption="{{ $gallery->title }}"
+                   class="block h-[350px] overflow-hidden rounded-xl">
+
+                    <img src="{{ $gallery->image }}"
+                         alt="{{ $gallery->title }}"
+                         class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </a>
+            @endforeach
         </div>
-    </div> --}}
-    <div class="container mx-auto py-16">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-
-        @foreach ($albums as $album)
-            <a href="{{ route('frontend.gallerysingle', $album->slug) }}"
-               class="group relative block h-[350px] rounded-2xl overflow-hidden shadow-lg">
-
-                <!-- Album Image -->
-                <img src="{{ $album->image }}"
-                     alt="{{ $album->name }}"
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-
-                <!-- Dark Overlay -->
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
-
-                <!-- Title -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <h3 class="text-white text-2xl font-bold tracking-wide text-center px-4">
-                        {{ $album->name }}
-                    </h3>
-                </div>
-
-            </a>
-        @endforeach
 
     </div>
-</div>
+</section>
 
+    </div>
 @endsection
 @push('js')
     <script>

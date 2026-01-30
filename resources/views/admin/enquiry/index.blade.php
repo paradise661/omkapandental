@@ -37,7 +37,7 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
 
-                                    <td>{{ ${$name}->first_name }} {{ ${$name}->last_name }}</td>
+                                    <td>{{ ${$name}->first_name }} </td>
                                     <td>{{ ${$name}->phone }}</td>
 
                                     <td>{{ ${$name}->email }}</td>
@@ -47,7 +47,7 @@
 
                                     <td class="text-capitalize">{{ ${$name}->service_type }}</td>
 
-                                    
+
                                     <td class="">
                                         {{-- <a href="{{ route($name . '.edit', ${$name}->id) }}" type="button"
                                             class="btn btn-sm btn-icon btn-primary">

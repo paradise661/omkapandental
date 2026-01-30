@@ -41,13 +41,13 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-gray-700 font-medium mb-2">First Name *</label>
+                                <label class="block text-gray-700 font-medium mb-2"> Name *</label>
                                 <input
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
                                     name="first_name" type="text" required>
                             </div>
                             <div>
-                                <label class="block text-gray-700 font-medium mb-2">Last Name *</label>
+                                <label class="block text-gray-700 font-medium mb-2">Address *</label>
                                 <input
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dental-blue focus:border-transparent"
                                     name="last_name" type="text" required>
@@ -305,7 +305,7 @@
                                 Submit Appointment Request
                             </button>
                         </div>
-                        
+
                 </form>
             </div>
 

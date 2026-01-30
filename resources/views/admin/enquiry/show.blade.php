@@ -33,20 +33,20 @@
                                 <th>Information</th>
                             </tr>
                             </thead>
-                            
+
                             <tbody class="table-border-bottom-0">
-                            
+
                             {{-- Step 1: Personal Information --}}
                             <tr>
                                 <td>First Name</td>
                                 <td>{{ $appointment->first_name ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
-                                <td>Last Name</td>
+                                <td>Address</td>
                                 <td>{{ $appointment->last_name ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Email</td>
                                 <td>
@@ -57,7 +57,7 @@
                                     @endif
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Phone</td>
                                 <td>
@@ -68,64 +68,64 @@
                                     @endif
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Date of Birth</td>
                                 <td>{{ optional($appointment->dob)->format('d M Y') ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Patient Type</td>
                                 <td>{{ $appointment->patient_type ?? '-' }}</td>
                             </tr>
-                            
+
                             {{-- Step 2: Appointment Details --}}
                             <tr>
                                 <td>Service Type</td>
                                 <td>{{ $appointment->service_type ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Preferred Doctor</td>
                                 <td>{{ $appointment->doctor ?? 'No Preference' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Appointment Date</td>
                                 <td>{{ optional($appointment->appointment_date)->format('d M Y') ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Appointment Time</td>
                                 <td>{{ $appointment->appointment_time ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Reason for Visit</td>
                                 <td>{{ $appointment->reason_visit ?? '-' }}</td>
                             </tr>
-                            
+
                             {{-- Step 3: Insurance --}}
                             <tr>
                                 <td>Dental Insurance</td>
                                 <td>{{ $appointment->insurance ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Insurance Provider</td>
                                 <td>{{ $appointment->insurance_provider ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Policy Number</td>
                                 <td>{{ $appointment->policy_number ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Group Number</td>
                                 <td>{{ $appointment->group_number ?? '-' }}</td>
                             </tr>
-                            
+
                             {{-- Step 4: Medical History --}}
                             <tr>
                                 <td>Medical Conditions</td>
@@ -141,17 +141,17 @@
                                     @endif
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Current Medications</td>
                                 <td>{{ $appointment->medication ?? '-' }}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Known Allergies</td>
                                 <td>{{ $appointment->allergies ?? '-' }}</td>
                             </tr>
-                            
+
                             {{-- Step 5: Communication Preferences --}}
                             <tr>
                                 <td>Appointment Reminders</td>
@@ -165,7 +165,7 @@
                                     @endif
                                 </td>
                             </tr>
-                            
+
                             </tbody>
 
 
@@ -270,7 +270,7 @@
                                 <a href="#visadetail" class="btn btn-primary">Visa Details</a><br>
 
                             @endif
-                            {{-- <button type="button" class="btn">Visa Details</button> 
+                            {{-- <button type="button" class="btn">Visa Details</button>
                         </form>
                     </div> --}}
 
@@ -342,7 +342,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            
+
 
                             @if (!empty(${$name}->see_school_name) || !empty(${$name}->see_gpa) || !empty(${$name}->see_passed_year))
                                 <tr>

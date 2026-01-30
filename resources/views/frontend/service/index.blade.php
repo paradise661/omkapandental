@@ -35,7 +35,7 @@
                         {{ $service_page->title }}
                     </h3>
 
-                    <p class="text-lg text-gray-600 mb-6">
+                    <p class="text-lg text-justify text-gray-600 mb-6">
                         {{ $service_page->short_description }}
                     </p>
                     <div class="space-y-4">
@@ -78,7 +78,7 @@
                             <h4 class="text-2xl font-bold text-gray-900 mb-3">{{ $service->title ?? '' }}</h4>
 
                             <!-- Short Description -->
-                            <p class="text-gray-600 mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
+                            <p class="text-gray-600 text-justify mb-6 line-clamp-4 flex-grow">{{ $service->short_description }}</p>
 
                             <!-- Full Width Button -->
                             <a class="w-full text-center bg-dental-blue hover:bg-[#2fa3c6] text-white font-semibold py-3 rounded-lg transition"

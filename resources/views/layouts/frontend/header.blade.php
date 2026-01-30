@@ -78,6 +78,14 @@
                         href="{{ route('frontend.team') }}">
                         Doctors
                     </a>
+                      <a class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white"
+                        href="{{ route('frontend.event') }}">
+                       Event
+                    </a>
+                    <a class="block px-4 py-2 text-gray-700 hover:bg-dental-blue hover:text-white"
+                        href="{{ route('frontend.testimonial') }}">
+                        Review
+                    </a>
                 </div>
             </div>
 
@@ -86,13 +94,13 @@
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.gallery') }}">Gallery</a>
             <a class="text-gray-700 hover:text-dental-blue font-medium" href="{{ route('frontend.blog') }}">Blog</a>
-            <a class="text-gray-700 hover:text-dental-blue font-medium"
-                href="{{ route('frontend.testimonial') }}">Review</a>
+            <a class="text-gray-700 hover:text-dental-blue font-medium" href="https://www.youtube.com/@Omkapandental"
+                target="_blank" rel="noopener noreferrer">
+                Video
+            </a>
             <a class="text-gray-700 hover:text-dental-blue font-medium"
                 href="{{ route('frontend.contact') }}">Contact</a>
-
         </nav>
-
         <!-- Right Section (Desktop) -->
         <div class="hidden lg:flex items-center space-x-4 flex-shrink-0">
             <span class="text-dental-blue font-semibold flex items-center">

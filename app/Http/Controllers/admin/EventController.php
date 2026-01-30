@@ -35,8 +35,8 @@ class EventController extends Controller
     {
         //
         $input = $request->all();
-        $input['seo_title'] = $request->seo_title ?? $request->title;
-        $input['slug'] = $input['slug'] ? make_slug($input['slug']) : make_slug($input['title']);
+        $input['seo_title'] = $request->seo_title ?? $request->title ?? '';
+        $input['slug'] = $input['slug'] ? make_slug($input['slug']) : make_slug($input['title'] ?? 'default-title');
 
         $rules = [
             'name' => 'required|min:3',
